@@ -64,10 +64,32 @@ export const updateProject =
     }
   };
 
+// ~~~~~~~~~~~ Delete a project ~~~~~~~~~~~
+const DELETE_PROJECT = "projects/DELETE_PROJECT";
+
+const loadDeletedProject = (projectId) => ({
+  type: DELETE_PROJECT,
+  projectId,
+});
+
+export const deleteProject =
+  ({ creatorId: creator_id, projectId: project_id }) =>
+  async (dispatch) => {
+    const res = await fetch(`/api/projects/${project_id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ creator_id, project_id }),
+    });
+
+    if (res.ok) {
+      const projectId = await res.json();
+      dispatch(loadDeletedChannel(projectId));
+    }
+  };
+
 const initialState = {};
 const projectReducer = (state = initialState, action) => {
   let newState = {};
-
   switch (action.type) {
     case GET_ALL_PROJECTS:
       action.projects.forEach((project) => {
@@ -78,6 +100,10 @@ const projectReducer = (state = initialState, action) => {
       return { ...state, [action.project.id]: action.project };
     case UPDATE_PROJECT:
       return { ...state, [action.project.id]: action.project };
+    case DELETE_PROJECT:
+      newState = { ...state };
+      delete newState[action.projectId];
+      return { ...newState };
     default:
       return state;
   }
