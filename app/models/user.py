@@ -16,13 +16,34 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # Relationships
-    # User has many projects (1-M)
+
+    # User has many projects (1-M) 
+    projects = db.Relationship('Project', back_populates='creator')
+    # creator = db.Relationship('User', back_populates='projects')
+
     # User has many lists (1-M)
+    lists = db.Relationship('List', back_populates='creator')
+    # creator = db.Relationship('User', back_populates='lists')
+
     # User has many todos (1-M)
+    todos = db.Relationship('Todo', back_populates='creator')
+    # creator = db.Relationship('User', back_populates='todos')
+
     # User has many messages (1-M)
+    messages = db.Relationship('Message', back_populates='creator')
+    # creator = db.Relationship('User', back_populates='messages')
+
     # User has many comments (1-M)
+    comments = db.Relationship('Comment', back_populates='creator')
+    # creator = db.Relationship('User', back_populates='comments')
+
     # User has many assignments; an assignment, many users (M-M): through: users_projects
+    todo_assignments = db.Relationship('Todo', back_populates='users', secondary='users_todos')
+    # users = db.Relationship('User', back_populates='todo_assignments', secondary='users_todos')
+
     # User has many projects; project, many users (M-M); through: users_todos
+    project_assignments = db.Relationship('Project', back_populates='users', secondary='users_todos')
+    # users = db.Relationship('User', back_populates='project_assignments', secondary='users_todos')
 
 
     @property

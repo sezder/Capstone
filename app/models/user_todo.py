@@ -12,3 +12,4 @@ class User_Project(db.Model):
       'id': self.id,
       'user_id': self.user_id,
       'todo_id': self.todo_id
+    }

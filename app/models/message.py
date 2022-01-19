@@ -12,9 +12,18 @@ class Message(db.Model):
   updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
   # Relationships: 
+  
   # A project has many messages, a message belongs to a project
+  project = db.Relationship('Project', back_populates='messages')
+  # messages = db.Relationship('Message', back_populates='project')
+
   # A user has many messages, a message belongs to a user
+  creator = db.Relationship('User', back_populates='messages')
+  # messages = db.Relationship('Message', back_populates='creator')
+
   # A comment belongs to a message, a message has many comments
+  comments = db.Relationship('Comment', back_populates='message')
+  # message = db.Relationship('Message', back_populates='comments')
 
   def to_dict(self):
     return {
