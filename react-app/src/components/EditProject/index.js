@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { updateProject, getAllProjects } from "../../store/project";
+import { useHistory, useParams } from "react-router-dom";
+import {
+  updateProject,
+  getAllProjects,
+  deleteProject,
+} from "../../store/project";
 import "./EditProject.css";
 
 const EditProject = () => {
   let { projectId } = useParams();
   projectId = Number(projectId);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   let creatorId = Number(useSelector((state) => state.session.user?.id));
   const currProject = useSelector((state) => state.projects?.[projectId]);
@@ -35,7 +40,20 @@ const EditProject = () => {
       creatorId,
       projectId,
     };
-    dispatch(updateProject(project));
+
+    const res = dispatch(updateProject(project));
+    if (res) {
+      history.push("/projects");
+    }
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    const deletePayload = { creatorId, projectId };
+    const res = dispatch(deleteProject(deletePayload));
+    if (res) {
+      history.push("/projects");
+    }
   };
 
   return (
@@ -71,6 +89,10 @@ const EditProject = () => {
 
       <button type="submit" disabled={errors.length > 0}>
         Update
+      </button>
+
+      <button onClick={handleDelete}>
+        <i className="far fa-trash-alt"></i>
       </button>
     </form>
   );

@@ -10,8 +10,8 @@ export const getAllProjects = () => async (dispatch) => {
   const res = await fetch(`/api/projects/`);
   if (res.ok) {
     const projects = await res.json();
-    console.log(projects, "TUNK");
     dispatch(loadAllProjects(projects));
+    return projects;
   }
 };
 
@@ -61,6 +61,7 @@ export const updateProject =
     if (res.ok) {
       const project = await res.json();
       dispatch(loadEditedProject(project));
+      return project;
     }
   };
 
@@ -83,7 +84,8 @@ export const deleteProject =
 
     if (res.ok) {
       const projectId = await res.json();
-      dispatch(loadDeletedChannel(projectId));
+      dispatch(loadDeletedProject(projectId));
+      return projectId;
     }
   };
 
