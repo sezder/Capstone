@@ -31,3 +31,14 @@ def new_project():
     return project.to_dict()
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+# ~~~~~~~~~~~ Update an existing project ~~~~~~~~~~~ 
+@project_routes.route('/<project_id>', methods=['PUT'])
+def edit_project(project_id):
+    project = Project.query.filter_by(id=project_id).one()
+    project_data = request.json
+    project.name = project_data['name']
+    project.description = project_data['description']
+    db.session.commit()
+    return jsonify(project.to_dict())

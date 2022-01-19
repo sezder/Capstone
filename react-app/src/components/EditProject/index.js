@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { createProject, getAllProjects } from "../../store/project";
+import { updateProject, getAllProjects } from "../../store/project";
 import "./EditProject.css";
 
 const EditProject = () => {
@@ -9,12 +9,12 @@ const EditProject = () => {
   projectId = Number(projectId);
   const dispatch = useDispatch();
 
-  const creatorId = useSelector((state) => state.session.user?.id);
+  let creatorId = Number(useSelector((state) => state.session.user?.id));
   const currProject = useSelector((state) => state.projects?.[projectId]);
 
-  const [name, setName] = useState("" || currProject?.name);
+  const [name, setName] = useState(currProject?.name || "");
   const [description, setDescription] = useState(
-    "" || currProject?.description
+    currProject?.description || ""
   );
   const [errors, setErrors] = useState([]);
 
@@ -32,9 +32,10 @@ const EditProject = () => {
     const project = {
       name,
       description,
-      creator_id: creatorId,
+      creatorId,
+      projectId,
     };
-    dispatch(createProject(project));
+    dispatch(updateProject(project));
   };
 
   return (

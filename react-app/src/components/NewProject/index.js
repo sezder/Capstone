@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateProject} from "../../store/project";
+import { createProject} from "../../store/project";
 import "./NewProject.css";
 
 const NewProject = () => {
@@ -22,7 +22,7 @@ const NewProject = () => {
       description,
       creator_id: creatorId,
     };
-    dispatch(updateProject(project));
+    dispatch(createProject(project));
   };
 
   return (
