@@ -42,3 +42,11 @@ def edit_project(project_id):
     project.description = project_data['description']
     db.session.commit()
     return jsonify(project.to_dict())
+
+# ~~~~~~~~~~~ Delete a project ~~~~~~~~~~~ 
+@project_routes.route('/<project_id>', methods=['DELETE'])
+def delete_project(project_id):
+    project = Project.query.filter_by(id=project_id).one()
+    db.session.delete(project)
+    db.session.commit()
+    return project_id
