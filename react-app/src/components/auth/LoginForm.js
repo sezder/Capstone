@@ -42,7 +42,6 @@ const LoginForm = () => {
         placeholder="Email"
         name="email"
         type="text"
-        placeholder="Email"
         value={email}
         onChange={updateEmail}
       />
@@ -51,7 +50,6 @@ const LoginForm = () => {
         placeholder="Password"
         name="password"
         type="password"
-        placeholder="Password"
         value={password}
         onChange={updatePassword}
       />

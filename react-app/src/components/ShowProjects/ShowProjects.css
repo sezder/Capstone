@@ -5,9 +5,6 @@
   padding: 60px 0;
 }
 
-#card_link {
-  z-index: 0;
-}
  
 .cards {
   grid-column: 2 / span 12;
