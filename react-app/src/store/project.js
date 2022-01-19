@@ -7,9 +7,10 @@ const loadAllProjects = (projects) => ({
 });
 
 export const getAllProjects = () => async (dispatch) => {
-  const res = fetch(`/api/projects`);
+  const res = await fetch(`/api/projects/`);
   if (res.ok) {
     const projects = await res.json();
+    console.log(projects, 'TUNK')
     dispatch(loadAllProjects(projects));
   }
 };

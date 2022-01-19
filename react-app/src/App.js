@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 import NewProject from "./components/NewProject";
+import ShowProjects from "./components/ShowProjects";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,9 +37,15 @@ function App() {
           <SignUpForm />
         </Route>
 
+        <Route path="/projects">
+          <ShowProjects />
+        </Route>
+
         <ProtectedRoute path="/test">
           <NewProject />
         </ProtectedRoute>
+
+
 
         {/* Users */}
         <ProtectedRoute path="/users" exact={true}>
