@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateProject} from "../../store/project";
-import "./NewProject.css";
+import { useParams } from "react-router-dom";
+import { createProject, getAllProjects } from "../../store/project";
+import "./EditProject.css";
 
-const NewProject = () => {
+const EditProject = () => {
+  let { projectId } = useParams();
+  projectId = Number(projectId);
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [errors, setErrors] = useState([]);
+
   const creatorId = useSelector((state) => state.session.user?.id);
+  const currProject = useSelector((state) => state.projects?.[projectId]);
+
+  const [name, setName] = useState("" || currProject?.name);
+  const [description, setDescription] = useState(
+    "" || currProject?.description
+  );
+  const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    dispatch(getAllProjects());
+  }, [dispatch]);
 
   useEffect(() => {
     const errors = [];
@@ -22,18 +34,20 @@ const NewProject = () => {
       description,
       creator_id: creatorId,
     };
-    dispatch(updateProject(project));
+    dispatch(createProject(project));
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {errors.length > 0 && (
-        <ul>
-          {errors.map((error) => {
-            return <li key={error}>{error}</li>;
-          })}
-        </ul>
-      )}
+      <div>
+        {errors.length > 0 && (
+          <ul>
+            {errors.map((error) => {
+              return <li key={error}>{error}</li>;
+            })}
+          </ul>
+        )}
+      </div>
 
       <input
         placeholder="Name"
@@ -55,10 +69,10 @@ const NewProject = () => {
       ></textarea>
 
       <button type="submit" disabled={errors.length > 0}>
-        Add
+        Update
       </button>
     </form>
   );
 };
 
-export default NewProject;
+export default EditProject;
