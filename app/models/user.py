@@ -42,8 +42,8 @@ class User(db.Model, UserMixin):
     # users = db.relationship('User', back_populates='todo_assignments', secondary='users_todos')
 
     # User has many projects; project, many users (M-M); through: users_todos
-    project_assignments = db.relationship('Project', back_populates='users', secondary='users_todos')
-    # users = db.relationship('User', back_populates='project_assignments', secondary='users_todos')
+    project_assignments = db.relationship('Project', back_populates='users', secondary='users_projects')
+    # users = db.relationship('User', back_populates='project_assignments', secondary='users_projects')
 
 
     @property

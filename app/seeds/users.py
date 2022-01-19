@@ -1,19 +1,25 @@
 from app.models import db, User
 
+seeded_users = [
+    User(first_name='Demo', last_name='User', email='demo@co.com', job_title='Graphic Designer', hashed_password='password'),
+    User(first_name='Fariha', last_name='Newman', email='fnewman@co.com', job_title='Vice President for Communications', hashed_password='password', icon_url='https://source.unsplash.com/SJvDxw0azqw '),
+    User(first_name='Donell', last_name='Mccormack', email='dmccormack@co.com', job_title='Content & Social Media Manager', hashed_password='password', icon_url='https://source.unsplash.com/XdYSoOHalUY'),
+    User(first_name='Amelia-Mae', last_name='Burke', email='aburke@co.com', job_title='Graphic Designer', hashed_password='password', icon_url='https://source.unsplash.com/A73ah5JKtVA'),
+    User(first_name='Persephone', last_name='Hackett', email='phackett@co.com', job_title='Video Producer', hashed_password='password', icon_url='https://source.unsplash.com/9lf_erPHYG0'),
+    User(first_name='Luther', last_name='Mccoy', email='lmccoy@co.com', job_title='Editorial Director', hashed_password='password', icon_url='https://source.unsplash.com/OhKElOkQ3RE'),
+    User(first_name='Jay', last_name='Crawford', email='jcrawford@co.com', job_title='Director of Web & Digital Media', hashed_password='password', icon_url='https://source.unsplash.com/HfMCgqOLTyM'),
+    User(first_name='Horace', last_name='Hurst', email='hhurst@co.com', job_title='Communications Coordinator', hashed_password='password', icon_url='https://source.unsplash.com/pAtA8xe_iVM'),
+    User(first_name='Riya', last_name='Ewing', email='rewing@co.com', job_title='Assistant Vice President for Communications', hashed_password='password', icon_url='https://source.unsplash.com/WYE2UhXsU1Y'),
+    User(first_name='Isabell', last_name='Whitworth', email='iwhitworth@co.com', job_title='Photographer & Photo Editor', hashed_password='password', icon_url='https://source.unsplash.com/eJ0UGX8da2c'),
+    User(first_name='Joe', last_name='Boyer', email='jboyer@co.com', job_title='Project Manager', hashed_password='password', icon_url='https://source.unsplash.com/Xaen-acsLLo'),
+    User(first_name='Darcie', last_name='Henderson', email='dhenderson@co.com', job_title='Assistant Vice President for Communications', hashed_password='password', icon_url='https://source.unsplash.com/_H6wpor9mjs'),
+    # User(first_name='', last_name='', email='', job_title='@co.com', hashed_password='password', icon_url=''),
+]
+
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
-
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-
+    db.session.add_all(seeded_users)
     db.session.commit()
 
 
