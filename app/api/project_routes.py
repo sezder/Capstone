@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Project
+from app.models import Project, db
+from app.forms.new_project_form import NewProjectForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 project_routes = Blueprint('projects', __name__)
@@ -23,4 +24,4 @@ def new_project():
     db.session.commit()
     return project.to_dict()
 
-  return {'errors': validation_errors_to_error_messages(form.errors), 400}
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 400
