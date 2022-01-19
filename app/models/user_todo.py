@@ -1,6 +1,6 @@
 from .db import db
 
-class User_Project(db.Model):
+class User_Todo(db.Model):
   __tablename__ = 'users_todos'
 
   id = db.Column(db.Integer, primary_key=True)

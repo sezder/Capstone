@@ -9,18 +9,18 @@ class List(db.Model):
   project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
   creator_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-  # Relationships:
+  # relationships:
   # A project has many lists, list belongs to a project
-  project = db.Relationship('Project', back_populates='lists')
-  # lists = db.Relationship('List', back_populates='project')
+  project = db.relationship('Project', back_populates='lists')
+  # lists = db.relationship('List', back_populates='project')
 
   # A user has many lists, list belongs to a user
-  creator = db.Relationship('User', back_populates='lists')
-  # lists = db.Relationship('List', back_populates='creator')
+  creator = db.relationship('User', back_populates='lists')
+  # lists = db.relationship('List', back_populates='creator')
 
   # A list has many to-dos, a to-do belongs to a list
-  todos = db.Relationship('Todo', back_populates='list')
-  # list = db.Relationship('List', back_populates='todos')
+  todos = db.relationship('Todo', back_populates='list')
+  # list = db.relationship('List', back_populates='todos')
 
 
   def to_dict(self):
