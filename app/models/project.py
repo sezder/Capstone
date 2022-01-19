@@ -23,8 +23,8 @@ class Project(db.Model):
     # project = db.relationship('Project', back_populates='messages')
 
     # A project has many users assigned to it, a user has many project (M-M): through: users_projects
-    users = db.relationship('User', back_populates='project_assignments', secondary='users_todos')
-    # project_assignments = db.relationship('Project', back_populates='users', secondary='users_todos')
+    users = db.relationship('User', back_populates='project_assignments', secondary='users_projects')
+    # project_assignments = db.relationship('Project', back_populates='users', secondary='users_projects')
 
     def to_dict(self):
       return {

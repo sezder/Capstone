@@ -14,7 +14,7 @@ class Todo(db.Model):
 
   # A list has many to-dos, a todo belongs to a list
   list = db.relationship('List', back_populates='todos')
-  todos = db.relationship('Todo', back_populates='list')
+  # todos = db.relationship('Todo', back_populates='list')
 
   # A creates many to-dos, a todo is created by one user
   creator = db.relationship('User', back_populates='todos')
