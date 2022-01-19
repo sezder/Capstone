@@ -7,6 +7,13 @@ from app.api.auth_routes import validation_errors_to_error_messages
 project_routes = Blueprint('projects', __name__)
 
 
+# ~~~~~~~~~~~ Get all projectst ~~~~~~~~~~~ 
+@project_routes.route('/')
+@login_required
+def all_projects():
+  projects = Project.query().all()
+  return jsonify([project.to_dict() for project in projects])
+
 # ~~~~~~~~~~~ Create a new project ~~~~~~~~~~~ 
 @project_routes.route('/', methods=['POST'])
 @login_required
