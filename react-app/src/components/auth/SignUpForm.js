@@ -5,11 +5,11 @@ import { signUp } from "../../store/session";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [first_name, set_first_name] = useState("");
-  const [last_name, set_last_name] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [job_title, set_job_title] = useState("");
-  const [icon_url, set_icon_url] = useState("");
+  const [job_title, setJobTitle] = useState("");
+  const [icon_url, setIconUrl] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector((state) => state.session.user);
@@ -33,24 +33,24 @@ const SignUpForm = () => {
     }
   };
 
-  const updatefirst_name = (e) => {
-    set_first_name(e.target.value);
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
   };
 
-  const updatelast_name = (e) => {
-    set_last_name(e.target.value);
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
 
-  const updatejob_title = (e) => {
-    set_job_title(e.target.value);
+  const updateJobTitle = (e) => {
+    setJobTitle(e.target.value);
   };
 
-  const updateicon_url = (e) => {
-    set_icon_url(e.target.value);
+  const updateIconUrl = (e) => {
+    setIconUrl(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -77,7 +77,7 @@ const SignUpForm = () => {
         placeholder="First Name"
         type="text"
         name="first_name"
-        onChange={updatefirst_name}
+        onChange={updateFirstName}
         value={first_name}
       ></input>
 
@@ -85,7 +85,7 @@ const SignUpForm = () => {
         placeholder="Last Name"
         type="text"
         name="last_name"
-        onChange={updatelast_name}
+        onChange={updateLastName}
         value={last_name}
       ></input>
 
@@ -101,7 +101,7 @@ const SignUpForm = () => {
         placeholder="Job Title"
         type="text"
         name="job_title"
-        onChange={updatejob_title}
+        onChange={updateJobTitle}
         value={job_title}
       ></input>
 
@@ -109,7 +109,7 @@ const SignUpForm = () => {
         placeholder="Profile Photo URL (optional)"
         type="text"
         name="icon_url"
-        onChange={updateicon_url}
+        onChange={updateIconUrl}
         value={icon_url}
       ></input>
 
