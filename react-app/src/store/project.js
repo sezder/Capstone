@@ -1,4 +1,18 @@
 // Get all projects
+const GET_ALL_PROJECTS = "projects/GET_ALL_PROJECTS";
+
+const loadAllProjects = (projects) => ({
+  type: GET_ALL_PROJECTS,
+  projects,
+});
+
+export const getAllProjects = () => async (dispatch) => {
+  const res = fetch(`/api/projects`);
+  if (res.ok) {
+    const projects = await res.json();
+    dispatch(loadAllProjects(projects));
+  }
+};
 
 // Get all projects by user id
 
@@ -31,6 +45,11 @@ const projectReducer = (state = initialState, action) => {
   let newState = {};
 
   switch (action.type) {
+    case GET_ALL_PROJECTS:
+      action.projects.forEach((project) => {
+        newState[project.id] = project;
+      });
+      return { ...newState };
     case ADD_PROJECT:
       return { ...state, [action.project.id]: action.project };
     default:
