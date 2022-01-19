@@ -5,11 +5,11 @@ import { signUp } from "../../store/session";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_name, set_first_name] = useState("");
+  const [last_name, set_last_name] = useState("");
   const [email, setEmail] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [iconURL, setIconURL] = useState("");
+  const [job_title, set_job_title] = useState("");
+  const [icon_url, set_icon_url] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector((state) => state.session.user);
@@ -17,32 +17,40 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    const payload = {
+      first_name,
+      last_name,
+      email,
+      job_title,
+      icon_url,
+      password,
+    };
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(payload));
       if (data) {
         setErrors(data);
       }
     }
   };
 
-  const updateFirstName = (e) => {
-    setFirstName(e.target.value);
+  const updatefirst_name = (e) => {
+    set_first_name(e.target.value);
   };
 
-  const updateLastName = (e) => {
-    setLastName(e.target.value);
+  const updatelast_name = (e) => {
+    set_last_name(e.target.value);
   };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
 
-  const updateJobTitle = (e) => {
-    setJobTitle(e.target.value);
+  const updatejob_title = (e) => {
+    set_job_title(e.target.value);
   };
 
-  const updateIconURL = (e) => {
-    setIconURL(e.target.value);
+  const updateicon_url = (e) => {
+    set_icon_url(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -68,17 +76,17 @@ const SignUpForm = () => {
       <input
         placeholder="First Name"
         type="text"
-        name="firstName"
-        onChange={updateFirstName}
-        value={firstName}
+        name="first_name"
+        onChange={updatefirst_name}
+        value={first_name}
       ></input>
 
       <input
         placeholder="Last Name"
         type="text"
-        name="lastName"
-        onChange={updateLastName}
-        value={lastName}
+        name="last_name"
+        onChange={updatelast_name}
+        value={last_name}
       ></input>
 
       <input
@@ -92,20 +100,21 @@ const SignUpForm = () => {
       <input
         placeholder="Job Title"
         type="text"
-        name="jobTitle"
-        onChange={updateJobTitle}
-        value={jobTitle}
+        name="job_title"
+        onChange={updatejob_title}
+        value={job_title}
       ></input>
 
       <input
         placeholder="Profile Photo URL (optional)"
         type="text"
-        name="iconURL"
-        onChange={updateIconURL}
-        value={iconURL}
+        name="icon_url"
+        onChange={updateicon_url}
+        value={icon_url}
       ></input>
 
       <input
+        placeholder="Password"
         type="password"
         name="password"
         onChange={updatePassword}
@@ -113,6 +122,7 @@ const SignUpForm = () => {
       ></input>
 
       <input
+        placeholder="Confirm Password"
         type="password"
         name="repeat_password"
         onChange={updateRepeatPassword}
