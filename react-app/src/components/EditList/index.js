@@ -1,27 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createList } from "../../store/list";
-import "./NewList.css";
+import { updateList, getLists } from "../../store/list";
+import "./EditList.css";
 
-const NewList = () => {
-  let { projectId } = useParams();
+const EditList = () => {
+  let { projectId, listId } = useParams();
   projectId = Number(projectId);
+  listId = Number(listId);
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const creatorId = Number(useSelector((state) => state.session.user.id));
+  const currList = useSelector((state) => state.lists?.[listId]);
+  console.log(currList, 'currList DOGGIE')
+
+  const [title, setTitle] = useState(currList?.title || "");
+  const [description, setDescription] = useState(currList?.description || "");
   const [errors, setErrors] = useState([]);
 
-  const creatorId = useSelector((state) => state.session.user.id);
+  useEffect(() => {
+    dispatch(getLists(projectId));
+  }, [dispatch, projectId]);
 
   useEffect(() => {
     const errors = [];
     if (!title?.length) errors.push("Provide a title for the list.");
     if (title?.length > 50)
       errors.push("List title must not be more than 50 characters.");
-      setErrors(errors)
+    setErrors(errors);
   }, [title]);
 
   const handleSubmit = () => {
@@ -30,9 +39,23 @@ const NewList = () => {
       description,
       projectId,
       creatorId,
+      listId,
     };
-    dispatch(createList(list));
+    const res = dispatch(updateList(list));
+    if (res) {
+      history.push(`/projects/${projectId}/lists`);
+    }
   };
+
+  // const handleDelete = (e) => {
+  //   e.preventDefault();
+  //   const deletePayload = { creatorId, listId };
+  //   const res = dispatch(deleteList(deletePayload));
+  //   if (res) {
+  //     history.push(`/projects/${projectId}/lists`);
+  //   }
+  // };
+
   return (
     <form onSubmit={handleSubmit}>
       {errors.length > 0 && (
@@ -65,8 +88,12 @@ const NewList = () => {
       <button type="submit" disabled={errors.length > 0}>
         Add
       </button>
+
+      {/* <button onClick={handleDelete}>
+        <i className="far fa-trash-alt"></i>
+      </button> */}
     </form>
   );
 };
 
-export default NewList;
+export default EditList;
