@@ -43,10 +43,10 @@ def edit_list(list_id):
   db.session.commit()
   return jsonify(list.to_dict())
 
-# ~~~~~~~~~~~ Delete a project ~~~~~~~~~~~ 
-# @project_routes.route('/<project_id>', methods=['DELETE'])
-# def delete_project(project_id):
-#     project = Project.query.filter_by(id=project_id).one()
-#     db.session.delete(project)
-#     db.session.commit()
-#     return project_id
+# ~~~~~~~~~~~ Delete a list ~~~~~~~~~~~ 
+@list_routes.route('/<list_id>', methods=['DELETE'])
+def delete_list(list_id):
+    list = List.query.filter_by(id=list_id).one()
+    db.session.delete(list)
+    db.session.commit()
+    return list_id
