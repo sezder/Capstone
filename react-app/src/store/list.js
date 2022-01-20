@@ -76,6 +76,31 @@ export const updateList =
     }
   };
 
+// ~~~~~~~~~~~ Delete a project ~~~~~~~~~~~
+const DELETE_LIST = "lists/DELETE_LIST";
+
+const loadDeletedList = (listId) => ({
+  type: DELETE_LIST,
+  listId,
+});
+
+export const deleteList =
+  ({ creatorId: creator_id, listId: list_id }) =>
+  async (dispatch) => {
+    const res = await fetch(`/api/projects/${project_id}/lists/${list_id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ creator_id, list_id }),
+    });
+
+    if (res.ok) {
+      const listId = await res.json();
+      dispatch(loadDeletedList(listId));
+      return listId;
+    }
+  };
+
+// ~~~~~~~~~~~ Reducer ~~~~~~~~~~~
 const initialState = {};
 const listReducer = (state = initialState, action) => {
   let newState = {};
@@ -89,6 +114,10 @@ const listReducer = (state = initialState, action) => {
       return { ...state, [action.list.id]: action.list };
     case UPDATE_LIST:
       return { ...state, [action.list.id]: action.list };
+    case DELETE_LIST:
+      newState = { ...state };
+      delete newState[action.listId];
+      return { ...newState };
     default:
       return state;
   }
