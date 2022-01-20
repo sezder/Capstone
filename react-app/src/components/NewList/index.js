@@ -1,30 +1,38 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createProject } from "../../store/project";
-import "./NewProject.css";
+import { createList } from "../../store/list";
+import "./NewList.css";
 
-const NewProject = () => {
+const NewList = () => {
+  let { projectId } = useParams();
+  projectId = Number(projectId);
+
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
+
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([]);
-  const creatorId = useSelector((state) => state.session.user?.id);
+
+  const creatorId = useSelector((state) => state.session.user.id);
 
   useEffect(() => {
     const errors = [];
-    if (!name?.length) errors.push("Provide a project name.");
-    setErrors(errors);
-  }, [name]);
+    if (!title?.length) errors.push("Provide a title for the list.");
+    if (title?.length > 50)
+      errors.push("List title must not be more than 50 characters.");
+      setErrors(errors)
+  }, [title]);
 
   const handleSubmit = () => {
-    const project = {
-      name,
+    const list = {
+      title,
       description,
-      creator_id: creatorId,
+      projectId,
+      creatorId,
     };
-    dispatch(createProject(project));
+    dispatch(createList(list));
   };
-
   return (
     <form onSubmit={handleSubmit}>
       {errors.length > 0 && (
@@ -36,11 +44,11 @@ const NewProject = () => {
       )}
 
       <input
-        placeholder="Name"
+        placeholder="List Title"
         type="text"
-        name="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        name="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
         required={true}
         spellCheck={true}
       ></input>
@@ -61,4 +69,4 @@ const NewProject = () => {
   );
 };
 
-export default NewProject;
+export default NewList;
