@@ -16,7 +16,7 @@ export const getLists = (projectId) => async (dispatch) => {
 };
 
 // ~~~~~~~~~~~ Create a new list ~~~~~~~~~~~
-const ADD_LIST = "/lists/ADD_LIST";
+const ADD_LIST = "lists/ADD_LIST";
 
 const addList = (list) => ({
   type: ADD_LIST,
