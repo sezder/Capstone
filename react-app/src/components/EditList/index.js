@@ -33,7 +33,7 @@ const EditList = () => {
   }, [title]);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const list = {
       title,
       description,
