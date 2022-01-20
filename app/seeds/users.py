@@ -1,7 +1,7 @@
 from app.models import db, User
 
 seeded_users = [
-    User(first_name='Demo', last_name='User', email='demo@co.com', job_title='Graphic Designer', hashed_password='pbkdf2:sha256:260000$1O4NmIUHsV8BLL7J$3e66c6f6468a98b389f83bd805e7e6c580b8aed945cb6e3f37a0139c7cb7fc0e'),
+    User(first_name='Demo', last_name='User', email='demo@co.com', job_title='Graphic Designer', hashed_password='password'),
     User(first_name='Fariha', last_name='Newman', email='fnewman@co.com', job_title='Vice President for Communications', hashed_password='password', icon_url='https://source.unsplash.com/SJvDxw0azqw '),
     User(first_name='Donell', last_name='Mccormack', email='dmccormack@co.com', job_title='Content & Social Media Manager', hashed_password='password', icon_url='https://source.unsplash.com/XdYSoOHalUY'),
     User(first_name='Amelia-Mae', last_name='Burke', email='aburke@co.com', job_title='Graphic Designer', hashed_password='password', icon_url='https://source.unsplash.com/A73ah5JKtVA'),
