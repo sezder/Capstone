@@ -8,6 +8,7 @@ list_routes = Blueprint('lists', __name__)
 
 # ~~~~~~~~~~~ Get all lists by project id ~~~~~~~~~~~ 
 @list_routes.route('/<project_id>')
+@login_required
 def lists_for_project(project_id):
   lists = List.query.filter_by(project_id=project_id)
   return jsonify([list.to_dict() for list in lists])
@@ -35,6 +36,7 @@ def new_list():
 
 # ~~~~~~~~~~~ Update an existing list ~~~~~~~~~~~ 
 @list_routes.route('/<list_id>', methods=['PUT'])
+@login_required
 def edit_list(list_id):
   list = List.query.filter_by(id=list_id).one()
   list_data = request.json
@@ -45,6 +47,7 @@ def edit_list(list_id):
 
 # ~~~~~~~~~~~ Delete a list ~~~~~~~~~~~ 
 @list_routes.route('/<list_id>', methods=['DELETE'])
+@login_required
 def delete_list(list_id):
     list = List.query.filter_by(id=list_id).one()
     db.session.delete(list)

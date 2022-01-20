@@ -9,6 +9,7 @@ project_routes = Blueprint('projects', __name__)
 
 # ~~~~~~~~~~~ Get all projectst ~~~~~~~~~~~ 
 @project_routes.route('/')
+@login_required
 def all_projects():
   projects = Project.query.all()
   return jsonify([project.to_dict() for project in projects])
@@ -35,6 +36,7 @@ def new_project():
 
 # ~~~~~~~~~~~ Update an existing project ~~~~~~~~~~~ 
 @project_routes.route('/<project_id>', methods=['PUT'])
+@login_required
 def edit_project(project_id):
     project = Project.query.filter_by(id=project_id).one()
     project_data = request.json
@@ -45,6 +47,7 @@ def edit_project(project_id):
 
 # ~~~~~~~~~~~ Delete a project ~~~~~~~~~~~ 
 @project_routes.route('/<project_id>', methods=['DELETE'])
+@login_required
 def delete_project(project_id):
     project = Project.query.filter_by(id=project_id).one()
     db.session.delete(project)
