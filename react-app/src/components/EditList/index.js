@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateList, getLists } from "../../store/list";
+import { updateList, getLists, deleteList } from "../../store/list";
 import "./EditList.css";
 
 const EditList = () => {
@@ -15,7 +15,7 @@ const EditList = () => {
 
   const creatorId = Number(useSelector((state) => state.session.user.id));
   const currList = useSelector((state) => state.lists?.[listId]);
-  console.log(currList, 'currList DOGGIE')
+  console.log(currList, "currList DOGGIE");
 
   const [title, setTitle] = useState(currList?.title || "");
   const [description, setDescription] = useState(currList?.description || "");
@@ -47,14 +47,14 @@ const EditList = () => {
     }
   };
 
-  // const handleDelete = (e) => {
-  //   e.preventDefault();
-  //   const deletePayload = { creatorId, listId };
-  //   const res = dispatch(deleteList(deletePayload));
-  //   if (res) {
-  //     history.push(`/projects/${projectId}/lists`);
-  //   }
-  // };
+  const handleDelete = (e) => {
+    e.preventDefault();
+    const deletePayload = { creatorId, listId, projectId };
+    const res = dispatch(deleteList(deletePayload));
+    if (res) {
+      history.push(`/projects/${projectId}/lists`);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -89,9 +89,9 @@ const EditList = () => {
         Add
       </button>
 
-      {/* <button onClick={handleDelete}>
+      <button onClick={handleDelete}>
         <i className="far fa-trash-alt"></i>
-      </button> */}
+      </button>
     </form>
   );
 };

@@ -85,12 +85,12 @@ const loadDeletedList = (listId) => ({
 });
 
 export const deleteList =
-  ({ creatorId: creator_id, listId: list_id }) =>
+  ({ creatorId: creator_id, listId: list_id, projectId: project_id }) =>
   async (dispatch) => {
-    const res = await fetch(`/api/projects/${project_id}/lists/${list_id}`, {
+    const res = await fetch(`/api/lists/${list_id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ creator_id, list_id }),
+      body: JSON.stringify({ creator_id, list_id, project_id }),
     });
 
     if (res.ok) {
