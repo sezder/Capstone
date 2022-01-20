@@ -15,7 +15,6 @@ const EditList = () => {
 
   const creatorId = Number(useSelector((state) => state.session.user.id));
   const currList = useSelector((state) => state.lists?.[listId]);
-  console.log(currList, "currList DOGGIE");
 
   const [title, setTitle] = useState(currList?.title || "");
   const [description, setDescription] = useState(currList?.description || "");
@@ -33,7 +32,8 @@ const EditList = () => {
     setErrors(errors);
   }, [title]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const list = {
       title,
       description,
@@ -86,7 +86,7 @@ const EditList = () => {
       ></textarea>
 
       <button type="submit" disabled={errors.length > 0}>
-        Add
+        Update
       </button>
 
       <button onClick={handleDelete}>

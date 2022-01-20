@@ -14,6 +14,9 @@ import EditProject from "./components/EditProject";
 import ShowLists from "./components/ShowLists";
 import NewList from "./components/NewList";
 import EditList from "./components/EditList";
+import NewTodo from "./components/NewTodo";
+import EditTodo from "./components/EditTodo";
+import ShowTodos from "./components/ShowTodos";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,6 +37,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        {/* Auth routes */}
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
@@ -41,27 +45,41 @@ function App() {
           <SignUpForm />
         </Route>
 
-        <ProtectedRoute path="/projects/:projectId/lists/:listId">
-          <EditList />
+        {/* Todos */}
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/:todoId">
+          <EditTodo />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/projects/:projectId/lists/new">
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/new">
+          <NewTodo />
+        </ProtectedRoute>
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos">
+          <ShowTodos />
+        </ProtectedRoute>
+
+        {/* Lists */}
+        <ProtectedRoute path="/projects/:projectId/lists/new" exact={true}>
           <NewList />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/projects/:projectId/lists">
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/edit">
+          <EditList />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/projects/:projectId/lists" exact={true}>
           <ShowLists />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/projects/:projectId">
+        {/* Projects */}
+        <ProtectedRoute path="/projects/:projectId" exact={true}>
           <EditProject />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/test">
+        <ProtectedRoute path="/projects/new">
           <NewProject />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/projects">
+        <ProtectedRoute path="/projects" exact={true}>
           <ShowProjects />
         </ProtectedRoute>
 
@@ -69,7 +87,7 @@ function App() {
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
+        <ProtectedRoute path="/users/(\\d+):userId" exact={true}>
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>

@@ -24,7 +24,8 @@ const NewList = () => {
       setErrors(errors)
   }, [title]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const list = {
       title,
       description,
@@ -32,6 +33,7 @@ const NewList = () => {
       creatorId,
     };
     dispatch(createList(list));
+    
   };
   return (
     <form onSubmit={handleSubmit}>
