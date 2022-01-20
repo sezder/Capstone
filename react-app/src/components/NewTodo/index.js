@@ -24,7 +24,8 @@ const NewTodo = () => {
     setErrors(errors);
   }, [task, due]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const todo = {
       task,
       listId,

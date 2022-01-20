@@ -24,7 +24,8 @@ const NewList = () => {
       setErrors(errors)
   }, [title]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const list = {
       title,
       description,

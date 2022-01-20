@@ -16,7 +16,8 @@ const NewProject = () => {
     setErrors(errors);
   }, [name]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const project = {
       name,
       description,

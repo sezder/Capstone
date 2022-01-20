@@ -39,12 +39,20 @@ const EditTodo = () => {
       task,
       listId,
       creatorId,
-      // completed: currTodo?.completed,
-      completed: false,
+      completed: currTodo?.completed,
       due,
     };
     dispatch(updateTodo(todo));
   };
+
+  // const handleDelete = (e) => {
+  //   e.preventDefault();
+  //   const deletePayload = { creatorId, listId, projectId };
+  //   const res = dispatch(deleteList(deletePayload));
+  //   if (res) {
+  //     history.push(`/projects/${projectId}/lists`);
+  //   }
+  // };
 
   return (
     <form onSubmit={handleSubmit}>
