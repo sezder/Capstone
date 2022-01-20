@@ -7,15 +7,34 @@ const loadLists = (lists) => ({
 });
 
 export const getLists = (projectId) => async (dispatch) => {
-  const res = await fetch(`/api/lists/`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ project_id: projectId }),
-  });
+  const res = await fetch(`/api/lists/${projectId}`);
   if (res.ok) {
     const lists = await res.json();
     dispatch(loadLists(lists));
     return lists;
+  }
+};
+
+// ~~~~~~~~~~~ Create a new list ~~~~~~~~~~~
+const ADD_LIST = "/lists/ADD_LIST";
+
+const addList = (list) => ({
+  type: ADD_LIST,
+  list,
+});
+
+export const createList = (list) => async (dispatch) => {
+  const res = await fetch(`/api/lists`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(list),
+  });
+  if (res.ok) {
+    const list = await res.json();
+    dispatch(addList(list));
+    return list;
   }
 };
 
@@ -28,6 +47,8 @@ const listReducer = (state = initialState, action) => {
         newState[list.id] = list;
       });
       return { ...newState };
+    case ADD_LIST:
+      return { ...state, [action.list.id]: action.list };
     default:
       return state;
   }

@@ -7,30 +7,31 @@ from app.api.auth_routes import validation_errors_to_error_messages
 list_routes = Blueprint('lists', __name__)
 
 # ~~~~~~~~~~~ Get all lists by project id ~~~~~~~~~~~ 
-@list_routes.route('/')
-def lists_for_project():
-  project_id = request.json
-  lists = List.query.filter_by(project_id=project_data['project_id'])
+@list_routes.route('/<project_id>')
+def lists_for_project(project_id):
+  lists = List.query.filter_by(project_id=project_id)
   return jsonify([list.to_dict() for list in lists])
 
 # ~~~~~~~~~~~ Create a new list ~~~~~~~~~~~ 
-# @project_routes.route('/', methods=['POST'])
-# @login_required
-# def new_project():
-#   form = NewProjectForm()
-#   form['csrf_token'].data = request.cookies['csrf_token']
+@list_routes.route('/', methods=['POST'])
+@login_required
+def new_list():
+  form = NewListForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
 
-#   if form.validate_on_submit():
-#     project = Project(
-#       name=form.data['name'],
-#       description=form.data['description'],
-#       creator_id=form.data['creator_id']
-#     )
-#     db.session.add(project)
-#     db.session.commit()
-#     return project.to_dict()
+  if form.validate_on_submit():
+    list = List(
+      title=form.data['title'],
+      description=form.data['description'],
+      project_id=form.data['project_id'],
+      creator_id=form.data['creator_id']
+    )
+    db.session.add(list)
+    db.session.commit()
+    return list.to_dict()
 
-#   return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
 
 
 # ~~~~~~~~~~~ Update an existing project ~~~~~~~~~~~ 
