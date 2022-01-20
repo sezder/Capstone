@@ -45,14 +45,14 @@ const EditTodo = () => {
     dispatch(updateTodo(todo));
   };
 
-  // const handleDelete = (e) => {
-  //   e.preventDefault();
-  //   const deletePayload = { creatorId, listId, projectId };
-  //   const res = dispatch(deleteList(deletePayload));
-  //   if (res) {
-  //     history.push(`/projects/${projectId}/lists`);
-  //   }
-  // };
+  const handleDelete = (e) => {
+    e.preventDefault();
+    const deletePayload = { creatorId, todoId };
+    const res = dispatch(deleteTodo(deletePayload));
+    if (res) {
+      history.push(`/projects/${projectId}/lists/${listId}`);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -81,6 +81,10 @@ const EditTodo = () => {
 
       <button type="submit" disabled={errors.length > 0}>
         Update
+      </button>
+
+      <button onClick={handleDelete}>
+        <i className="far fa-trash-alt"></i>
       </button>
     </form>
   );
