@@ -66,7 +66,6 @@ export default ShowTodos;
 
 /* 
 What's the issue: 
-
 Goal: I'd like to be able to change both the date and the completion status 
 for a given task within mapping through the tasks.
 
@@ -87,4 +86,7 @@ I can do a sep thunk for the date?
 These thunks would require an id, which would only be present within the context of the map func
     - either define thunk dispatch inline
     - or feed the id into the thunk invocation as a param
+
+ With this technique, it would be good to modify my other put thunk so that only the info it changes 
+ gets sent. 
 */
