@@ -26,7 +26,7 @@ const addTodo = (todo) => ({
 export const createTodo =
   ({ task, listId: list_id, creatorId: creator_id, completed, due }) =>
   async (dispatch) => {
-    const res = await fetch(`/todos/${list_id}`, {
+    const res = await fetch(`/todos/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
