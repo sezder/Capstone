@@ -1,4 +1,4 @@
-// ~~~~~~~~~~~ Get all projects by user id ~~~~~~~~~~~
+// ~~~~~~~~~~~ Get all lists by project id ~~~~~~~~~~~
 const GET_LISTS = "lists/GET_LISTS";
 
 const loadLists = (lists) => ({
@@ -40,6 +40,42 @@ export const createList =
     }
   };
 
+// ~~~~~~~~~~~ Update a list ~~~~~~~~~~~
+const UPDATE_LIST = "lists/UPDATE_LIST";
+
+const loadEditedList = (list) => ({
+  type: UPDATE_LIST,
+  list,
+});
+
+export const updateList =
+  ({
+    title,
+    description,
+    listId: list_id,
+    projectId: project_id,
+    creatorId: creator_id,
+  }) =>
+  async (dispatch) => {
+    const res = await fetch(`/api/lists/${list_id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        list_id,
+        title,
+        description,
+        project_id,
+        creator_id,
+      }),
+    });
+
+    if (res.ok) {
+      const list = await res.json();
+      dispatch(loadEditedList(list));
+      return list;
+    }
+  };
+
 const initialState = {};
 const listReducer = (state = initialState, action) => {
   let newState = {};
@@ -50,6 +86,8 @@ const listReducer = (state = initialState, action) => {
       });
       return { ...newState };
     case ADD_LIST:
+      return { ...state, [action.list.id]: action.list };
+    case UPDATE_LIST:
       return { ...state, [action.list.id]: action.list };
     default:
       return state;
