@@ -16,8 +16,6 @@ def todos_for_list(list_id):
 
 
 # ~~~~~~~~~~~ Create a new todo ~~~~~~~~~~~ 
-
-
 @todo_routes.route('/', methods=['POST'])
 @login_required
 def new_todo():
@@ -37,22 +35,16 @@ def new_todo():
     return jsonify(todo.to_dict())
   return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-@todo_rotes.route('/<todo_id>', methods=['PUT'])
+@todo_routes.route('/<todo_id>', methods=['PUT'])
 @login_required
 def edit_todo(todo_id):
+  todo = Todo.query.filter_by(id=todo_id).one()
+  todo_data = request.json
 
-  form = TodoForm()
-  form['csrf_token'].data = request.cookies['csrf_token']
-
-  if form.validate_on_submit():
-    todo = Todo.query.filter_by(id=todo_id).one()
-    form_data = request.json()
-
-    todo.task = form_data['task']
-    todo.list_id = form_data['list_id']
-    todo.creator_id = form_data['creator_id']
-    todo.completed = form_data['completed']
-    todo.due = form_data['due']
-    db.session.commit()
-    return jsonify(todo.to_dict())
-  return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+  todo.task = todo_data['task']
+  todo.list_id = todo_data['list_id']
+  todo.creator_id = todo_data['creator_id']
+  todo.completed = todo_data['completed']
+  todo.due = todo_data['due']
+  db.session.commit()
+  return jsonify(todo.to_dict())

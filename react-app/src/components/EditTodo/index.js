@@ -1,4 +1,3 @@
-import React from "react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -18,8 +17,8 @@ const EditTodo = () => {
   const creatorId = Number(useSelector((state) => state.session.user.id));
   const currTodo = useSelector((state) => state.todos?.[todoId]);
 
-  const [task, setTask] = useState("" || currTodo?.task);
-  const [due, setDue] = useState("" || currTodo?.due);
+  const [task, setTask] = useState(currTodo?.task || "");
+  const [due, setDue] = useState(currTodo?.due || "");
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -29,13 +28,19 @@ const EditTodo = () => {
     setErrors(errors);
   }, [task, due]);
 
-  const handleSubmit = () => {
+  useEffect(() => {
+    dispatch(getTodos(listId));
+  }, [dispatch, listId]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const todo = {
       todoId,
       task,
       listId,
       creatorId,
-      completed: currTodo?.completed,
+      // completed: currTodo?.completed,
+      completed: false,
       due,
     };
     dispatch(updateTodo(todo));
@@ -50,7 +55,6 @@ const EditTodo = () => {
           })}
         </ul>
       )}
-
       <input
         placeholder="Task"
         type="text"

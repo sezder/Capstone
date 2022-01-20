@@ -50,14 +50,29 @@ const loadEditedTodo = (todo) => ({
 });
 
 export const updateTodo =
-  ({ task, listId: list_id, creatorId: creator_id, completed, due }) =>
+  ({
+    todoId: todo_id,
+    task,
+    listId: list_id,
+    creatorId: creator_id,
+    completed,
+    due,
+  }) =>
   async (dispatch) => {
-    const res = await fetch(`/todos/${list_id}`, {
+    console.log("got to thunk");
+    const res = await fetch(`/api/todos/${todo_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ task, list_id, creator_id, completed, due }),
+      body: JSON.stringify({
+        todo_id,
+        task,
+        list_id,
+        creator_id,
+        completed,
+        due,
+      }),
     });
 
     if (res.ok) {
@@ -78,7 +93,7 @@ const loadDeletedTodo = (todoId) => ({
 export const deleteTodo =
   ({ creatorId: creator_id, todoId: todo_id }) =>
   async (dispatch) => {
-    const res = await fetch(`/todos/${todo_id}`, {
+    const res = await fetch(`/api/todos/${todo_id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ creator_id, todo_id }),
