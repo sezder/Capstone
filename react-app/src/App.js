@@ -41,27 +41,31 @@ function App() {
           <SignUpForm />
         </Route>
 
-        <ProtectedRoute path="/projects/:projectId/lists/:listId">
-          <EditList />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/projects/:projectId/lists/new">
+        <ProtectedRoute path="/projects/:projectId/lists/new" exact={true}>
           <NewList />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/projects/:projectId/lists">
-          <ShowLists />
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/edit">
+          <EditList />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/projects/:projectId">
+
+
+        <ProtectedRoute path="/projects/:projectId" exact={true}>
           <EditProject />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/test">
+        <ProtectedRoute path="/projects/:projectId/lists" exact={true}>
+          <ShowLists />
+        </ProtectedRoute>
+
+
+
+        <ProtectedRoute path="/projects/new">
           <NewProject />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/projects">
+        <ProtectedRoute path="/projects" exact={true}>
           <ShowProjects />
         </ProtectedRoute>
 
@@ -69,7 +73,7 @@ function App() {
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
+        <ProtectedRoute path="/users/(\\d+):userId" exact={true}>
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>

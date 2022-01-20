@@ -86,7 +86,7 @@ const EditList = () => {
       ></textarea>
 
       <button type="submit" disabled={errors.length > 0}>
-        Add
+        Update
       </button>
 
       <button onClick={handleDelete}>
