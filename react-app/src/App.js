@@ -34,6 +34,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        {/* Auth routes */}
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
@@ -41,6 +42,12 @@ function App() {
           <SignUpForm />
         </Route>
 
+        {/* Todos */}
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos">
+          
+        </ProtectedRoute>
+
+        {/* Lists */}
         <ProtectedRoute path="/projects/:projectId/lists/new" exact={true}>
           <NewList />
         </ProtectedRoute>
@@ -49,17 +56,14 @@ function App() {
           <EditList />
         </ProtectedRoute>
 
-
-
-        <ProtectedRoute path="/projects/:projectId" exact={true}>
-          <EditProject />
-        </ProtectedRoute>
-
         <ProtectedRoute path="/projects/:projectId/lists" exact={true}>
           <ShowLists />
         </ProtectedRoute>
 
-
+        {/* Projects */}
+        <ProtectedRoute path="/projects/:projectId" exact={true}>
+          <EditProject />
+        </ProtectedRoute>
 
         <ProtectedRoute path="/projects/new">
           <NewProject />
