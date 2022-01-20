@@ -14,6 +14,7 @@ import EditProject from "./components/EditProject";
 import ShowLists from "./components/ShowLists";
 import NewList from "./components/NewList";
 import EditList from "./components/EditList";
+import NewTodo from "./components/NewTodo";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,9 +44,12 @@ function App() {
         </Route>
 
         {/* Todos */}
-        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos">
-          
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/new">
+          <NewTodo />
         </ProtectedRoute>
+        {/* <ProtectedRoute path="/projects/:projectId/lists/:listId/todos">
+          
+        </ProtectedRoute> */}
 
         {/* Lists */}
         <ProtectedRoute path="/projects/:projectId/lists/new" exact={true}>

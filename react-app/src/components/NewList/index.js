@@ -32,6 +32,7 @@ const NewList = () => {
       creatorId,
     };
     dispatch(createList(list));
+    
   };
   return (
     <form onSubmit={handleSubmit}>

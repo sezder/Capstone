@@ -15,7 +15,6 @@ const EditList = () => {
 
   const creatorId = Number(useSelector((state) => state.session.user.id));
   const currList = useSelector((state) => state.lists?.[listId]);
-  console.log(currList, "currList DOGGIE");
 
   const [title, setTitle] = useState(currList?.title || "");
   const [description, setDescription] = useState(currList?.description || "");
