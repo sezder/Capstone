@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Project, db
-from app.forms.new_project_form import NewProjectForm
+from app.forms.project_form import ProjectForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 project_routes = Blueprint('projects', __name__)
@@ -18,7 +18,7 @@ def all_projects():
 @project_routes.route('/', methods=['POST'])
 @login_required
 def new_project():
-  form = NewProjectForm()
+  form = ProjectForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():

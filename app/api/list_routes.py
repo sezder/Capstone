@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import List, db
-from app.forms.new_list_form import NewListForm
+from app.forms.list_form import ListForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 list_routes = Blueprint('lists', __name__)
@@ -17,7 +17,7 @@ def lists_for_project(project_id):
 @list_routes.route('/', methods=['POST'])
 @login_required
 def new_list():
-  form = NewListForm()
+  form = ListForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
