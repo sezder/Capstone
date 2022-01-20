@@ -17,8 +17,9 @@ def todos_for_list(list_id):
 
 # ~~~~~~~~~~~ Create a new todo ~~~~~~~~~~~ 
 
-# @login_required
+
 @todo_routes.route('/', methods=['POST'])
+@login_required
 def new_todo():
   form = TodoForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -36,13 +37,22 @@ def new_todo():
     return jsonify(todo.to_dict())
   return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-# @todo_rotes.route('/<todo_id>', methods=['PUT'])
-# @login_required
-# def edit_todo(todo_id):
-# new form
-# csrf
-# if validates
-# instantiate new obj
-# add, commit
-# return jsonify to_dict
-# else: return errors 
+@todo_rotes.route('/<todo_id>', methods=['PUT'])
+@login_required
+def edit_todo(todo_id):
+
+  form = TodoForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  if form.validate_on_submit():
+    todo = Todo.query.filter_by(id=todo_id).one()
+    form_data = request.json()
+
+    todo.task = form_data['task']
+    todo.list_id = form_data['list_id']
+    todo.creator_id = form_data['creator_id']
+    todo.completed = form_data['completed']
+    todo.due = form_data['due']
+    db.session.commit()
+    return jsonify(todo.to_dict())
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 400
