@@ -23,20 +23,22 @@ const addList = (list) => ({
   list,
 });
 
-export const createList = (list) => async (dispatch) => {
-  const res = await fetch(`/api/lists`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(list),
-  });
-  if (res.ok) {
-    const list = await res.json();
-    dispatch(addList(list));
-    return list;
-  }
-};
+export const createList =
+  ({ title, description, projectId: project_id, creatorId: creator_id }) =>
+  async (dispatch) => {
+    const res = await fetch(`/api/lists/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, description, project_id, creator_id }),
+    });
+    if (res.ok) {
+      const list = await res.json();
+      dispatch(addList(list));
+      return list;
+    }
+  };
 
 const initialState = {};
 const listReducer = (state = initialState, action) => {

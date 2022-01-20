@@ -5,7 +5,7 @@ from app.models import List
 
 
 class NewListForm(FlaskForm):
-  pass
-  # name = StringField('name', validators=[DataRequired()])
-  # description = StringField('description')
-  # creator_id = IntegerField('creator_id', validators=[DataRequired()])
+  title = StringField('title', validators=[DataRequired()])
+  description = StringField('description')
+  project_id = IntegerField('project_id', validators=[DataRequired()])
+  creator_id = IntegerField('creator_id', validators=[DataRequired()])
