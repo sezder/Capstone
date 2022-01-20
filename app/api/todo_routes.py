@@ -35,6 +35,7 @@ def new_todo():
     return jsonify(todo.to_dict())
   return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
+# ~~~~~~~~~~~ Update a todo ~~~~~~~~~~~ 
 @todo_routes.route('/<todo_id>', methods=['PUT'])
 @login_required
 def edit_todo(todo_id):
@@ -48,3 +49,12 @@ def edit_todo(todo_id):
   todo.due = todo_data['due']
   db.session.commit()
   return jsonify(todo.to_dict())
+
+# ~~~~~~~~~~~ Delete a todo ~~~~~~~~~~~ 
+@todo_routes.route('/<todo_id>', methods=['DELETE'])
+@login_required
+def delete_todo(todo_id):
+    todo = Todo.query.filter_by(id=todo_id).one()
+    db.session.delete(todo)
+    db.session.commit()
+    return todo_id
