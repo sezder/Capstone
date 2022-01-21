@@ -1,0 +1,22 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  background-color: #000000;
+  padding: 0 4% 0 4%;
+}
+
+#logo {
+  font-size: 30px;
+  border: 1px solid #309c6d;
+  padding: 5px;
+}
+
+.auth_links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30vw;
+}

@@ -5,7 +5,7 @@ footer {
   align-items: center;
   justify-content: flex-end;
   padding-right: 2vw;
-  height: 4.5vh;
+  height: 7vh;
   width: 100vw;
   min-height: 35px;
   background-color: #000000;
@@ -14,7 +14,7 @@ footer {
 footer a i {
   background-color: #309c6d;
   color: #ffffff;
-  padding: 4px;
-  border-radius: 10px;
+  padding: 6px;
+  border-radius: 15px;
   margin: 0 20px 0 20px;
 }
