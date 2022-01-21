@@ -1,0 +1,25 @@
+.new_project_form {
+  border-right: 2px solid black;
+  height: calc(100vh - 7vh - 70px);
+  padding: 40px 20px 40px 40px;
+  background-color: #616161;
+}
+
+#new_project_card {
+  display: flex;
+  align-items: center;
+  width: 30vw;
+}
+
+#new_project_card:hover {
+  transform: none;
+  cursor: default;
+}
+.new_project h2 {
+  width: fit-content;
+}
+
+#new_project_card input,
+#new_project_card textarea {
+  width: 70%;
+}
