@@ -10,7 +10,7 @@ const DemoButton = () => {
     await dispatch(login("demo@co.com", "password"));
   };
 
-  return <button onClick={handleDemoLogin}>Demo User</button>;
+  return <button onClick={handleDemoLogin}>Demo</button>;
 };
 
 export default DemoButton;
