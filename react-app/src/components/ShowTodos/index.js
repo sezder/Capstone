@@ -12,7 +12,7 @@ const ShowTodos = () => {
 
   const creatorId = Number(useSelector((state) => state.session.user.id));
   const todos = useSelector((state) => state.todos);
-  const [completed, setCompleted] = useState();
+  const [completed, setCompleted] = useState([ 1, 3, 6]);
 
   useEffect(() => {
     dispatch(getTodos(listId));
