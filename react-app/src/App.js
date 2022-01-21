@@ -18,6 +18,7 @@ import NewTodo from "./components/NewTodo";
 import EditTodo from "./components/EditTodo";
 import ShowTodos from "./components/ShowTodos";
 import Footer from "./components/Footer";
+import Splash from "./components/Splash";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,65 +39,67 @@ function App() {
     <BrowserRouter>
       <NavBar />
 
-        <Switch>
-          {/* Auth routes */}
-          <Route path="/login" exact={true}>
-            <LoginForm />
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm />
-          </Route>
+      <Switch>
+        {/* Auth routes */}
+        <Route path="/login" exact={true}>
+          <LoginForm />
+        </Route>
+        <Route path="/sign-up" exact={true}>
+          <SignUpForm />
+        </Route>
 
-          {/* Todos */}
-          <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/:todoId">
-            <EditTodo />
-          </ProtectedRoute>
+        {/* Todos */}
 
-          <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/new">
-            <NewTodo />
-          </ProtectedRoute>
-          <ProtectedRoute path="/projects/:projectId/lists/:listId/todos">
-            <ShowTodos />
-          </ProtectedRoute>
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/new">
+          <NewTodo />
+        </ProtectedRoute>
 
-          {/* Lists */}
-          <ProtectedRoute path="/projects/:projectId/lists/new" exact={true}>
-            <NewList />
-          </ProtectedRoute>
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/:todoId">
+          <EditTodo />
+        </ProtectedRoute>
 
-          <ProtectedRoute path="/projects/:projectId/lists/:listId/edit">
-            <EditList />
-          </ProtectedRoute>
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos">
+          <ShowTodos />
+        </ProtectedRoute>
 
-          <ProtectedRoute path="/projects/:projectId/lists" exact={true}>
-            <ShowLists />
-          </ProtectedRoute>
+        {/* Lists */}
+        <ProtectedRoute path="/projects/:projectId/lists/new" exact={true}>
+          <NewList />
+        </ProtectedRoute>
 
-          {/* Projects */}
-          <ProtectedRoute path="/projects/:projectId" exact={true}>
-            <EditProject />
-          </ProtectedRoute>
+        <ProtectedRoute path="/projects/:projectId/lists/:listId/edit">
+          <EditList />
+        </ProtectedRoute>
 
-          <ProtectedRoute path="/projects/new">
-            <NewProject />
-          </ProtectedRoute>
+        <ProtectedRoute path="/projects/:projectId/lists" exact={true}>
+          <ShowLists />
+        </ProtectedRoute>
 
-          <ProtectedRoute path="/projects" exact={true}>
-            <ShowProjects />
-          </ProtectedRoute>
+        {/* Projects */}
+        <ProtectedRoute path="/projects/:projectId" exact={true}>
+          <EditProject />
+        </ProtectedRoute>
 
-          {/* Users */}
-          <ProtectedRoute path="/users" exact={true}>
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/users/(\\d+):userId" exact={true}>
-            <User />
-          </ProtectedRoute>
-          <ProtectedRoute path="/" exact={true}>
-            <h1>My Home Page</h1>
-          </ProtectedRoute>
-        </Switch>
-  
+        <ProtectedRoute path="/projects/new">
+          <NewProject />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/projects" exact={true}>
+          <ShowProjects />
+        </ProtectedRoute>
+
+        {/* Users */}
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/(\\d+):userId" exact={true}>
+          <User />
+        </ProtectedRoute>
+        <ProtectedRoute path="/" exact={true}>
+          <Splash />
+        </ProtectedRoute>
+      </Switch>
+
       <Footer />
     </BrowserRouter>
   );

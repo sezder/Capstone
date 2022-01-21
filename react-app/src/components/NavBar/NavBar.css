@@ -3,15 +3,34 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 65px;
+  height: 70px;
   background-color: #000000;
   padding: 0 4% 0 4%;
 }
 
+.logo_container {
+  position: relative;
+}
+
+.border {
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border: 2px solid #309c6d;
+  transition: transform 2s;
+  border-radius: 5px;
+}
+
+.border:hover {
+  transform:  rotateY(180deg) rotate(45deg);
+}
+
 #logo {
-  font-size: 30px;
-  border: 1px solid #309c6d;
-  padding: 5px;
+  font-size: 26px;
+  padding: 8px;
 }
 
 .auth_links {
@@ -19,4 +38,26 @@ nav {
   align-items: center;
   justify-content: space-between;
   width: 30vw;
+}
+
+.user_info_container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 15vw;
+  max-width: fit-content;
+  border: 2px solid #309c6d;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.auth_user_icon {
+  /* background-color: #D0F4EA; */
+  background-color: #FFFFFF;
+
+  color: #000000;
+  border-radius: 30px;
+  padding: 6px;
+  margin-right: 1vw;
+
 }
