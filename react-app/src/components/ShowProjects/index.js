@@ -19,8 +19,16 @@ const ShowProjects = () => {
         {Object.values(projects).map((project, idx) => {
           return (
             <NavLink to={`/projects/${project?.id}`} key={idx} className="card">
+              <div>
                 <h1>{project?.name}</h1>
                 <p>{project?.description}</p>
+              </div>
+
+              <div className="users_projects">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
             </NavLink>
           );
         })}
