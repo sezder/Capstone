@@ -1,1 +1,143 @@
-/* TODO Add site wide styles */
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&family=Source+Sans+Pro:wght@300;400&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+html {
+  background-color: rgba(16, 16, 16, 0.8);
+}
+
+
+button {
+  color: #1f1f1f;
+  padding: 8px 20px;
+  background-color: #309c6d;
+  border: 1px solid rgba(87, 204, 153, 0.9);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.5s ease 0s;
+  width: fit-content;
+  box-shadow: 2px 2px 10px #000000;
+  /* box-shadow: 1px 1px 3px #000000, -1px -1px 3px #E1E1E1; */
+  margin: 3px;
+}
+
+button:hover {
+  background-color: rgba(87, 204, 153, 0.8);
+  /* box-shadow: 1px 1px 3px #000000, -1px -1px 3px #616161; */
+  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); */
+}
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+li,
+div,
+textarea,
+button {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+input {
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  padding-left: 10px;
+  margin: 10px 0;
+  box-shadow: 2px 2px 5px #000000;
+}
+
+/* .light_small,
+.light_medium,
+.light_large {
+  color: #e8eaed;
+} */
+/* .dark_large,
+.dark_medium,
+.dark_small {
+  color: #0f0f11;
+} */
+
+/* .light_small,
+.dark_small {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+} */
+/* .light_medium,
+.dark_medium {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+} */
+
+/* .light_large,
+.dark_large {
+  font-family: "Alegreya Sans SC", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+} */
+
+/* textarea {
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+} */
+
+/* .errors {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+} */
+
+/* .errors li {
+  padding: 3px 0;
+  list-style: none;
+} */
+
+/* link text underline animation */
+/* .dynamic_underline {
+  display: inline-block;
+  position: relative;
+  transition: all 0.5s ease 0s;
+} */
+
+/* .dynamic_underline:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #0f0f11;
+  transition: width 0.5s ease 0s, left 0.5s ease 0s;
+  width: 0;
+} */
+
+/* .dynamic_underline:hover:after {
+  width: 100%;
+  left: 0;
+} */
+
+/* White underline */
+/* .light_small.dynamic_underline:after,
+.light_medium.dynamic_underline:after,
+.light_large.dynamic_underline:after {
+  background: #e8eaed;
+} */
