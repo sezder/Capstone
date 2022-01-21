@@ -1,20 +1,22 @@
 .new_project_form {
   border-right: 2px solid black;
-  height: calc(100vh - 7vh - 70px);
+  min-height: 100%;
   padding: 40px 20px 40px 40px;
-  background-color: #616161;
+  background-color: rgba(31, 31, 31, 0.8);
 }
 
 #new_project_card {
   display: flex;
   align-items: center;
   width: 30vw;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 #new_project_card:hover {
   transform: none;
   cursor: default;
 }
+
 .new_project h2 {
   width: fit-content;
 }
@@ -22,4 +24,13 @@
 #new_project_card input,
 #new_project_card textarea {
   width: 70%;
+}
+
+#new_project_card textarea {
+  margin-bottom: 10px;
+}
+
+#new_project_card button {
+  padding: 15px 20px;
+  border-radius: 50px;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAllProjects } from "../../store/project";
@@ -9,6 +9,7 @@ const ShowProjects = () => {
   const dispatch = useDispatch();
 
   const projects = useSelector((state) => state.projects);
+  const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
     dispatch(getAllProjects());
@@ -16,7 +17,10 @@ const ShowProjects = () => {
 
   return (
     <div className="projects_page_div">
-      <NewProject />
+      <div>
+        <button onClick={() => setHidden(!hidden)} className={!hidden ? "hidden" : "circular_button"}>Button</button>
+        <NewProject hidden={hidden} setHidden={setHidden}/>
+      </div>
       <main>
         <section className="cards">
           {Object.values(projects).map((project, idx) => {

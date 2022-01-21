@@ -1,5 +1,6 @@
 .projects_page_div {
   display: flex;
+  height: 100%;
 }
 
 .cards {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createProject } from "../../store/project";
 import "./NewProject.css";
 
-const NewProject = () => {
+const NewProject = ({hidden, setHidden}) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -24,10 +24,11 @@ const NewProject = () => {
       creator_id: creatorId,
     };
     dispatch(createProject(project));
+    setHidden(!hidden)
   };
 
   return (
-    <form onSubmit={handleSubmit} className="new_project_form">
+    <form onSubmit={handleSubmit} className={hidden ? "hidden" : "new_project_form"}>
       <div className="card" id="new_project_card">
         <h2 className="light_large">New Project</h2>
 

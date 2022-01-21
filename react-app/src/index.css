@@ -60,7 +60,7 @@ input {
 .light_small,
 .light_medium,
 .light_large {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .dark_large,
@@ -75,7 +75,6 @@ input {
   font-weight: 300;
   font-size: 16px;
 }
-
 
 .light_medium,
 .dark_medium {
@@ -141,5 +140,14 @@ textarea {
 .light_small.dynamic_underline:after,
 .light_medium.dynamic_underline:after,
 .light_large.dynamic_underline:after {
-  background: #FFFFFF;
+  background: #ffffff;
+}
+
+.circular_button {
+  padding: 15px 20px;
+  border-radius: 50px;
+}
+
+.hidden {
+  display: none;
 }
