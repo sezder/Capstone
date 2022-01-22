@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createProject } from "../../store/project";
 import "./NewProject.css";
 
-const NewProject = ({hidden, setHidden}) => {
+const NewProject = ({ hidden, setHidden }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -24,11 +24,14 @@ const NewProject = ({hidden, setHidden}) => {
       creator_id: creatorId,
     };
     dispatch(createProject(project));
-    setHidden(!hidden)
+    setHidden(!hidden);
   };
 
   return (
-    <form onSubmit={handleSubmit} className={hidden ? "hidden" : "new_project_form"}>
+    <form
+      onSubmit={handleSubmit}
+      className={hidden ? "hidden" : "new_project_form"}
+    >
       <div className="card" id="new_project_card">
         <h2 className="light_large">New Project</h2>
 
@@ -59,9 +62,18 @@ const NewProject = ({hidden, setHidden}) => {
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
 
-        <button type="submit" disabled={errors.length > 0}>
-          <i class="fas fa-plus"></i>
-        </button>
+        <div>
+          <button type="submit" disabled={errors.length > 0}>
+            <i class="fas fa-plus"></i>
+          </button>
+
+
+          <button
+            onClick={() => setHidden(!hidden)}
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
       </div>
     </form>
   );

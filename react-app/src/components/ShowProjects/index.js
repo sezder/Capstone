@@ -20,13 +20,17 @@ const ShowProjects = () => {
       <div>
         <NewProject hidden={hidden} setHidden={setHidden} />
       </div>
+
       <main>
+        {/* Toggle the add project sidebar */}
         <button
           onClick={() => setHidden(!hidden)}
           className={!hidden ? "hidden" : "circular_button"}
         >
           <i class="fas fa-plus"></i>
         </button>
+
+        {/* Grid with responsive cards */}
         <section className="cards">
           {Object.values(projects).map((project, idx) => {
             return (
