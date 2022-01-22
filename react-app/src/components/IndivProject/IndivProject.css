@@ -1,0 +1,46 @@
+.indiv_project_page {
+  padding: 5% 20%;
+  max-height: calc(100vh - 7vh - 70px);
+}
+.indiv_project_page > p {
+  width: 40vw;
+  padding: 2%;
+}
+.users_projects_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid black;
+  padding: 10px 50px;
+  width: 100vw;
+  /* background-color: #D0D0D0; */
+}
+
+.messages_lists_div {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70vw;
+  margin-top: 3%;
+}
+
+.messages_lists_div a section {
+  background-color: #1f1f1f;
+  width: 30vw;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  border-radius: 30px;
+  padding: 5%;
+  box-shadow: 2px 2px 4px #000000, -1px -1px 5px rgba(225, 225, 225, 0.2);
+  transition: all 0.3s ease 0s;
+}
+
+.messages_lists_div a section h2 {
+  align-self: center;
+  padding-bottom: 2%;
+}
+
+.messages_lists_div a section:hover {
+  transform: translateY(-5px);
+}

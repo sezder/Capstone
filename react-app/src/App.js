@@ -19,6 +19,7 @@ import EditTodo from "./components/EditTodo";
 import ShowTodos from "./components/ShowTodos";
 import Footer from "./components/Footer";
 import Splash from "./components/Splash";
+import IndivProject from "./components/IndivProject";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -76,7 +77,11 @@ function App() {
         </ProtectedRoute>
 
         {/* Projects */}
-        <ProtectedRoute path="/projects/:projectId" exact={true}>
+        <ProtectedRoute path="/projects/:projectId">
+          <IndivProject />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/projects/:projectId/edit" exact={true}>
           <EditProject />
         </ProtectedRoute>
 

@@ -4,9 +4,9 @@ import work_together from "../images/work_together.svg";
 
 const Splash = () => {
   return (
-    <div>
+    <main>
       <img src={work_together}></img>
-    </div>
+    </main>
   );
 };
 

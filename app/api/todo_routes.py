@@ -6,6 +6,12 @@ from app.api.auth_routes import validation_errors_to_error_messages
 
 todo_routes = Blueprint('todos', __name__)
 
+# ~~~~~~~~~~~ Get all todos  ~~~~~~~~~~~ 
+@todo_routes.route('/')
+@login_required
+def all_todos():
+  todos = Todo.query.all()
+  return jsonify([todo.to_dict() for todo in todos])
 
 # ~~~~~~~~~~~ Get all todos by list id ~~~~~~~~~~~ 
 @todo_routes.route('/<list_id>')
