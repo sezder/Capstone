@@ -25,7 +25,9 @@ const ShowProjects = () => {
         {/* Toggle the add project sidebar */}
         <button
           onClick={() => setHidden(!hidden)}
-          className={!hidden ? "hidden" : "circular_button toggle_project_sidebar"}
+          className={
+            !hidden ? "hidden" : "circular_button toggle_project_sidebar"
+          }
         >
           <i class="fas fa-plus"></i>
         </button>
