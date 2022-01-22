@@ -57,66 +57,68 @@ input {
   box-shadow: 2px 2px 5px #000000;
 }
 
-/* .light_small,
+.light_small,
 .light_medium,
 .light_large {
-  color: #e8eaed;
-} */
-/* .dark_large,
+  color: #ffffff;
+}
+
+.dark_large,
 .dark_medium,
 .dark_small {
-  color: #0f0f11;
-} */
+  color: #000000;
+}
 
-/* .light_small,
+.light_small,
 .dark_small {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 300;
   font-size: 16px;
-} */
-/* .light_medium,
+}
+
+.light_medium,
 .dark_medium {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 20px;
-} */
+}
 
-/* .light_large,
+.light_large,
 .dark_large {
   font-family: "Alegreya Sans SC", sans-serif;
   font-weight: 500;
   font-size: 30px;
-} */
+}
 
-/* textarea {
+textarea {
   outline: none;
   border: none;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-} */
+}
 
-/* .errors {
+.errors {
   display: flex;
   flex-direction: column;
   padding: 12px;
   border-radius: 15px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-} */
+}
 
-/* .errors li {
+.errors li {
   padding: 3px 0;
   list-style: none;
-} */
+}
 
 /* link text underline animation */
-/* .dynamic_underline {
+.dynamic_underline {
   display: inline-block;
   position: relative;
   transition: all 0.5s ease 0s;
-} */
+}
 
-/* .dynamic_underline:after {
+.dynamic_underline:after {
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
   content: "";
@@ -124,19 +126,28 @@ input {
   height: 2px;
   left: 50%;
   position: absolute;
-  background: #0f0f11;
+  background: #000000;
   transition: width 0.5s ease 0s, left 0.5s ease 0s;
   width: 0;
-} */
+}
 
-/* .dynamic_underline:hover:after {
+.dynamic_underline:hover:after {
   width: 100%;
   left: 0;
-} */
+}
 
 /* White underline */
-/* .light_small.dynamic_underline:after,
+.light_small.dynamic_underline:after,
 .light_medium.dynamic_underline:after,
 .light_large.dynamic_underline:after {
-  background: #e8eaed;
-} */
+  background: #ffffff;
+}
+
+.circular_button {
+  padding: 15px 20px;
+  border-radius: 50px;
+}
+
+.hidden {
+  display: none;
+}

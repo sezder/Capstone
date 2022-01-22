@@ -1,15 +1,27 @@
-main {
-  display: grid;
-  grid-template-columns: 1fr repeat(12, minmax(auto, 60px)) 1fr;
-  grid-gap: 40px;
-  padding: 60px 0;
+.projects_page_div {
+  display: flex;
+  height: 100%;
 }
 
+.circular_button.toggle_project_sidebar {
+  /* background-color: blue; */
+  align-self: flex-start;
+  margin-left: 2.5%;
+  margin-top: 2%;
+}
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .cards {
   display: grid;
   grid-template-columns: repeat(12, minmax(auto, 60px));
   grid-column: 2 / span 12;
   grid-gap: 40px;
+  padding: 40px 40px 40px 20px;
 }
 
 .card {
@@ -35,10 +47,6 @@ main {
   padding-bottom: 2vh;
 }
 
-/* .card p {
-
-} */
-
 .users_projects {
   display: flex;
   flex-direction: row;
@@ -52,8 +60,6 @@ main {
   border-radius: 20px;
   margin: 10px;
   box-shadow: 3px 3px 4px #000000, -1px -1px 5px rgba(225, 225, 225, 0.4);
-
-  /* justify-self: flex-end; */
 }
 
 @media only screen and (max-width: 1000px) {
