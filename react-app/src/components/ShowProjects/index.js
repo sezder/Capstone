@@ -18,10 +18,15 @@ const ShowProjects = () => {
   return (
     <div className="projects_page_div">
       <div>
-        <button onClick={() => setHidden(!hidden)} className={!hidden ? "hidden" : "circular_button"}>Button</button>
-        <NewProject hidden={hidden} setHidden={setHidden}/>
+        <NewProject hidden={hidden} setHidden={setHidden} />
       </div>
       <main>
+        <button
+          onClick={() => setHidden(!hidden)}
+          className={!hidden ? "hidden" : "circular_button"}
+        >
+          <i class="fas fa-plus"></i>
+        </button>
         <section className="cards">
           {Object.values(projects).map((project, idx) => {
             return (
