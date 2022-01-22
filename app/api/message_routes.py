@@ -14,7 +14,7 @@ def messages_for_project(message_id):
   return jsonify([message.to_dict() for message in messages])
 
 
-# # ~~~~~~~~~~~ Create a new list ~~~~~~~~~~~ 
+# # ~~~~~~~~~~~ Create a new message ~~~~~~~~~~~ 
 @message_routes.route('/', methods=['POST'])
 @login_required
 def new_message():
@@ -22,15 +22,27 @@ def new_message():
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
-    message = List (
+    message = Message (
       subject_line = form.data['subject_line'],
       content = form.data['content'],
       project_id=form.data['project_id'],
       creator_id=form.data['creator_id']
     )
-    
+
     db.session.add(message)
     db.session.commit()
     return message.to_dict()
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+# ~~~~~~~~~~~ Update an existing message ~~~~~~~~~~~ 
+@message_routes.route('/<message_id>', methods=['PUT'])
+@login_required
+def edit_message(message_id):
+  message = Message.query.filter_by(id=message_id).one()
+  message_data = request.json
+  message.subject_line = message_data['subject_line']
+  message.content = message_data['content']
+
+  db.session.commit()
+  return jsonify(message.to_dict())
