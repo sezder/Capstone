@@ -62,15 +62,13 @@ const NewProject = ({ hidden, setHidden }) => {
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
 
+        {/* Submit button and close pannel button */}
         <div>
           <button type="submit" disabled={errors.length > 0}>
             <i class="fas fa-plus"></i>
           </button>
 
-
-          <button
-            onClick={() => setHidden(!hidden)}
-          >
+          <button onClick={() => setHidden(!hidden)}>
             <i class="fas fa-times"></i>
           </button>
         </div>
