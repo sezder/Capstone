@@ -15,7 +15,7 @@ nav {
 }
 
 .border {
-  position:absolute;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -27,7 +27,7 @@ nav {
 }
 
 .border:hover {
-  transform:  rotateY(180deg) rotate(45deg);
+  transform: rotateY(180deg) rotate(45deg);
 }
 
 #logo {
@@ -54,12 +54,9 @@ nav {
 }
 
 .auth_user_icon {
-  /* background-color: #D0F4EA; */
-  background-color: #FFFFFF;
-
+  background-color: #ffffff;
   color: #000000;
   border-radius: 30px;
   padding: 6px;
   margin-right: 1vw;
-
 }

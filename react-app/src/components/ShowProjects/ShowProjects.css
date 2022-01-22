@@ -4,11 +4,11 @@
 }
 
 .circular_button.toggle_project_sidebar {
-  /* background-color: blue; */
   align-self: flex-start;
   margin-left: 2.5%;
   margin-top: 2%;
 }
+
 main {
   width: 100%;
   display: flex;
@@ -16,6 +16,7 @@ main {
   justify-content: center;
   align-items: center;
 }
+
 .cards {
   display: grid;
   grid-template-columns: repeat(12, minmax(auto, 60px));
