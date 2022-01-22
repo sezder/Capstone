@@ -191,3 +191,9 @@ main {
   font-size: 16px;
   content: "\2713";
 }
+
+.task {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}

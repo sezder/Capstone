@@ -16,17 +16,34 @@ const ShowMiniList = ({ list }) => {
     (todo) => todo?.list_id === list?.id
   );
 
-  console.log(todosByList, "dog");
+  const mappingTodos = todosByList.map((todo) => (
+    <div key={`${todo?.id}`} className="task_read_only">
+      <input
+        type="checkbox"
+        checked={todo?.completed}
+        className="checkbox"
+        name="checkbox"
+      ></input>
+      <label htmlFor="checkbox">{todo?.task}</label>
+    </div>
+  ));
+
+  const addTaskPrompt = (
+    <div className="task_read_only">
+      <input
+        type="checkbox"
+        checked={false}
+        className="checkbox"
+        name="checkbox"
+      ></input>
+      <label htmlFor="checkbox">Add a task...</label>
+    </div>
+  );
 
   return (
     <div>
-      <h3 key={`${list?.id}`}>{list?.title}</h3>
-      {todosByList.map((todo) => (
-        <div key={`${todo?.id}`} className="task">
-          <input type="checkbox" checked={todo?.completed} className="checkbox" name="checkbox"></input>
-          <label htmlFor="checkbox">{todo?.task}</label>
-        </div>
-      ))}
+      <h3 key={`${list?.id}`} id="list_title">{list?.title}</h3>
+      {todosByList.length ? mappingTodos : addTaskPrompt}
     </div>
   );
 };
