@@ -46,3 +46,13 @@ def edit_message(message_id):
 
   db.session.commit()
   return jsonify(message.to_dict())
+
+
+# ~~~~~~~~~~~ Delete a message ~~~~~~~~~~~ 
+@message_routes.route('/<message_id>', methods=['DELETE'])
+@login_required
+def delete_message(message_id):
+    message = Message.query.filter_by(id=message_id).one()
+    db.session.delete(message)
+    db.session.commit()
+    return message_id
