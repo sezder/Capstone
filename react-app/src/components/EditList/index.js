@@ -49,7 +49,7 @@ const EditList = () => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    const deletePayload = { creatorId, listId, projectId };
+    const deletePayload = { creatorId, listId, projectId }; //need projectId?
     const res = dispatch(deleteList(deletePayload));
     if (res) {
       history.push(`/projects/${projectId}/lists`);
