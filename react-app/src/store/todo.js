@@ -1,4 +1,21 @@
 // ~~~~~~~~~~~ Get all todos by list id ~~~~~~~~~~~
+const GET_ALL_TODOS = "todos/GET_ALL_TODOS";
+
+const loadAllTodos = (todos) => ({
+  type: GET_TODOS,
+  todos,
+});
+
+export const getAllTodos = () => async (dispatch) => {
+  const res = await fetch(`/api/todos/`);
+  if (res.ok) {
+    const todos = await res.json();
+    dispatch(loadAllTodos(todos));
+    return todos;
+  }
+};
+
+// ~~~~~~~~~~~ Get all todos by list id ~~~~~~~~~~~
 const GET_TODOS = "todos/GET_TODOS";
 
 const loadTodos = (todos) => ({
@@ -112,6 +129,11 @@ const initialState = {};
 const todoReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
+    case GET_ALL_TODOS:
+      action.todos.forEach((todo) => {
+        newState[todo.id] = todo;
+      });
+      return { ...newState };
     case GET_TODOS:
       action.todos.forEach((todo) => {
         newState[todo.id] = todo;

@@ -152,3 +152,48 @@ textarea {
 .hidden {
   display: none;
 }
+
+main {
+  min-height: calc(100vh - 7vh - 70px);
+}
+
+.user_circle {
+  background-color: #57cc99;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin: 10px;
+  box-shadow: 3px 3px 4px #000000, -1px -1px 5px rgb(225 225 225 / 40%);
+}
+
+/* Checkbox styling */
+
+.checkbox {
+  position: relative;
+  appearance: none;
+  box-shadow: none;
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 0.3em;
+  margin-right: 3%;
+  border: 1px solid white;
+  background-color: #616161;
+}
+
+.checkbox:checked {
+  background-color: #d0d0d0;
+  color: #000000;
+}
+
+.checkbox:checked:after {
+  position: absolute;
+  right: 2px;
+  font-size: 16px;
+  content: "\2713";
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
