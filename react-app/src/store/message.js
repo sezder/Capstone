@@ -10,7 +10,7 @@ export const getMessages = (projectId) => async (dispatch) => {
   const res = await fetch(`/api/messages/${projectId}`);
   if (res.ok) {
     const messages = await res.json();
-    dispatch(loadMesages(messages));
+    dispatch(loadMessages(messages));
     return messages;
   }
 };
@@ -57,8 +57,9 @@ export const updateMessage =
   ({
     subjectLine: subject_line,
     content,
-    projectId: project_id,
+    messageId: message_id,
     creatorId: creator_id,
+    projectId: project_id
   }) =>
   async (dispatch) => {
     const res = await fetch(`/api/messages/${message_id}`, {

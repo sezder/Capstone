@@ -11,7 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.project_routes import project_routes
 from .api.list_routes import list_routes
 from .api.todo_routes import todo_routes
-from .api.message_routes.py import message_routes
+from .api.message_routes import message_routes
 
 
 from .seeds import seed_commands

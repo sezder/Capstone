@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMessages, updateMessage, deleteMessage } from "../../store/message";
 
@@ -7,15 +7,20 @@ const EditMessage = () => {
   let { projectId, messageId } = useParams();
   projectId = Number(projectId);
   messageId = Number(messageId);
+
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const creatorId = useSelector((state) => state.session.user.id);
   const currMessage = useSelector((state) => state.messages[messageId]);
 
-  if (creatorId !== currMessage?.creator_id)
+  if (creatorId !== currMessage?.creator_id) {
+  }
 
-  const [subjectLine, setSubjectLine] = useState(currMessage?.subject_line || "");
-  const [content, setContent] = useState("" || currMessage?.subject_line);
+  const [subjectLine, setSubjectLine] = useState(
+    "" || currMessage?.subject_line
+  );
+  const [content, setContent] = useState("" || currMessage?.content);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -37,14 +42,13 @@ const EditMessage = () => {
     };
     const res = dispatch(updateMessage(message));
     if (res) {
-      history.push(`/projects/${projectId}/messages`)
+      history.push(`/projects/${projectId}/messages`);
     }
   };
 
-
   const handleDelete = (e) => {
     e.preventDefault();
-    const deletePayload = { creatorId, messageId  };
+    const deletePayload = { creatorId, messageId };
     const res = dispatch(deleteMessage(deletePayload));
     if (res) {
       history.push(`/projects/${projectId}/messages`);

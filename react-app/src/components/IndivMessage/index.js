@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getMessages } from "../../store/message";
-import EditMessage from "../components/EditMessage";
+import EditMessage from "../EditMessage";
 import "./IndivMessage.css";
 
 const IndivMessage = () => {
