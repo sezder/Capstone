@@ -43,7 +43,7 @@ const IndivProject = () => {
 
         <NavLink to={`/projects/${projectId}/lists`}>
           <section>
-            <h2 className="light_medium">To-do Lists</h2>
+            <h2 className="light_medium">Recent To-dos</h2>
             {Object.values(lists).map((list) => (
               <ShowMiniList key={list?.id} list={list} />
             ))}

@@ -26,10 +26,9 @@
 .messages_lists_div a section {
   background-color: #1f1f1f;
   width: 30vw;
-  height: 40vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-evenly; */
   border-radius: 30px;
   padding: 5%;
   box-shadow: 2px 2px 4px #000000, -1px -1px 5px rgba(225, 225, 225, 0.2);

@@ -6,8 +6,8 @@ const loadAllTodos = (todos) => ({
   todos,
 });
 
-export const getTodos = () => async (dispatch) => {
-  const res = await fetch(`/api/todos/}`);
+export const getAllTodos = () => async (dispatch) => {
+  const res = await fetch(`/api/todos/`);
   if (res.ok) {
     const todos = await res.json();
     dispatch(loadAllTodos(todos));

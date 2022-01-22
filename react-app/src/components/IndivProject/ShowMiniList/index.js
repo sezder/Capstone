@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-// import { getAllTodos } from "../../../store/todo";
+import { getAllTodos } from "../../../store/todo";
 import "./ShowMiniList.css";
 
 const ShowMiniList = ({ list }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(getAllTodos());
+    dispatch(getAllTodos());
   }, [dispatch]);
 
-  const tasks = useSelector((state) => state.todos);
-  const tasksByList = Object.values(tasks).filter(
-    (task) => task?.list_id === list?.id
+  const todos = useSelector((state) => state.todos);
+  const todosByList = Object.values(todos).filter(
+    (todo) => todo?.list_id === list?.id
   );
+
+  console.log(todosByList, "dog");
 
   return (
     <div>
       <h3 key={`${list?.id}`}>{list?.title}</h3>
+      {todosByList.map((todo) => (
+        <div key={`${todo?.id}`} className="task">
+          <input type="checkbox" checked={todo?.completed} className="checkbox" name="checkbox"></input>
+          <label htmlFor="checkbox">{todo?.task}</label>
+        </div>
+      ))}
     </div>
   );
 };
