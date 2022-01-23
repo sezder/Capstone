@@ -12,6 +12,7 @@ from .api.project_routes import project_routes
 from .api.list_routes import list_routes
 from .api.todo_routes import todo_routes
 from .api.message_routes import message_routes
+from .api.comment_routes import comment_routes
 
 
 from .seeds import seed_commands
@@ -40,6 +41,7 @@ app.register_blueprint(project_routes, url_prefix='/api/projects')
 app.register_blueprint(list_routes, url_prefix='/api/lists')
 app.register_blueprint(todo_routes, url_prefix='/api/todos')
 app.register_blueprint(message_routes, url_prefix='/api/messages')
+app.register_blueprint(comment_routes, url_prefix'/api/comments)
 
 db.init_app(app)
 Migrate(app, db)
