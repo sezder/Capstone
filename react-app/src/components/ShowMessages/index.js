@@ -10,10 +10,12 @@ const ShowMessages = () => {
   const dispatch = useDispatch();
 
   const messages = useSelector((state) => state.messages);
+  console.log(messages, 'messages')
 
   useEffect(() => {
-    getMessages(projectId);
+    dispatch(getMessages(projectId));
   }, [dispatch, projectId]);
+  
   return (
     <main>
       <section className="cards">

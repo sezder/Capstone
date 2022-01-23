@@ -7,9 +7,9 @@ from app.api.auth_routes import validation_errors_to_error_messages
 message_routes = Blueprint('messages', __name__)
 
 # ~~~~~~~~~~~ Get all messages by project id ~~~~~~~~~~~ 
-@message_routes.route('/<message_id>')
+@message_routes.route('/<project_id>')
 @login_required
-def messages_for_project(message_id):
+def messages_for_project(project_id):
   messages = Message.query.filter_by(project_id=project_id)
   return jsonify([message.to_dict() for message in messages])
 

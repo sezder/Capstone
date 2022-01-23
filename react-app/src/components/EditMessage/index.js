@@ -14,8 +14,8 @@ const EditMessage = () => {
   const creatorId = useSelector((state) => state.session.user.id);
   const currMessage = useSelector((state) => state.messages[messageId]);
 
-  if (creatorId !== currMessage?.creator_id) {
-  }
+  // if (creatorId !== currMessage?.creator_id) {
+  // }
 
   const [subjectLine, setSubjectLine] = useState(
     "" || currMessage?.subject_line
@@ -39,6 +39,7 @@ const EditMessage = () => {
       content,
       projectId,
       creatorId,
+      messageId
     };
     const res = dispatch(updateMessage(message));
     if (res) {
