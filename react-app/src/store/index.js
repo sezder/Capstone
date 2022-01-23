@@ -4,12 +4,14 @@ import projectReducer from "./project";
 import listReducer from "./list";
 import todoReducer from "./todo";
 import session from "./session";
+import messageReducer from "./message";
 
 const rootReducer = combineReducers({
   session,
   projects: projectReducer,
   lists: listReducer,
   todos: todoReducer,
+  messages: messageReducer,
 });
 
 let enhancer;

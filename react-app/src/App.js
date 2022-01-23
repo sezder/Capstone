@@ -13,6 +13,7 @@ import ShowProjects from "./components/ShowProjects";
 import EditProject from "./components/EditProject";
 import ShowLists from "./components/ShowLists";
 import NewList from "./components/NewList";
+import NewMessage from "./components/NewMessage";
 import EditList from "./components/EditList";
 import NewTodo from "./components/NewTodo";
 import EditTodo from "./components/EditTodo";
@@ -20,6 +21,9 @@ import ShowTodos from "./components/ShowTodos";
 import Footer from "./components/Footer";
 import Splash from "./components/Splash";
 import IndivProject from "./components/IndivProject";
+import IndivMessage from "./components/IndivMessage";
+import ShowMessages from "./components/ShowMessages";
+import EditMessage from "./components/EditMessage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,7 +54,6 @@ function App() {
         </Route>
 
         {/* Todos */}
-
         <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/new">
           <NewTodo />
         </ProtectedRoute>
@@ -74,6 +77,23 @@ function App() {
 
         <ProtectedRoute path="/projects/:projectId/lists" exact={true}>
           <ShowLists />
+        </ProtectedRoute>
+
+        {/* Messages and comments*/}
+        <ProtectedRoute path="/projects/:projectId/messages/new" exact={true}>
+          <NewMessage />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/projects/:projectId/messages/:messageId/edit">
+          <EditMessage />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/projects/:projectId/messages/:messageId">
+          <IndivMessage />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/projects/:projectId/messages">
+          <ShowMessages />
         </ProtectedRoute>
 
         {/* Projects */}

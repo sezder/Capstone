@@ -19,7 +19,6 @@ const IndivProject = () => {
 
   const currProject = useSelector((state) => state.projects?.[projectId]);
   const lists = useSelector((state) => state.lists);
-  console.log(lists, "lists");
 
   return (
     <main className="indiv_project_page">
