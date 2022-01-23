@@ -4,3 +4,4 @@ from .project_form import ProjectForm
 from .list_form import ListForm
 from .todo_form import TodoForm
 from .message_form import MessageForm
+from .comment_form import CommentForm

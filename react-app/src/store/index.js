@@ -5,6 +5,7 @@ import listReducer from "./list";
 import todoReducer from "./todo";
 import session from "./session";
 import messageReducer from "./message";
+import commentReducer from "./comment";
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   lists: listReducer,
   todos: todoReducer,
   messages: messageReducer,
+  comments: commentReducer,
 });
 
 let enhancer;

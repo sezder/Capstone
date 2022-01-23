@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMessages, updateMessage, deleteMessage } from "../../store/message";
+import { getComments } from "../../store/comment";
 
 const EditMessage = () => {
   let { projectId, messageId } = useParams();
@@ -32,6 +33,10 @@ const EditMessage = () => {
     setErrors(errors);
   }, [subjectLine, content]);
 
+  useEffect(() => {
+    dispatch(getMessages(projectId));
+  }, [dispatch, projectId]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const message = {
@@ -39,7 +44,7 @@ const EditMessage = () => {
       content,
       projectId,
       creatorId,
-      messageId
+      messageId,
     };
     const res = dispatch(updateMessage(message));
     if (res) {
