@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllProjects } from "../../store/project";
 import { getLists } from "../../store/list";
-import EditProject from "../EditProject";
 import ShowMiniList from "./ShowMiniList";
 import "./IndivProject.css";
 

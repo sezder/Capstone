@@ -5,8 +5,8 @@ import { createTodo } from "../../store/todo";
 import "./NewTodo.css";
 
 const NewTodo = () => {
-  let { projectId, listId } = useParams();
-  projectId = Number(projectId);
+  let { listId } = useParams();
+  // projectId = Number(projectId);
   listId = Number(listId);
 
   const dispatch = useDispatch();

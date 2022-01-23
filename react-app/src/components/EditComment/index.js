@@ -8,7 +8,6 @@ const EditComment = () => {
   projectId = Number(projectId);
   messageId = Number(messageId);
   commentId = Number(commentId);
-  console.log(commentId, 'commentId')
   const dispatch = useDispatch();
   const history = useHistory();
 

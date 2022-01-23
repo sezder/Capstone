@@ -10,7 +10,6 @@ const ShowMessages = () => {
   const dispatch = useDispatch();
 
   const messages = useSelector((state) => state.messages);
-  console.log(messages, 'messages')
 
   useEffect(() => {
     dispatch(getMessages(projectId));

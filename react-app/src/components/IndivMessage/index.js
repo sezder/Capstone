@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getComments } from "../../store/comment";
 import { getMessages } from "../../store/message";
-import EditMessage from "../EditMessage";
 import "./IndivMessage.css";
 
 const IndivMessage = () => {

@@ -10,7 +10,6 @@ comment_routes = Blueprint('comments', __name__)
 @comment_routes.route('/<message_id>')
 @login_required
 def comments_for_message(message_id):
-  print(message_id, 'DOOG')
   comments = Comment.query.filter_by(message_id=message_id)
   return jsonify([comment.to_dict() for comment in comments])
 
