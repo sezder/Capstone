@@ -49,3 +49,23 @@
 .messages_lists_div a section:hover {
   transform: translateY(-5px);
 }
+
+@media only screen and (max-width: 1000px) {
+  .messages_lists_div  {
+    flex-direction: column;
+    width: 90vw;
+  }
+
+  .messages_lists_div a section {
+    width: 100%;
+    margin: 2% 0;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+}
+
+@media only screen and (max-width: 500px) {
+
+}
