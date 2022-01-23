@@ -6,8 +6,8 @@ const loadComments = (comments) => ({
   comments,
 });
 
-export const getComments = (commentId) => async (dispatch) => {
-  const res = await fetch(`/api/comments/${commentId}`);
+export const getComments = (messageId) => async (dispatch) => {
+  const res = await fetch(`/api/comments/${messageId}`);
   if (res.ok) {
     const comments = await res.json();
     dispatch(loadComments(comments));
@@ -56,15 +56,15 @@ const loadEditedcomment = (comment) => ({
 export const updateComment =
   ({
     content,
-    messageId: message_id,
     commentId: comment_id,
     creatorId: creator_id,
+    // messageId:
   }) =>
   async (dispatch) => {
     const res = await fetch(`/api/comments/${comment_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content, message_id, creator_id }),
+      body: JSON.stringify({ content, creator_id }),
     });
 
     if (res.ok) {

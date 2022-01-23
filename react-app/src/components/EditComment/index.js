@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getComments, updateComment, deleteComment } from "../../store/comment";
 
 const EditComment = () => {
-  let { messageId, commentId } = useParams();
+  let { messageId, commentId, projectId } = useParams();
+  projectId = Number(projectId);
   messageId = Number(messageId);
   commentId = Number(commentId);
+  console.log(commentId, 'commentId')
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const creatorId = useSelector((state) => state.session.user.id);
   const currComment = useSelector((state) => state.comments[commentId]);
@@ -33,7 +36,7 @@ const EditComment = () => {
       messageId,
       creatorId,
     };
-    dispatch(createComment(comment));
+    dispatch(updateComment(comment));
   };
 
   const handleDelete = (e) => {

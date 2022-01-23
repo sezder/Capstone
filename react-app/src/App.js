@@ -101,7 +101,7 @@ function App() {
           <NewComment />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/projects/:projectId/messages/:messageId/comments/edit">
+        <ProtectedRoute path="/projects/:projectId/messages/:messageId/comments/:commentId/edit">
           <EditComment />
         </ProtectedRoute>
 
