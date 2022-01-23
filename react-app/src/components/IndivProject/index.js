@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllProjects } from "../../store/project";
 import { getLists } from "../../store/list";
-import ShowMiniList from "./ShowMiniList";
+import { getMessages } from "../../store/message";
+import PreviewLists from "./PreviewLists";
+import PreviewMessages from "./PreviewMessages";
 import "./IndivProject.css";
 
 const IndivProject = () => {
@@ -14,10 +16,17 @@ const IndivProject = () => {
   useEffect(() => {
     dispatch(getAllProjects());
     dispatch(getLists(projectId));
+    dispatch(getMessages(projectId));
   }, [dispatch, projectId]);
 
   const currProject = useSelector((state) => state.projects?.[projectId]);
   const lists = useSelector((state) => state.lists);
+  let listArr = Object.values(lists);
+  if (listArr.length > 3) listArr = listArr.slice(0, 3);
+
+  const messages = useSelector((state) => state.messages);
+  let msgsArr = Object.values(messages);
+  if (msgsArr.length > 3) msgsArr = msgsArr.slice(0, 3);
 
   return (
     <main className="indiv_project_page">
@@ -36,14 +45,17 @@ const IndivProject = () => {
         <NavLink to={`/projects/${projectId}/messages`}>
           <section>
             <h2 className="light_medium">Message Board</h2>
+            {msgsArr.map((message) => {
+              return <PreviewMessages key={message?.id} message={message} />;
+            })}
           </section>
         </NavLink>
 
         <NavLink to={`/projects/${projectId}/lists`}>
           <section>
             <h2 className="light_medium">Recent To-dos</h2>
-            {Object.values(lists).map((list) => (
-              <ShowMiniList key={list?.id} list={list} />
+            {listArr.map((list) => (
+              <PreviewLists key={list?.id} list={list} />
             ))}
           </section>
         </NavLink>
