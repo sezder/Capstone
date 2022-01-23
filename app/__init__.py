@@ -41,7 +41,7 @@ app.register_blueprint(project_routes, url_prefix='/api/projects')
 app.register_blueprint(list_routes, url_prefix='/api/lists')
 app.register_blueprint(todo_routes, url_prefix='/api/todos')
 app.register_blueprint(message_routes, url_prefix='/api/messages')
-app.register_blueprint(comment_routes, url_prefix'/api/comments)
+app.register_blueprint(comment_routes, url_prefix='/api/comments')
 
 db.init_app(app)
 Migrate(app, db)

@@ -1,29 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
+// Auth
 import LoginForm from "./components/Auth/LoginForm";
 import SignUpForm from "./components/Auth/SignUpForm";
-import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
+import { authenticate } from "./store/session";
+
+// Users
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import { authenticate } from "./store/session";
-import NewProject from "./components/NewProject";
-import ShowProjects from "./components/ShowProjects";
-import EditProject from "./components/EditProject";
-import ShowLists from "./components/ShowLists";
-import NewList from "./components/NewList";
-import NewMessage from "./components/NewMessage";
-import EditList from "./components/EditList";
-import NewTodo from "./components/NewTodo";
-import EditTodo from "./components/EditTodo";
-import ShowTodos from "./components/ShowTodos";
+
+// Misc
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Splash from "./components/Splash";
+
+// Create
+import NewProject from "./components/NewProject";
+import NewList from "./components/NewList";
+import NewTodo from "./components/NewTodo";
+import NewMessage from "./components/NewMessage";
+import NewComment from "./components/NewComment";
+
+// Read
+import ShowProjects from "./components/ShowProjects";
+import ShowLists from "./components/ShowLists";
+import ShowTodos from "./components/ShowTodos";
+import ShowMessages from "./components/ShowMessages";
 import IndivProject from "./components/IndivProject";
 import IndivMessage from "./components/IndivMessage";
-import ShowMessages from "./components/ShowMessages";
+
+//Update
+import EditProject from "./components/EditProject";
 import EditMessage from "./components/EditMessage";
+import EditComment from "./components/EditComment";
+import EditList from "./components/EditList";
+import EditTodo from "./components/EditTodo";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -80,6 +94,17 @@ function App() {
         </ProtectedRoute>
 
         {/* Messages and comments*/}
+        <ProtectedRoute
+          path="/projects/:projectId/messages/:messageId/comments/new"
+          exact={true}
+        >
+          <NewComment />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/projects/:projectId/messages/:messageId/comments/edit">
+          <EditComment />
+        </ProtectedRoute>
+
         <ProtectedRoute path="/projects/:projectId/messages/new" exact={true}>
           <NewMessage />
         </ProtectedRoute>
