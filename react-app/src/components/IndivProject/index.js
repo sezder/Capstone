@@ -43,7 +43,7 @@ const IndivProject = () => {
 
       <div className="messages_lists_div">
         <NavLink to={`/projects/${projectId}/messages`}>
-          <section>
+          <section id="messages_preview">
             <h2 className="light_medium">Message Board</h2>
             {msgsArr.map((message) => {
               return <PreviewMessages key={message?.id} message={message} />;

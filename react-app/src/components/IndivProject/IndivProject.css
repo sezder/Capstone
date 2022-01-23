@@ -23,6 +23,12 @@
   margin-top: 3%;
 }
 
+#messages_preview {
+  display: flex;
+  justify-content: space-between;
+
+}
+
 .messages_lists_div a section {
   background-color: #1f1f1f;
   width: 30vw;
