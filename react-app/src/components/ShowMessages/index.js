@@ -16,7 +16,7 @@ const ShowMessages = () => {
 
   useEffect(() => {
     dispatch(getMessages(projectId));
-    dispatch(getAllProjects(projectId));
+    dispatch(getAllProjects());
   }, [dispatch, projectId]);
 
   return (
