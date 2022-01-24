@@ -22,6 +22,7 @@ const NewComment = ({ messageId, creatorId }) => {
       creatorId,
     };
     dispatch(createComment(comment));
+    setContent("");
   };
 
   return (
@@ -47,7 +48,7 @@ const NewComment = ({ messageId, creatorId }) => {
       ></textarea>
 
       <button type="submit" disabled={errors.length > 0}>
-      <i className="fas fa-plus"></i>
+        <i className="fas fa-plus"></i>
       </button>
     </form>
   );
