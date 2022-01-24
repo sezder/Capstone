@@ -1,0 +1,41 @@
+.msg_preview {
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid #309c6d;
+}
+
+#msg_author_div {
+  width: 10vw;
+  margin-right: 1%;
+}
+
+.msg_content_preview {
+  min-width: 65vw;
+}
+
+.msg_preview div h2 {
+  font-size: 18px;
+  font-weight: bolder;
+}
+#msg_preview_name {
+  font-size: 15px;
+  font-style: italic;
+  color: #d0d0d0;
+}
+
+.num_comments_circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d0f4ea;
+  color: black;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+  margin: 0 3%;
+  box-shadow: 3px 3px 4px #000000, -1px -1px 5px rgb(225 225 225 / 40%);
+}

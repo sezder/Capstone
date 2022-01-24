@@ -1,6 +1,6 @@
 .indiv_project_page {
   padding: 5% 20%;
-  max-height: calc(100vh - 7vh - 70px);
+  /* max-height: calc(100vh - 7vh - 70px); */
 }
 .indiv_project_page > p {
   width: 40vw;
@@ -39,6 +39,7 @@
   padding: 5%;
   box-shadow: 2px 2px 4px #000000, -1px -1px 5px rgba(225, 225, 225, 0.2);
   transition: all 0.3s ease 0s;
+  /* z-index: -1; */
 }
 
 .messages_lists_div a section h2 {
@@ -48,6 +49,12 @@
 
 .messages_lists_div a section:hover {
   transform: translateY(-5px);
+}
+
+@media only screen and (min-width: 1001px) {
+  .indiv_project_page {
+    max-height: calc(100vh - 7vh - 70px);
+  }
 }
 
 @media only screen and (max-width: 1000px) {

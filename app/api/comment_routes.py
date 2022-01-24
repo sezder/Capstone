@@ -6,6 +6,13 @@ from app.api.auth_routes import validation_errors_to_error_messages
 
 comment_routes = Blueprint('comments', __name__)
 
+# ~~~~~~~~~~~ Get all comments ~~~~~~~~~~~ 
+@comment_routes.route('/')
+@login_required
+def all_comments():
+  comments = Comment.query.all()
+  return jsonify([comment.to_dict() for comment in comments])
+
 # ~~~~~~~~~~~ Get all comments by message id ~~~~~~~~~~~ 
 @comment_routes.route('/<message_id>')
 @login_required
