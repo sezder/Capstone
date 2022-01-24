@@ -6,6 +6,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+   background-color: #1F1F1F;
+  padding-right: 5vw;
+  padding-left: 3vw;
+  margin: 1% 0;
+  border-radius: 30px;
 }
 
 #msgs_section a {

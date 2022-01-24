@@ -94,23 +94,8 @@ function App() {
         </ProtectedRoute>
 
         {/* Messages and comments*/}
-        <ProtectedRoute
-          path="/projects/:projectId/messages/:messageId/comments/new"
-          exact={true}
-        >
-          <NewComment />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/projects/:projectId/messages/:messageId/comments/:commentId/edit">
-          <EditComment />
-        </ProtectedRoute>
-
         <ProtectedRoute path="/projects/:projectId/messages/new" exact={true}>
           <NewMessage />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/projects/:projectId/messages/:messageId/edit">
-          <EditMessage />
         </ProtectedRoute>
 
         <ProtectedRoute path="/projects/:projectId/messages/:messageId">
