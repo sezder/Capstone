@@ -197,3 +197,52 @@ main {
   align-items: center;
   margin: 0;
 }
+
+.proj_nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30vw;
+  margin-bottom: 2vh;
+}
+
+/* <div className="proj_nav">
+<NavLink to={`/projects/${projectId}`}>
+  <h2 className="light_large dynamic_underline">{currProject?.name}</h2>
+</NavLink>
+
+<i className="fas fa-caret-right fa-2x"></i>
+<NavLink to={`/projects/${projectId}/messages`}>
+  <h2 className="light_large dynamic_underline">Message Board</h2>
+</NavLink>
+</div> */
+
+.proj_nav i {
+  color: black;
+}
+
+
+@media only screen and (min-width: 1001px) {
+  .proj_nav {
+    max-width: 30vw;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .proj_nav {
+    width: 45vw;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .proj_nav {
+    width: 65vw;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .proj_nav {
+    width: 85vw;
+  }
+}
