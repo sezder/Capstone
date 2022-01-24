@@ -60,6 +60,7 @@ const NewProject = ({ hidden, setHidden }) => {
           value={description}
           spellCheck={true}
           onChange={(e) => setDescription(e.target.value)}
+          rows="5"
         ></textarea>
 
         {/* Submit button and close pannel button */}
