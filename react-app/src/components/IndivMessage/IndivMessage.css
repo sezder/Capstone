@@ -1,0 +1,48 @@
+#indiv_msg_main {
+  padding: 3vw 10vw;
+  justify-content: flex-start;
+}
+
+#indiv_msg_main section {
+  display: flex;
+  flex-direction: column;
+  padding: 2vw 5vw;
+  background-color: #1f1f1f;
+  border-radius: 20px;
+  width: 80vw;
+}
+
+#indiv_msg_main section h1 {
+  padding: 5px;
+  border-radius: 5px;
+  align-self: center;
+  background-color: #d0d0d0;
+  color: #1f1f1f;
+  margin-bottom: 1vh;
+}
+
+.msg_author_info {
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+
+.msg_author_info .user_circle {
+  width: 30px; 
+  height: 30px;
+}
+
+#indiv_msg_main section p, #indiv_msg_main section div {
+  margin-top: 1%;
+}
+
+.comment_section {
+  margin-top: 1%;
+}
+
+.comment_section div:first-of-type {
+  display: flex; 
+  flex-direction: row;
+  align-items: center;
+  margin-left: 0; 
+}
