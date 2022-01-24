@@ -76,7 +76,6 @@ export const updateTodo =
     due,
   }) =>
   async (dispatch) => {
-    console.log("got to thunk");
     const res = await fetch(`/api/todos/${todo_id}`, {
       method: "PUT",
       headers: {

@@ -1,0 +1,13 @@
+#msgs_main {
+  padding: 0 10%;
+}
+
+#msgs_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#msgs_section a {
+  margin: 1% 0;
+}

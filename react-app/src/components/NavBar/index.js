@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../Auth/LogoutButton";
 import DemoButton from "../DemoButton";
@@ -8,7 +8,6 @@ import "./NavBar.css";
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
-  console.log(user);
 
   let sessionLinks;
   if (user) {

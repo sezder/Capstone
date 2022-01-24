@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMessages, updateMessage, deleteMessage } from "../../store/message";
-import { getComments } from "../../store/comment";
 
 const EditMessage = () => {
   let { projectId, messageId } = useParams();

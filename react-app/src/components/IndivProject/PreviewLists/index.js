@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+// import { NavLink, useParams } from "react-router-dom";
 import { getAllTodos } from "../../../store/todo";
-import "./ShowMiniList.css";
+import "./PreviewLists.css";
 
-const ShowMiniList = ({ list }) => {
+const PreviewLists = ({ list }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,6 +23,7 @@ const ShowMiniList = ({ list }) => {
         checked={todo?.completed}
         className="checkbox"
         name="checkbox"
+        readOnly={true}
       ></input>
       <label htmlFor="checkbox">{todo?.task}</label>
     </div>
@@ -32,7 +33,6 @@ const ShowMiniList = ({ list }) => {
     <div className="task_read_only">
       <input
         type="checkbox"
-        checked={false}
         className="checkbox"
         name="checkbox"
       ></input>
@@ -48,4 +48,4 @@ const ShowMiniList = ({ list }) => {
   );
 };
 
-export default ShowMiniList;
+export default PreviewLists
