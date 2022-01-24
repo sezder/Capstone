@@ -33,6 +33,7 @@ const NewList = ({ hidden, setHidden }) => {
       creatorId,
     };
     dispatch(createList(list));
+    setHidden(true)
   };
   return (
     <form
