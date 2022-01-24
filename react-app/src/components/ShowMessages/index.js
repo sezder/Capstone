@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getMessages } from "../../store/message";
 import { getAllProjects } from "../../store/project";
-import { getAllComments } from "../../store/comment";
 import "./ShowMessages.css";
 import OneMessage from "./OneMessage";
 
@@ -17,7 +16,7 @@ const ShowMessages = () => {
 
   useEffect(() => {
     dispatch(getMessages(projectId));
-    dispatch(getAllProjects(projectId));
+    dispatch(getAllProjects());
   }, [dispatch, projectId]);
 
   return (

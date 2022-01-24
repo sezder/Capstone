@@ -34,3 +34,50 @@
   padding: 15px 20px;
   border-radius: 50px;
 }
+
+
+@media only screen and (max-width: 1300px) {
+  .new_project_form {
+    /* background-color: chartreuse; */
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    height: fit-content; 
+    border-right: 0;
+  }
+
+  #new_project_card {
+    height: fit-content;
+    min-width: 70vw;
+  }
+
+  #new_project_card input,  #new_project_card textarea {
+    min-width: 60vw;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  /* .new_project_form {
+    background-color: hotpink;
+  } */
+
+  #new_project_card {
+    min-width: 75vw;
+  }
+
+  #new_project_card input,  #new_project_card textarea {
+    min-width: 65vw;
+  }
+}
+
+/* @media only screen and (max-width: 700px) {
+  .new_project_form {
+    background-color: yellow;
+  }
+} */
+
+/* @media only screen and (max-width: 500px) {
+  .new_project_form {
+    background-color: blue;
+  }
+} */
