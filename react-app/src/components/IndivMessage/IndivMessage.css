@@ -21,6 +21,11 @@
   margin-bottom: 1vh;
 }
 
+.msg_user_header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .msg_author_info {
   display: flex;
   align-items: center;
@@ -28,11 +33,12 @@
 }
 
 .msg_author_info .user_circle {
-  width: 30px; 
+  width: 30px;
   height: 30px;
 }
 
-#indiv_msg_main section p, #indiv_msg_main section div {
+#indiv_msg_main section p,
+#indiv_msg_main section div {
   margin-top: 1%;
 }
 
@@ -41,8 +47,24 @@
 }
 
 .comment_section div:first-of-type {
-  display: flex; 
+  display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 0; 
+  margin-left: 0;
 }
+
+.comment_user_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#ellipsis_btn {
+  background-color: #1f1f1f;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+}
+
+/* #ellipsis_btn i {
+  box-shadow: 1px 1px 3px #000000, -1px -1px 3px #e1e1e1;
+} */
