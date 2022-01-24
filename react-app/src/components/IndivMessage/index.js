@@ -6,6 +6,7 @@ import { getMessages } from "../../store/message";
 import { getAllProjects } from "../../store/project";
 import EditMessage from "../EditMessage";
 import EditComment from "../EditComment";
+import NewComment from "../NewComment";
 import "./IndivMessage.css";
 
 const IndivMessage = () => {
@@ -73,6 +74,10 @@ const IndivMessage = () => {
             <p>{currMessage?.content}</p>
           </div>
         )}
+      </section>
+
+      <section className="comment_section">
+        <NewComment messageId={messageId} creatorId={creatorId}/>
       </section>
 
       {/* Conditionally render add button */}

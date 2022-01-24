@@ -65,11 +65,11 @@ const NewProject = ({ hidden, setHidden }) => {
         {/* Submit button and close pannel button */}
         <div>
           <button type="submit" disabled={errors.length > 0}>
-            <i class="fas fa-plus"></i>
+            <i className="fas fa-plus"></i>
           </button>
 
           <button onClick={() => setHidden(!hidden)}>
-            <i class="fas fa-times"></i>
+            <i className="fas fa-times"></i>
           </button>
         </div>
       </div>

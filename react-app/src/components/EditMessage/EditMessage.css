@@ -1,19 +1,18 @@
-.edit_msg_form {
+.msg_comment_form {
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 70vw;
 }
 
-.edit_msg_form input,
-.edit_msg_form textarea {
+.msg_comment_form input,
+.msg_comment_form textarea {
   width: 100%;
 }
 
-/* .edit_msg_form textarea {
+/* .msg_comment_form textarea {
   height: fit-content;
 } */
 
 /* .button_div {
 } */
-

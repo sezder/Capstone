@@ -60,7 +60,7 @@ const EditMessage = ({
   };
 
   return (
-      <form onSubmit={handleSubmit} className="edit_msg_form">
+      <form onSubmit={handleSubmit} className="msg_comment_form">
         {/* Errors  */}
         {errors.length > 0 && (
           <ul>
