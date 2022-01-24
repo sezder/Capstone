@@ -1,0 +1,82 @@
+#new_msg_main form {
+  background-color: #1f1f1f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70vw;
+  border-radius: 40px;
+  padding: 10px 0;
+}
+
+#proj_nav_new_msg {
+  width: 60vw;
+  max-width: none;
+}
+
+#new_msg_main form ul.errors {
+  background-color: #616161;
+}
+
+#new_msg_main form input,
+#new_msg_main form textarea {
+  width: 60vw;
+}
+
+#new_msg_main form button {
+  margin-top: 10px;
+}
+
+@media only screen and (min-width: 1350px) {
+  #proj_nav_new_msg {
+    /* background-color: chartreuse; */
+    width: 50vw;
+  }
+}
+/* 
+@media only screen and (max-width: 1350px) {
+  #proj_nav_new_msg {
+    background-color: blue;
+  }
+} */
+
+@media only screen and (max-width: 1150px) {
+  #proj_nav_new_msg {
+    /* background-color: green; */
+    width: 65vw;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #proj_nav_new_msg {
+    /* background-color: hotpink; */
+    width: 72vw;
+  }
+}
+
+@media only screen and (max-width: 915px) {
+  #proj_nav_new_msg {
+    /* background-color: yellow; */
+    width: 80vw;
+  }
+
+  #new_msg_main form {
+    width: 85vw;
+  }
+
+  #new_msg_main form input,
+  #new_msg_main form textarea {
+    width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #proj_nav_new_msg {
+    /* background-color: blue; */
+    width: 85vw;
+  }
+
+  #new_msg_main form input,
+  #new_msg_main form textarea {
+    width: 70vw;
+  }
+}

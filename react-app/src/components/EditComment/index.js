@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getComments, updateComment, deleteComment } from "../../store/comment";
+import { useDispatch } from "react-redux";
+import { updateComment, deleteComment } from "../../store/comment";
 
-const EditComment = () => {
-  let { messageId, commentId, projectId } = useParams();
-  projectId = Number(projectId);
-  messageId = Number(messageId);
-  commentId = Number(commentId);
+const EditComment = ({
+  setEditComment,
+  currComment,
+  creatorId,
+  messageId,
+}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-
-  const creatorId = useSelector((state) => state.session.user.id);
-  const currComment = useSelector((state) => state.comments[commentId]);
 
   const [content, setContent] = useState("" || currComment?.content);
   const [errors, setErrors] = useState([]);
@@ -23,32 +19,28 @@ const EditComment = () => {
     setErrors(errors);
   }, [content]);
 
-  useEffect(() => {
-    dispatch(getComments(messageId));
-  }, [dispatch, messageId]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const comment = {
-      commentId,
+      commentId: currComment?.id,
       content,
       messageId,
       creatorId,
     };
     dispatch(updateComment(comment));
+    setEditComment(null);
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
-    const deletePayload = { creatorId, commentId };
+    const deletePayload = { creatorId, commentId: currComment?.id };
     const res = dispatch(deleteComment(deletePayload));
-    if (res) {
-      history.push(`/projects/${projectId}/messages/${messageId}/comments`);
-    }
+    setEditComment(null);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="msg_comment_form">
+
       {/* Errors  */}
       {errors.length > 0 && (
         <ul>
@@ -68,13 +60,19 @@ const EditComment = () => {
         onChange={(e) => setContent(e.target.value)}
       ></textarea>
 
-      <button type="submit" disabled={errors.length > 0}>
-        Update
-      </button>
+      <div className="button_div">
+        <button type="submit" disabled={errors.length > 0}>
+          <i class="fas fa-check"></i>
+        </button>
 
-      <button onClick={handleDelete}>
-        <i className="far fa-trash-alt"></i>
-      </button>
+        <button onClick={handleDelete}>
+          <i className="far fa-trash-alt"></i>
+        </button>
+
+        <button onClick={() => setEditComment(null)}>
+          <i className="fas fa-times"></i>
+        </button>
+      </div>
     </form>
   );
 };

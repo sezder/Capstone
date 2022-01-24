@@ -1,18 +1,16 @@
-.edit_msg_form {
-  background-color: hotpink;
+.msg_comment_form {
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 70vw;
 }
 
-.edit_msg_form input,
-.edit_msg_form textarea {
+.msg_comment_form input,
+.msg_comment_form textarea {
   width: 100%;
-  background-color: chartreuse;
 }
 
-/* .edit_msg_form textarea {
+/* .msg_comment_form textarea {
   height: fit-content;
 } */
 

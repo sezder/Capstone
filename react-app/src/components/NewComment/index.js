@@ -3,15 +3,10 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createComment } from "../../store/comment";
 
-const NewComment = () => {
-  let { messageId } = useParams();
-  messageId = Number(messageId);
+const NewComment = ({ messageId, creatorId }) => {
   const dispatch = useDispatch();
-
   const [content, setContent] = useState("");
   const [errors, setErrors] = useState([]);
-
-  const creatorId = useSelector((state) => state.session.user.id);
 
   useEffect(() => {
     const errors = [];
@@ -27,10 +22,12 @@ const NewComment = () => {
       creatorId,
     };
     dispatch(createComment(comment));
+    setContent("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="msg_comment_form">
+      <h1 className="dark_large">Write a reply</h1>
       {/* Errors  */}
       {errors.length > 0 && (
         <ul>
@@ -51,7 +48,7 @@ const NewComment = () => {
       ></textarea>
 
       <button type="submit" disabled={errors.length > 0}>
-        Add
+        <i className="fas fa-plus"></i>
       </button>
     </form>
   );

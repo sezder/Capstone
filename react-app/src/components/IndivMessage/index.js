@@ -5,6 +5,8 @@ import { getComments } from "../../store/comment";
 import { getMessages } from "../../store/message";
 import { getAllProjects } from "../../store/project";
 import EditMessage from "../EditMessage";
+import EditComment from "../EditComment";
+import NewComment from "../NewComment";
 import "./IndivMessage.css";
 
 const IndivMessage = () => {
@@ -21,7 +23,7 @@ const IndivMessage = () => {
   const currUserId = useSelector((state) => state.session.user.id);
 
   const [editMessage, setEditMessage] = useState(false);
-  // const [showCommentControls, setShowCommentControls] = useState();
+  const [editComment, setEditComment] = useState(null);
 
   useEffect(() => {
     dispatch(getMessages(projectId));
@@ -42,7 +44,7 @@ const IndivMessage = () => {
         </NavLink>
       </div>
 
-      {/* Message Content */}
+      {/* Message content or form to edit message */}
       <section>
         {editMessage ? (
           <EditMessage
@@ -74,6 +76,10 @@ const IndivMessage = () => {
         )}
       </section>
 
+      <section className="comment_section">
+        <NewComment messageId={messageId} creatorId={creatorId}/>
+      </section>
+
       {/* Conditionally render add button */}
 
       {/* Comments */}
@@ -88,7 +94,11 @@ const IndivMessage = () => {
               </div>
 
               {currUserId === comment?.creator_id ? (
-                <button id="ellipsis_btn">
+                <button
+                  id="ellipsis_btn"
+                  onClick={() => setEditComment(comment?.id)}
+                  className={editComment === comment?.id ? "hidden" : null}
+                >
                   <i className="fas fa-ellipsis-h fa-lg"></i>
                 </button>
               ) : (
@@ -96,7 +106,19 @@ const IndivMessage = () => {
               )}
             </div>
 
-            <div>{comment?.content}</div>
+            {/* If editComment's value matches the id of the current comment */}
+            {editComment === comment?.id ? (
+              <EditComment
+                editComment={editComment}
+                setEditComment={setEditComment}
+                currComment={comment}
+                creatorId={creatorId}
+                messageId={messageId}
+                projectId={projectId}
+              />
+            ) : (
+              <div>{comment?.content}</div>
+            )}
           </section>
         );
       })}
