@@ -60,7 +60,6 @@ const EditMessage = ({
   };
 
   return (
-    <main>
       <form onSubmit={handleSubmit} className="edit_msg_form">
         {/* Errors  */}
         {errors.length > 0 && (
@@ -105,7 +104,6 @@ const EditMessage = ({
           </button>
         </div>
       </form>
-    </main>
   );
 };
 
