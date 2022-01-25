@@ -42,7 +42,7 @@ const EditTodo = ({ todo, editTodo, setEditTodo, projectId, listId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="edit_todo_form">
       {errors.length > 0 && (
         <ul>
           {errors.map((error) => {
