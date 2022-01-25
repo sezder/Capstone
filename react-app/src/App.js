@@ -18,11 +18,8 @@ import Footer from "./components/Footer";
 import Splash from "./components/Splash";
 
 // Create
-import NewProject from "./components/NewProject";
-import NewList from "./components/NewList";
 import NewTodo from "./components/NewTodo";
 import NewMessage from "./components/NewMessage";
-import NewComment from "./components/NewComment";
 
 // Read
 import ShowProjects from "./components/ShowProjects";
@@ -33,11 +30,8 @@ import IndivProject from "./components/IndivProject";
 import IndivMessage from "./components/IndivMessage";
 
 //Update
-import EditProject from "./components/EditProject";
-import EditMessage from "./components/EditMessage";
-import EditComment from "./components/EditComment";
-import EditList from "./components/EditList";
 import EditTodo from "./components/EditTodo";
+import IndivList from "./components/IndivList";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -81,13 +75,6 @@ function App() {
         </ProtectedRoute>
 
         {/* Lists */}
-        <ProtectedRoute path="/projects/:projectId/lists/new" exact={true}>
-          <NewList />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/projects/:projectId/lists/:listId/edit">
-          <EditList />
-        </ProtectedRoute>
 
         <ProtectedRoute path="/projects/:projectId/lists" exact={true}>
           <ShowLists />
@@ -107,20 +94,16 @@ function App() {
         </ProtectedRoute>
 
         {/* Projects */}
-        <ProtectedRoute path="/projects/:projectId">
+        <ProtectedRoute path="/projects/:projectId" exact={true}>
           <IndivProject />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/projects/:projectId/edit" exact={true}>
-          <EditProject />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/projects/new">
-          <NewProject />
         </ProtectedRoute>
 
         <ProtectedRoute path="/projects" exact={true}>
           <ShowProjects />
+        </ProtectedRoute>
+
+        <ProtectedRoute>
+          <IndivList path="/projects/:projectId/lists/:listId" exact={true} />
         </ProtectedRoute>
 
         {/* Users */}
