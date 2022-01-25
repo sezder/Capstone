@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllProjects } from "../../store/project";
@@ -6,6 +6,7 @@ import { getLists } from "../../store/list";
 import { getMessages } from "../../store/message";
 import PreviewLists from "./PreviewLists";
 import PreviewMessages from "./PreviewMessages";
+import EditProject from "../EditProject";
 import "./IndivProject.css";
 
 const IndivProject = () => {
@@ -19,6 +20,7 @@ const IndivProject = () => {
     dispatch(getMessages(projectId));
   }, [dispatch, projectId]);
 
+  const [editProject, setEditProject] = useState(false);
   const currProject = useSelector((state) => state.projects?.[projectId]);
   const lists = useSelector((state) => state.lists);
   let listArr = Object.values(lists);
@@ -30,8 +32,28 @@ const IndivProject = () => {
 
   return (
     <main className="indiv_project_page">
-      <h1 className="light_large">{currProject?.name}</h1>
-      <p>{currProject?.description}</p>
+      {editProject ? (
+        <EditProject
+          editProject={editProject}
+          setEditProject={setEditProject}
+          projectId={projectId}
+          currProject={currProject}
+        />
+      ) : (
+        <>
+          <div className="edit_ellipsis_div">
+            <h1 className="light_large">{currProject?.name}</h1>
+            <button
+              id="ellipsis_btn"
+              onClick={() => setEditProject(!editProject)}
+              className={editProject ? "hidden" : "edit_project_btn"}
+            >
+              <i className="fas fa-ellipsis-h fa-lg"></i>
+            </button>
+          </div>
+          <p>{currProject?.description}</p>
+        </>
+      )}
 
       {/* Membership */}
       <div className="users_projects_div">

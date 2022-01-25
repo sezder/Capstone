@@ -8,14 +8,11 @@ import {
 } from "../../store/project";
 import "./EditProject.css";
 
-const EditProject = () => {
-  let { projectId } = useParams();
-  projectId = Number(projectId);
+const EditProject = ({ setEditProject, projectId, currProject }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   let creatorId = Number(useSelector((state) => state.session.user?.id));
-  const currProject = useSelector((state) => state.projects?.[projectId]);
 
   const [name, setName] = useState(currProject?.name || "");
   const [description, setDescription] = useState(
@@ -24,17 +21,13 @@ const EditProject = () => {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    dispatch(getAllProjects());
-  }, [dispatch]);
-
-  useEffect(() => {
     const errors = [];
     if (!name?.length) errors.push("Provide a project name.");
     setErrors(errors);
   }, [name]);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const project = {
       name,
       description,
@@ -42,10 +35,8 @@ const EditProject = () => {
       projectId,
     };
 
-    const res = dispatch(updateProject(project));
-    if (res) {
-      history.push("/projects");
-    }
+    dispatch(updateProject(project));
+    setEditProject(false);
   };
 
   const handleDelete = (e) => {
@@ -54,11 +45,12 @@ const EditProject = () => {
     const res = dispatch(deleteProject(deletePayload));
     if (res) {
       history.push("/projects");
+      setEditProject(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="msg_comment_form" id="edit_proj_form">
       <div>
         {errors.length > 0 && (
           <ul>
@@ -86,15 +78,22 @@ const EditProject = () => {
         value={description}
         spellCheck={true}
         onChange={(e) => setDescription(e.target.value)}
+        rows="4"
       ></textarea>
 
-      <button type="submit" disabled={errors.length > 0}>
-        Update
-      </button>
+      <div className="button_div">
+        <button type="submit" disabled={errors.length > 0}>
+          <i class="fas fa-check"></i>
+        </button>
 
-      <button onClick={handleDelete}>
-        <i className="far fa-trash-alt"></i>
-      </button>
+        <button onClick={handleDelete}>
+          <i className="far fa-trash-alt"></i>
+        </button>
+
+        <button onClick={() => setEditProject(false)}>
+          <i className="fas fa-times"></i>
+        </button>
+      </div>
     </form>
   );
 };
