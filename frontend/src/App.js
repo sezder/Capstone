@@ -110,8 +110,8 @@ function App() {
           <ShowProjects />
         </ProtectedRoute>
 
-        <ProtectedRoute>
-          <IndivList path="/projects/:projectId/lists/:listId" exact={true} />
+        <ProtectedRoute path="/projects/:projectId/lists/:listId" exact={true}>
+          <IndivList />
         </ProtectedRoute>
 
         {/* Users */}
