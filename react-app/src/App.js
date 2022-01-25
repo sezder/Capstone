@@ -31,6 +31,7 @@ import IndivMessage from "./components/IndivMessage";
 
 //Update
 import EditTodo from "./components/EditTodo";
+import EditList from "./components/EditList";
 import IndivList from "./components/IndivList";
 
 function App() {
@@ -76,6 +77,13 @@ function App() {
 
         {/* Lists */}
 
+        <ProtectedRoute
+          path="/projects/:projectId/lists/:listId/edit"
+          exact={true}
+        >
+          <EditList />
+        </ProtectedRoute>
+
         <ProtectedRoute path="/projects/:projectId/lists" exact={true}>
           <ShowLists />
         </ProtectedRoute>
@@ -113,9 +121,9 @@ function App() {
         <ProtectedRoute path="/users/(\\d+):userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
+        <Route path="/" exact={true}>
           <Splash />
-        </ProtectedRoute>
+        </Route>
       </Switch>
 
       <Footer />
