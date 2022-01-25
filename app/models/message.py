@@ -22,7 +22,7 @@ class Message(db.Model):
   # messages = db.relationship('Message', back_populates='creator')
 
   # A comment belongs to a message, a message has many comments
-  comments = db.relationship('Comment', back_populates='message')
+  comments = db.relationship('Comment', back_populates='message', cascade="all, delete")
   # message = db.relationship('Message', back_populates='comments')
 
   def to_dict(self):

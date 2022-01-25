@@ -15,11 +15,11 @@ class Project(db.Model):
     # projects = db.relationship('Project', back_populates='creator')
 
     # Project has many lists, list belongs to project
-    lists = db.relationship('List', back_populates='project')
+    lists = db.relationship('List', back_populates='project', cascade="all, delete")
     # project = db.relationship('Project', back_populates='lists')
 
     # Project has many messages, message bleongs to a project
-    messages = db.relationship('Message', back_populates='project')
+    messages = db.relationship('Message', back_populates='project', cascade="all, delete")
     # project = db.relationship('Project', back_populates='messages')
 
     # A project has many users assigned to it, a user has many project (M-M): through: users_projects

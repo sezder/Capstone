@@ -19,7 +19,7 @@ class List(db.Model):
   # lists = db.relationship('List', back_populates='creator')
 
   # A list has many to-dos, a to-do belongs to a list
-  todos = db.relationship('Todo', back_populates='list')
+  todos = db.relationship('Todo', back_populates='list', cascade="all, delete")
   # list = db.relationship('List', back_populates='todos')
 
 
