@@ -21,7 +21,7 @@ const ShowProjects = () => {
         <NewProject hidden={hidden} setHidden={setHidden} />
       </div>
 
-      <main>
+      <main className="show_projects_main">
         {/* Toggle the add project sidebar */}
         <button
           onClick={() => setHidden(!hidden)}

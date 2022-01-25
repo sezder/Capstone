@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTodo } from "../../../store/todo";
 import EditTodo from "../../EditTodo";
+import "./IndivTodo.css";
 
 const IndivTodo = ({ todo, projectId, listId }) => {
   const dispatch = useDispatch();
@@ -21,33 +22,39 @@ const IndivTodo = ({ todo, projectId, listId }) => {
   };
 
   return (
-    <section>
-      <div key={`${todo?.id}`}>
-        <input
-          onClick={(e) => {
-            setCompleted(!completed);
-            handleCheck(!completed);
-          }}
-          type="checkbox"
-          checked={completed}
-          className="checkbox"
-          name="checkbox"
-        ></input>
-          {editTodo ? (
-            <EditTodo
-              todo={todo}
-              editTodo={editTodo}
-              setEditTodo={setEditTodo}
-              projectId={projectId}
-              listId={listId}
-            />
-          ) : (
-            <>
-              <label htmlFor="checkbox" onClick={() => setEditTodo(!editTodo)}>{todo?.task}</label>
-              <i className="far fa-calendar" onClick={() => setEditTodo(!editTodo)}></i>
-            </>
-          )}
-      </div>
+    <section className="todo_section" key={`${todo?.id}`}>
+      {/* Checkbox updates database on click */}
+      <input
+        onClick={(e) => {
+          setCompleted(!completed);
+          handleCheck(!completed);
+        }}
+        type="checkbox"
+        checked={completed}
+        className="checkbox"
+        name="checkbox"
+      ></input>
+
+      {/* Either render an edit form or the details about the todo */}
+      {editTodo ? (
+        <EditTodo
+          todo={todo}
+          editTodo={editTodo}
+          setEditTodo={setEditTodo}
+          projectId={projectId}
+          listId={listId}
+        />
+      ) : (
+        <>
+          <label htmlFor="checkbox" onClick={() => setEditTodo(!editTodo)}>
+            {todo?.task}
+          </label>
+          <i
+            className="far fa-calendar"
+            onClick={() => setEditTodo(!editTodo)}
+          ></i>
+        </>
+      )}
     </section>
   );
 };

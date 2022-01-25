@@ -1,0 +1,14 @@
+.todo_section {
+  /* background-color: hotpink; */
+  /* margin: 2%; */
+  display: flex;
+  flex-direction: row;
+  width: 40vw;
+  align-items: center;
+  position: relative;
+}
+
+.todo_section i.fa-calendar {
+  position: absolute;
+  right: 0;
+}
