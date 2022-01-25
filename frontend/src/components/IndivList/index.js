@@ -36,7 +36,7 @@ const IndivList = () => {
     <main>
       <h1 className="light_large">{currList?.title}</h1>
       <p>{currList?.description}</p>
-      {todosArr.length ? mappingTodos : addTaskPrompt}
+      {todosArr.length ? <div>{mappingTodos}</div> : addTaskPrompt}
     </main>
   );
 };
