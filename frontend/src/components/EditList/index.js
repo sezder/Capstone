@@ -5,17 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateList, getLists, deleteList } from "../../store/list";
 import "./EditList.css";
 
-const EditList = () => {
-  let { projectId, listId } = useParams();
-  projectId = Number(projectId);
-  listId = Number(listId);
-
+const EditList = ({ currList, editList, setEditList, listId, projectId }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const creatorId = Number(useSelector((state) => state.session.user.id));
-  const currList = useSelector((state) => state.lists?.[listId]);
-
   const [title, setTitle] = useState(currList?.title || "");
   const [description, setDescription] = useState(currList?.description || "");
   const [errors, setErrors] = useState([]);
@@ -41,10 +35,8 @@ const EditList = () => {
       creatorId,
       listId,
     };
-    const res = dispatch(updateList(list));
-    if (res) {
-      history.push(`/projects/${projectId}/lists`);
-    }
+    dispatch(updateList(list));
+    setEditList(!editList)
   };
 
   const handleDelete = (e) => {
@@ -57,7 +49,7 @@ const EditList = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="edit_list_form">
       {errors.length > 0 && (
         <ul>
           {errors.map((error) => {
@@ -85,13 +77,19 @@ const EditList = () => {
         onChange={(e) => setDescription(e.target.value)}
       ></textarea>
 
-      <button type="submit" disabled={errors.length > 0}>
-        Update
-      </button>
+      <div className="button_div">
+        <button type="submit" disabled={errors.length > 0}>
+          <i class="fas fa-check"></i>
+        </button>
 
-      <button onClick={handleDelete}>
-        <i className="far fa-trash-alt"></i>
-      </button>
+        <button onClick={handleDelete}>
+          <i className="far fa-trash-alt"></i>
+        </button>
+
+        <button onClick={() => setEditList(!editList)}>
+          <i className="fas fa-times"></i>
+        </button>
+      </div>
     </form>
   );
 };

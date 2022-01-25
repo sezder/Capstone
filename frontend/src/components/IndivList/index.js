@@ -52,7 +52,13 @@ const IndivList = () => {
       </div>
 
       {editList ? (
-        <EditList />
+        <EditList
+          currList={currList}
+          editList={editList}
+          setEditList={setEditList}
+          projectId={projectId}
+          listId={listId}
+        />
       ) : (
         <>
           <div className="list_title_edit">
