@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTodo } from "../../../store/todo";
+import EditTodo from "../../EditTodo";
 
-const IndivTodo = ({ todo }) => {
+const IndivTodo = ({ todo, projectId, listId }) => {
   const dispatch = useDispatch();
   const [completed, setCompleted] = useState(todo?.completed);
+  const [editTodo, setEditTodo] = useState(false);
 
   const handleCheck = (completionStatus) => {
     const todoPayload = {
@@ -31,7 +33,20 @@ const IndivTodo = ({ todo }) => {
           className="checkbox"
           name="checkbox"
         ></input>
-        <label htmlFor="checkbox">{todo?.task}</label>
+          {editTodo ? (
+            <EditTodo
+              todo={todo}
+              editTodo={editTodo}
+              setEditTodo={setEditTodo}
+              projectId={projectId}
+              listId={listId}
+            />
+          ) : (
+            <>
+              <label htmlFor="checkbox" onClick={() => setEditTodo(!editTodo)}>{todo?.task}</label>
+              <i className="far fa-calendar" onClick={() => setEditTodo(!editTodo)}></i>
+            </>
+          )}
       </div>
     </section>
   );

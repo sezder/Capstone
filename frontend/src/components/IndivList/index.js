@@ -23,7 +23,9 @@ const IndivList = () => {
   const todosArr = Object.values(todos);
   const currList = useSelector((state) => state.lists[listId]);
 
-  const mappingTodos = todosArr.map((todo) => <IndivTodo todo={todo} />);
+  const mappingTodos = todosArr.map((todo) => (
+    <IndivTodo todo={todo} projectId={projectId} listId={listId} />
+  ));
 
   const addTaskPrompt = (
     <div className="task_read_only">
