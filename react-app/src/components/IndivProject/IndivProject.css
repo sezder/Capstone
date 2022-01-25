@@ -6,6 +6,18 @@
   width: 40vw;
   padding: 2%;
 }
+
+.edit_ellipsis_div {
+  display: flex;
+  justify-content: space-between;
+  width: 40vw;
+  padding: 0 2%;
+}
+
+#ellipsis_btn.edit_project_btn {
+  background-color: rgba(16, 16, 16, 0);
+}
+
 .users_projects_div {
   display: flex;
   align-items: center;
@@ -26,7 +38,6 @@
 #messages_preview {
   display: flex;
   justify-content: space-between;
-
 }
 
 .messages_lists_div a section {
@@ -53,12 +64,17 @@
 
 @media only screen and (min-width: 1001px) {
   .indiv_project_page {
-    max-height: calc(100vh - 7vh - 70px);
+    padding: 0;
+    /* max-height: calc(100vh - 7vh - 70px);` */
+  }
+
+  .messages_lists_div {
+    margin-top: 1%;
   }
 }
 
 @media only screen and (max-width: 1000px) {
-  .messages_lists_div  {
+  .messages_lists_div {
     flex-direction: column;
     width: 90vw;
   }
@@ -70,9 +86,7 @@
 }
 
 @media only screen and (max-width: 700px) {
-
 }
 
 @media only screen and (max-width: 500px) {
-
 }
