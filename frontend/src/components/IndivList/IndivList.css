@@ -1,6 +1,16 @@
 .todo_section {
-    background-color: #1F1F1F;
+  background-color: #1f1f1f;
   margin: 1%;
   padding: 10px;
   border-radius: 20px;
+}
+
+.list_title_edit {
+  display: flex;
+  justify-content: space-between;
+  width: 20vw;
+}
+
+.list_title_edit button#ellipsis_btn {
+  background-color: rgba(16, 16, 16, 0);
 }

@@ -5,13 +5,14 @@ import { getLists } from "../../store/list";
 import { getTodos } from "../../store/todo";
 import { getAllProjects } from "../../store/project";
 import IndivTodo from "./IndivTodo";
+import EditList from "../EditList";
 import "./IndivList.css";
 
 const IndivList = () => {
   let { projectId, listId } = useParams();
   projectId = Number(projectId);
   listId = Number(listId);
-  const [completed, setCompleted] = useState();
+  const [editList, setEditList] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -39,7 +40,7 @@ const IndivList = () => {
 
   return (
     <main>
-      <div className="proj_nav" id="proj_nav_new_msg">
+      <div className="proj_nav">
         <NavLink to={`/projects/${projectId}`}>
           <h2 className="light_large dynamic_underline">{currProject?.name}</h2>
         </NavLink>
@@ -48,11 +49,26 @@ const IndivList = () => {
         <NavLink to={`/projects/${projectId}/lists`}>
           <h2 className="light_large dynamic_underline">To-do Lists</h2>
         </NavLink>
-        <i className="fas fa-caret-right fa-2x"></i>
-        <h1 className="light_large">{currList?.title}</h1>
       </div>
 
-      <p>{currList?.description}</p>
+      {editList ? (
+        <EditList />
+      ) : (
+        <>
+          <div className="list_title_edit">
+            <h1 className="light_large">{currList?.title}</h1>
+            <button
+              id="ellipsis_btn"
+              onClick={() => setEditList(!editList)}
+              className={editList ? "hidden" : null}
+            >
+              <i className="fas fa-ellipsis-h fa-lg"></i>
+            </button>
+          </div>
+          <p>{currList?.description}</p>
+        </>
+      )}
+
       {todosArr.length ? <div>{mappingTodos}</div> : addTaskPrompt}
     </main>
   );
