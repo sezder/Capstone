@@ -33,12 +33,12 @@ const IndivList = () => {
     <IndivTodo todo={todo} projectId={projectId} listId={listId} />
   ));
 
-  const addTaskPrompt = (
-    <div className="task_read_only">
-      <input type="checkbox" className="checkbox" name="checkbox"></input>
-      <label htmlFor="checkbox">Add a task...</label>
-    </div>
-  );
+  // const addTaskPrompt = (
+  //   <div className="task_read_only">
+  //     <input type="checkbox" className="checkbox" name="checkbox"></input>
+  //     <label htmlFor="checkbox">Add a task...</label>
+  //   </div>
+  // );
 
   return (
     <main>
@@ -77,7 +77,7 @@ const IndivList = () => {
         </>
       )}
 
-      {todosArr.length ? <div>{mappingTodos}</div> : addTaskPrompt}
+      {mappingTodos}
       <section
         className="todo_section"
         id="new_todo"
