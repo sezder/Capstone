@@ -7,6 +7,7 @@ import session from "./session";
 import messageReducer from "./message";
 import commentReducer from "./comment";
 import userReducer from "./user";
+import projectAssignmentReducer from "./projectAssignment";
 
 const rootReducer = combineReducers({
   session,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   messages: messageReducer,
   comments: commentReducer,
   users: userReducer,
+  projectAssignments: projectAssignmentReducer,
 });
 
 let enhancer;
