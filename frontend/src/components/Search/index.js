@@ -61,7 +61,7 @@ const Search = () => {
         {/* If there's a query,  */}
         {searchQuery &&
           filteredUsers.map((user) => (
-            <div key={user.id} className="">
+            <div key={user.id} className="user_card_div">
               {user?.icon_url ? (
                 <img
                   className="user_circle"
@@ -69,13 +69,15 @@ const Search = () => {
                   alt="user profile photo"
                 />
               ) : (
-                <div className="user_circle">
+                <div className="user_circle initials_circle">
                   {formatInitials(user.first_name, user.last_name)}
                 </div>
               )}
 
-              <p>{formatName(user.first_name, user.last_name)}</p>
-              <p>{user.job_title}</p>
+              <div>
+                <p>{formatName(user.first_name, user.last_name)}</p>
+                <p>{user.job_title}</p>
+              </div>
             </div>
           ))}
       </div>

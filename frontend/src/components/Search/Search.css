@@ -1,0 +1,9 @@
+.user_card_div {
+    background-color: #1F1F1F;
+    display: flex;
+    align-items: center;
+    margin: 1vh;
+    width: 27vw;
+    border-radius: 20px;
+    padding: 10px;
+}
