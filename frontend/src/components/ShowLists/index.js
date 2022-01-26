@@ -7,6 +7,8 @@ import "./ShowLists.css";
 import NewList from "../NewList";
 import PreviewTodos from "./PreviewTodos";
 import { getAllProjects } from "../../store/project";
+import completed_tasks from "../images/completed_tasks.svg";
+import "./ShowLists.css";
 
 const ShowLists = () => {
   let { projectId } = useParams();
@@ -14,12 +16,16 @@ const ShowLists = () => {
   const dispatch = useDispatch();
 
   const lists = useSelector((state) => state.lists);
+  const listsArr = Object.values(lists);
   const currProject = useSelector((state) => state.projects[projectId]);
   const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
     dispatch(getAllTodos());
     dispatch(getAllProjects());
+    if (!listsArr.length) {
+      setHidden(!hidden);
+    }
   }, [dispatch]);
 
   useEffect(() => {
@@ -44,25 +50,32 @@ const ShowLists = () => {
         <NavLink to={`/projects/${projectId}`}>
           <h1 className="light_large dynamic_underline">{currProject?.name}</h1>
         </NavLink>
-        <section className="cards">
-        
-          {Object.values(lists).map((list, idx) => {
-            return (
-              <NavLink
-                to={`/projects/${projectId}/lists/${list?.id}`}
-                key={idx}
-                className="card"
-              >
-                <div>
-                  <h1>{list?.title}</h1>
-                  <p>{list?.description}</p>
 
-                  <PreviewTodos list={list} />
-                </div>
-              </NavLink>
+        {listsArr.length > 0 ? (
+          listsArr.map((list, idx) => {
+            return (
+              <section className="cards">
+                <NavLink
+                  to={`/projects/${projectId}/lists/${list?.id}`}
+                  key={idx}
+                  className="card"
+                >
+                  <div>
+                    <h1>{list?.title}</h1>
+                    <p>{list?.description}</p>
+
+                    <PreviewTodos list={list} />
+                  </div>
+                </NavLink>
+              </section>
             );
-          })}
-        </section>
+          })
+        ) : (
+          <>
+            <h2 className="light_medium">Add the first list...</h2>
+            <img src={completed_tasks} id="completed_tasks"></img>
+          </>
+        )}
       </main>
     </div>
   );

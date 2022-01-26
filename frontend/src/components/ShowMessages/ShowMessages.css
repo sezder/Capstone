@@ -16,3 +16,8 @@
 #msgs_section a {
   margin: 1% 0;
 }
+
+#new_message {
+  height: 60vh;
+  margin: 20px 0;
+}

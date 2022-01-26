@@ -4,6 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { getMessages } from "../../store/message";
 import { getAllProjects } from "../../store/project";
 import "./ShowMessages.css";
+import new_message from "../images/new_message.svg";
 import OneMessage from "./OneMessage";
 
 const ShowMessages = () => {
@@ -13,6 +14,7 @@ const ShowMessages = () => {
 
   const messages = useSelector((state) => state.messages);
   const currProject = useSelector((state) => state.projects[projectId]);
+  const messagesArr = Object.values(messages);
 
   useEffect(() => {
     dispatch(getMessages(projectId));
@@ -31,9 +33,16 @@ const ShowMessages = () => {
         </NavLink>
 
         {/* Display all of the messages */}
-        {Object.values(messages).map((message, idx) => (
-          <OneMessage message={message} key={idx} projectId={projectId} />
-        ))}
+        {messagesArr.length > 0 ? (
+          messagesArr.map((message, idx) => (
+            <OneMessage message={message} key={idx} projectId={projectId} />
+          ))
+        ) : (
+          <>
+          <h2>Be the first to send a message...</h2>
+          <img src={new_message} id="new_message"></img>
+          </>
+        )}
       </section>
     </main>
   );
