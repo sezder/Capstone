@@ -30,6 +30,7 @@ const NewTodo = ({ listId, addTodo, setAddTodo }) => {
       due,
     };
     dispatch(createTodo(todo));
+    setAddTodo(false);
   };
 
   return (
