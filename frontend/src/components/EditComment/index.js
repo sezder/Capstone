@@ -63,9 +63,9 @@ const EditComment = ({ setEditComment, currComment, creatorId, messageId }) => {
           <i className="far fa-trash-alt"></i>
         </button>
 
-        <button onClick={() => setEditComment(null)}>
+        {/* <button onClick={() => setEditComment(null)}>
           <i className="fas fa-times"></i>
-        </button>
+        </button> */}
       </div>
     </form>
   );

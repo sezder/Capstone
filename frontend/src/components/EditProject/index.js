@@ -90,9 +90,9 @@ const EditProject = ({ setEditProject, projectId, currProject }) => {
           <i className="far fa-trash-alt"></i>
         </button>
 
-        <button onClick={() => setEditProject(false)}>
+        {/* <button onClick={() => setEditProject(false)}>
           <i className="fas fa-times"></i>
-        </button>
+        </button> */}
       </div>
     </form>
   );

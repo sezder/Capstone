@@ -85,9 +85,9 @@ const EditList = ({ currList, editList, setEditList, listId, projectId }) => {
           <i className="far fa-trash-alt"></i>
         </button>
 
-        <button onClick={() => setEditList(!editList)}>
+        {/* <button onClick={() => setEditList(!editList)}>
           <i className="fas fa-times"></i>
-        </button>
+        </button> */}
       </div>
     </form>
   );

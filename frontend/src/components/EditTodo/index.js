@@ -73,9 +73,9 @@ const EditTodo = ({ todo, editTodo, setEditTodo, projectId, listId }) => {
           <i className="far fa-trash-alt"></i>
         </button>
 
-        <button onClick={() => setEditTodo(false)}>
+        {/* <button onClick={() => setEditTodo(false)}>
           <i className="fas fa-times"></i>
-        </button>
+        </button> */}
       </div>
     </form>
   );

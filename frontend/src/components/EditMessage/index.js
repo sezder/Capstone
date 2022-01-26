@@ -99,9 +99,9 @@ const EditMessage = ({
           <i className="far fa-trash-alt"></i>
         </button>
 
-        <button onClick={() => setEditMessage(false)}>
+        {/* <button onClick={() => setEditMessage(false)}>
           <i className="fas fa-times"></i>
-        </button>
+        </button> */}
       </div>
     </form>
   );
