@@ -7,6 +7,8 @@ import { getMessages } from "../../store/message";
 import PreviewLists from "./PreviewLists";
 import PreviewMessages from "./PreviewMessages";
 import EditProject from "../EditProject";
+import message_sent from "../images/message_sent.svg";
+import checking_boxes from "../images/checking_boxes.svg";
 import "./IndivProject.css";
 
 const IndivProject = () => {
@@ -29,6 +31,14 @@ const IndivProject = () => {
   const messages = useSelector((state) => state.messages);
   let msgsArr = Object.values(messages);
   if (msgsArr.length > 3) msgsArr = msgsArr.slice(0, 3);
+
+  const previewMsgs = msgsArr.map((message) => {
+    return <PreviewMessages key={message?.id} message={message} />;
+  });
+
+  const previewTodos = listArr.map((list) => (
+    <PreviewLists key={list?.id} list={list} />
+  ));
 
   return (
     <main className="indiv_project_page">
@@ -67,18 +77,22 @@ const IndivProject = () => {
         <NavLink to={`/projects/${projectId}/messages`}>
           <section id="messages_preview">
             <h2 className="light_medium">Message Board</h2>
-            {msgsArr.map((message) => {
-              return <PreviewMessages key={message?.id} message={message} />;
-            })}
+            {msgsArr.length > 0 ? (
+              previewMsgs
+            ) : (
+              <img src={message_sent} id="message_sent"></img>
+            )}
           </section>
         </NavLink>
 
         <NavLink to={`/projects/${projectId}/lists`}>
           <section>
             <h2 className="light_medium">Recent To-dos</h2>
-            {listArr.map((list) => (
-              <PreviewLists key={list?.id} list={list} />
-            ))}
+            {listArr.length > 0 ? (
+              previewTodos
+            ) : (
+              <img src={checking_boxes} id="checking_boxes"></img>
+            )}
           </section>
         </NavLink>
       </div>
