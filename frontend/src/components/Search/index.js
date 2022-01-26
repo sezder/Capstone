@@ -2,30 +2,9 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllUsers } from "../../store/user";
 import "./Search.css";
-import { formatInitials, formatName } from "../../helperFuncs";
+import { formatInitials, formatName, filterUsers } from "../../helperFuncs";
 
-// Define a function to filter users based on a search query
-const filterUsers = (users, query) => {
-  if (!query) {
-    return users;
-  }
-
-  return users.filter((user) => {
-    const firstName = user.first_name.toLowerCase();
-    const lastName = user.last_name.toLowerCase();
-    const email = user.email.toLowerCase();
-    const jobTitle = user.job_title.toLowerCase();
-    const searchTerm = query.toLowerCase();
-    return (
-      firstName.includes(searchTerm) ||
-      lastName.includes(searchTerm) ||
-      email.includes(searchTerm) ||
-      jobTitle.includes(searchTerm)
-    );
-  });
-};
-
-const Search = () => {
+const Search = ({ projectId }) => {
   const dispatch = useDispatch();
 
   // Grab all users from state and make into an array
@@ -36,9 +15,18 @@ const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const filteredUsers = filterUsers(usersArr, searchQuery);
 
+  // const [userToAdd, setUserToAdd] = useState(null);
+
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
+
+  const handleAddUser = (e, userId) => {
+    e.preventDefault();
+    const projAssignment = { userId, projectId };
+    // dispatch(createProjAssignment(projAssignment));
+    // dispatch(getProjectAssignments(projectId));
+  };
 
   return (
     <>
@@ -78,6 +66,9 @@ const Search = () => {
                 <p>{formatName(user.first_name, user.last_name)}</p>
                 <p>{user.job_title}</p>
               </div>
+              <button onClick={(e) => handleAddUser(e, user?.id)}>
+                <i className="fas fa-plus"></i>
+              </button>
             </div>
           ))}
       </div>

@@ -33,6 +33,7 @@ import EditTodo from "./components/EditTodo";
 import EditList from "./components/EditList";
 import IndivList from "./components/IndivList";
 import Search from "./components/Search";
+import ProjectAssignments from "./components/ProjectAssignments";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -100,6 +101,11 @@ function App() {
           <ShowMessages />
         </ProtectedRoute>
 
+        {/* Project Assignments */}
+        <ProtectedRoute path="/projects/:projectId/people" exact={true}>
+          <ProjectAssignments />
+        </ProtectedRoute>
+
         {/* Projects */}
         <ProtectedRoute path="/projects/:projectId" exact={true}>
           <IndivProject />
@@ -117,7 +123,7 @@ function App() {
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/(\\d+):userId" exact={true}>
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
         <Route path="/" exact={true}>
