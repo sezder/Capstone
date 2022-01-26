@@ -33,7 +33,6 @@ import EditTodo from "./components/EditTodo";
 import EditList from "./components/EditList";
 import IndivList from "./components/IndivList";
 import Search from "./components/Search";
-
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
