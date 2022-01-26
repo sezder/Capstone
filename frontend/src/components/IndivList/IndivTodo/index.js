@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch} from "react-redux";
 import { updateTodo } from "../../../store/todo";
 import EditTodo from "../../EditTodo";
 import "./IndivTodo.css";
@@ -30,7 +30,7 @@ const IndivTodo = ({ todo, projectId, listId }) => {
           handleCheck(!completed);
         }}
         type="checkbox"
-        checked={completed}
+        defaultChecked={completed}
         className="checkbox"
         name="checkbox"
       ></input>

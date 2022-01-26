@@ -54,6 +54,7 @@ const IndivProject = () => {
           <div className="edit_ellipsis_div">
             <h1 className="light_large">{currProject?.name}</h1>
             <button
+              title="Toggle new project form"
               id="ellipsis_btn"
               onClick={() => setEditProject(!editProject)}
               className={editProject ? "hidden" : "edit_project_btn"}
@@ -70,7 +71,10 @@ const IndivProject = () => {
         <div className="user_circle"></div>
         <div className="user_circle"></div>
         <div className="user_circle"></div>
-        <button>Add People</button>
+
+        <NavLink to={`/projects/${projectId}/people`}>
+          <button>Add People</button>
+        </NavLink>
       </div>
 
       <div className="messages_lists_div">
@@ -80,7 +84,11 @@ const IndivProject = () => {
             {msgsArr.length > 0 ? (
               previewMsgs
             ) : (
-              <img src={message_sent} id="message_sent"></img>
+              <img
+                src={message_sent}
+                id="message_sent"
+                alt="Graphic of man next to email."
+              ></img>
             )}
           </section>
         </NavLink>
@@ -91,7 +99,11 @@ const IndivProject = () => {
             {listArr.length > 0 ? (
               previewTodos
             ) : (
-              <img src={checking_boxes} id="checking_boxes"></img>
+              <img
+                src={checking_boxes}
+                id="checking_boxes"
+                alt="Man next to completed and partially completed todos."
+              ></img>
             )}
           </section>
         </NavLink>

@@ -30,7 +30,6 @@ def create_proj_assignment():
 @login_required
 def delete_proj_assignment():
     id = request.json
-    print(id, 'id DOGG')
     assignment = User_Project.query.filter_by(id=id).one()
     db.session.delete(assignment)
     db.session.commit()

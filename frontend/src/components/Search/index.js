@@ -55,7 +55,7 @@ const Search = ({ projectId }) => {
                 <img
                   className="user_circle"
                   src={user?.icon_url}
-                  alt="user profile photo"
+                  alt="User profile icon"
                 />
               ) : (
                 <div className="user_circle initials_circle">

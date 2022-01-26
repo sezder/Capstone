@@ -31,7 +31,12 @@ const IndivList = () => {
   const currProject = useSelector((state) => state.projects[projectId]);
 
   const mappingTodos = todosArr.map((todo) => (
-    <IndivTodo todo={todo} projectId={projectId} listId={listId} />
+    <IndivTodo
+      todo={todo}
+      projectId={projectId}
+      listId={listId}
+      key={todo?.id}
+    />
   ));
 
   return (
@@ -75,7 +80,11 @@ const IndivList = () => {
       ) : (
         <section id="no_tasks_placeholder_section">
           <h2>Add the first todo...</h2>
-          <img src={accept_tasks} id="accept_tasks"></img>
+          <img
+            src={accept_tasks}
+            id="accept_tasks"
+            alt="Graphic of individual checking off a task from a list."
+          ></img>
         </section>
       )}
       <section className="todo_section" id="new_todo">

@@ -26,7 +26,7 @@ const ShowLists = () => {
     if (!listsArr.length) {
       setHidden(!hidden);
     }
-  }, [dispatch]);
+  }, [dispatch, hidden, listsArr.length]);
 
   useEffect(() => {
     dispatch(getLists(projectId));
@@ -44,7 +44,7 @@ const ShowLists = () => {
             !hidden ? "hidden" : "circular_button toggle_project_sidebar"
           }
         >
-          <i class="fas fa-plus"></i>
+          <i className="fas fa-plus"></i>
         </button>
 
         <NavLink to={`/projects/${projectId}`}>
@@ -73,7 +73,7 @@ const ShowLists = () => {
         ) : (
           <>
             <h2 className="light_medium">Add the first list...</h2>
-            <img src={completed_tasks} id="completed_tasks"></img>
+            <img src={completed_tasks} id="completed_tasks" alt="Graphic of two individuals completing tasks."></img>
           </>
         )}
       </main>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateList, getLists, deleteList } from "../../store/list";
@@ -36,7 +35,7 @@ const EditList = ({ currList, editList, setEditList, listId, projectId }) => {
       listId,
     };
     dispatch(updateList(list));
-    setEditList(!editList)
+    setEditList(!editList);
   };
 
   const handleDelete = (e) => {
@@ -79,7 +78,7 @@ const EditList = ({ currList, editList, setEditList, listId, projectId }) => {
 
       <div className="button_div">
         <button type="submit" disabled={errors.length > 0}>
-          <i class="fas fa-check"></i>
+          <i className="fas fa-check"></i>
         </button>
 
         <button onClick={handleDelete}>

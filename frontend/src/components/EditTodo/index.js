@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTodo, getTodos, deleteTodo } from "../../store/todo";
+import { updateTodo, deleteTodo } from "../../store/todo";
 import "./EditTodo.css";
 
 const EditTodo = ({ todo, editTodo, setEditTodo, projectId, listId }) => {
@@ -68,7 +66,7 @@ const EditTodo = ({ todo, editTodo, setEditTodo, projectId, listId }) => {
       ></input>
       <div className="button_div">
         <button type="submit" disabled={errors.length > 0}>
-          <i class="fas fa-check"></i>
+          <i className="fas fa-check"></i>
         </button>
 
         <button onClick={handleDelete}>

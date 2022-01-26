@@ -14,7 +14,6 @@ const ProjectAssignments = () => {
   const dispatch = useDispatch();
   let { projectId } = useParams();
   projectId = Number(projectId);
-  console.log(projectId, 'projId in nums')
 
   useEffect(() => {
     dispatch(getProjAssignments(projectId));
@@ -27,15 +26,13 @@ const ProjectAssignments = () => {
 
   const mappedAssignments = assignedUsersArr.length && assignedUsersArr.map((assignment) => {
     const currAssignedUser = allUsers[assignment?.user_id];
-    console.log(assignment?.id, 'assignmetn ID')
-    console.log(currAssignedUser, 'currAssignedUser');
     return (
       <div key={assignment.id} className="user_card_div">
         {currAssignedUser?.icon_url ? (
           <img
             className="user_circle"
             src={currAssignedUser?.icon_url}
-            alt="user profile photo"
+            alt="User profile icon"
           />
         ) : (
           <div className="user_circle initials_circle">

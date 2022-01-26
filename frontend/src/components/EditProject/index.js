@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import {
-  updateProject,
-  getAllProjects,
-  deleteProject,
-} from "../../store/project";
+import { useHistory } from "react-router-dom";
+import { updateProject, deleteProject } from "../../store/project";
 import "./EditProject.css";
 
 const EditProject = ({ setEditProject, projectId, currProject }) => {
@@ -50,7 +46,11 @@ const EditProject = ({ setEditProject, projectId, currProject }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="msg_comment_form" id="edit_proj_form">
+    <form
+      onSubmit={handleSubmit}
+      className="msg_comment_form"
+      id="edit_proj_form"
+    >
       <div>
         {errors.length > 0 && (
           <ul>
@@ -83,7 +83,7 @@ const EditProject = ({ setEditProject, projectId, currProject }) => {
 
       <div className="button_div">
         <button type="submit" disabled={errors.length > 0}>
-          <i class="fas fa-check"></i>
+          <i className="fas fa-check"></i>
         </button>
 
         <button onClick={handleDelete}>

@@ -51,7 +51,6 @@ const loadDeletedAssignment = (assignmentId) => ({
 export const deleteAssignment =
   ({ assignmentId: id }) =>
   async (dispatch) => {
-    console.log(id, "id in thunk");
     const res = await fetch(`/api/projAssignments/`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },

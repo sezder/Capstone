@@ -29,7 +29,7 @@ const ShowProjects = () => {
             !hidden ? "hidden" : "circular_button toggle_project_sidebar"
           }
         >
-          <i class="fas fa-plus"></i>
+          <i className="fas fa-plus"></i>
         </button>
 
         {/* Grid with responsive cards */}

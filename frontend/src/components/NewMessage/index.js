@@ -20,7 +20,7 @@ const NewMessage = () => {
 
   useEffect(() => {
     dispatch(getAllProjects());
-  }, [projectId]);
+  }, [dispatch, projectId]);
 
   useEffect(() => {
     const errors = [];
@@ -90,7 +90,7 @@ const NewMessage = () => {
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
         <button type="submit" disabled={errors.length > 0}>
-          <i class="fas fa-plus"></i>
+          <i className="fas fa-plus"></i>
         </button>
       </form>
     </main>
