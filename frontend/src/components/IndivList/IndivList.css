@@ -1,6 +1,6 @@
 .todo_section {
   background-color: #1f1f1f;
-  margin: 1%;
+  margin: 3px;
   padding: 10px;
   border-radius: 20px;
 }
@@ -16,9 +16,8 @@
 }
 
 #new_todo {
-  margin: 0;
-  border-radius: 15px;
-  margin-left: 1%;
+  margin-top: 3px;
+  border-radius: 20px;
 }
 
 #new_todo #gray_plus {
