@@ -8,6 +8,7 @@ import IndivTodo from "./IndivTodo";
 import EditList from "../EditList";
 import NewTodo from "../NewTodo";
 import "./IndivList.css";
+import accept_tasks from "../images/accept_tasks.svg";
 
 const IndivList = () => {
   let { projectId, listId } = useParams();
@@ -32,13 +33,6 @@ const IndivList = () => {
   const mappingTodos = todosArr.map((todo) => (
     <IndivTodo todo={todo} projectId={projectId} listId={listId} />
   ));
-
-  // const addTaskPrompt = (
-  //   <div className="task_read_only">
-  //     <input type="checkbox" className="checkbox" name="checkbox"></input>
-  //     <label htmlFor="checkbox">Add a task...</label>
-  //   </div>
-  // );
 
   return (
     <main>
@@ -76,18 +70,24 @@ const IndivList = () => {
           <p>{currList?.description}</p>
         </>
       )}
-
-      {mappingTodos}
-      <section
-        className="todo_section"
-        id="new_todo"
-      >
+      {todosArr.length > 0 ? (
+        mappingTodos
+      ) : (
+        <section id="no_tasks_placeholder_section">
+          <h2>Add the first todo...</h2>
+          <img src={accept_tasks} id="accept_tasks"></img>
+        </section>
+      )}
+      <section className="todo_section" id="new_todo">
         {addTodo ? (
-          <NewTodo listId={listId} setAddTodo={setAddTodo} addTodo={addTodo}/>
+          <NewTodo listId={listId} setAddTodo={setAddTodo} addTodo={addTodo} />
         ) : (
-          <div className="new_todo_div" onClick={() => {
-            setAddTodo(!addTodo);
-          }}>
+          <div
+            className="new_todo_div"
+            onClick={() => {
+              setAddTodo(!addTodo);
+            }}
+          >
             <i className="fas fa-plus" id="gray_plus"></i>
             <p>Add a new todo...</p>
           </div>

@@ -52,9 +52,9 @@ const ShowLists = () => {
         </NavLink>
 
         {listsArr.length > 0 ? (
-          listsArr.map((list, idx) => {
-            return (
-              <section className="cards">
+          <section className="cards">
+            {listsArr.map((list, idx) => {
+              return (
                 <NavLink
                   to={`/projects/${projectId}/lists/${list?.id}`}
                   key={idx}
@@ -67,9 +67,9 @@ const ShowLists = () => {
                     <PreviewTodos list={list} />
                   </div>
                 </NavLink>
-              </section>
-            );
-          })
+              );
+            })}
+          </section>
         ) : (
           <>
             <h2 className="light_medium">Add the first list...</h2>
