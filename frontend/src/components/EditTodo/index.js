@@ -5,20 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateTodo, getTodos, deleteTodo } from "../../store/todo";
 import "./EditTodo.css";
 
-const EditTodo = () => {
-  let { projectId, listId, todoId } = useParams();
-  projectId = Number(projectId);
-  listId = Number(listId);
-  todoId = Number(todoId);
-
+const EditTodo = ({ todo, editTodo, setEditTodo, projectId, listId }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-
   const creatorId = Number(useSelector((state) => state.session.user.id));
-  const currTodo = useSelector((state) => state.todos?.[todoId]);
 
-  const [task, setTask] = useState(currTodo?.task || "");
-  const [due, setDue] = useState(currTodo?.due || "");
+  const [task, setTask] = useState(todo?.task || "");
+  const [due, setDue] = useState(todo?.due || "");
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -28,34 +20,29 @@ const EditTodo = () => {
     setErrors(errors);
   }, [task, due]);
 
-  useEffect(() => {
-    dispatch(getTodos(listId));
-  }, [dispatch, listId]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const todo = {
-      todoId,
+    const todoPayload = {
+      todoId: todo?.id,
       task,
       listId,
       creatorId,
-      completed: currTodo?.completed,
+      completed: todo?.completed,
       due,
     };
-    dispatch(updateTodo(todo));
+    dispatch(updateTodo(todoPayload));
+    setEditTodo(false);
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
-    const deletePayload = { creatorId, todoId };
-    const res = dispatch(deleteTodo(deletePayload));
-    if (res) {
-      history.push(`/projects/${projectId}/lists/${listId}`);
-    }
+    const deletePayload = { creatorId, todoId: todo?.id };
+    dispatch(deleteTodo(deletePayload));
+    setEditTodo(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="edit_todo_form">
       {errors.length > 0 && (
         <ul>
           {errors.map((error) => {
@@ -63,7 +50,7 @@ const EditTodo = () => {
           })}
         </ul>
       )}
-      
+
       <input
         placeholder="Task"
         type="text"
@@ -79,14 +66,19 @@ const EditTodo = () => {
         value={due}
         onChange={(e) => setDue(e.target.value)}
       ></input>
+      <div className="button_div">
+        <button type="submit" disabled={errors.length > 0}>
+          <i class="fas fa-check"></i>
+        </button>
 
-      <button type="submit" disabled={errors.length > 0}>
-        Update
-      </button>
+        <button onClick={handleDelete}>
+          <i className="far fa-trash-alt"></i>
+        </button>
 
-      <button onClick={handleDelete}>
-        <i className="far fa-trash-alt"></i>
-      </button>
+        <button onClick={() => setEditTodo(false)}>
+          <i className="fas fa-times"></i>
+        </button>
+      </div>
     </form>
   );
 };

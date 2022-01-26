@@ -1,0 +1,12 @@
+.todo_section {
+  display: flex;
+  flex-direction: row;
+  width: 40vw;
+  align-items: center;
+  position: relative;
+}
+
+.todo_section i.fa-calendar {
+  position: absolute;
+  right: 20px;
+}
