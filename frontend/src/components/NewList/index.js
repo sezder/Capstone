@@ -33,16 +33,17 @@ const NewList = ({ hidden, setHidden }) => {
       creatorId,
     };
     dispatch(createList(list));
-    setHidden(true)
+    setHidden(true);
+    setTitle("");
+    setDescription("");
   };
   return (
     <form
       onSubmit={handleSubmit}
       className={hidden ? "hidden" : "new_project_form"}
     >
- 
       <div className="card" id="new_project_card">
-      <h2 className="light_large">New List</h2>
+        <h2 className="light_large">New List</h2>
         {errors.length > 0 && (
           <ul className="errors">
             {errors.map((error) => {
