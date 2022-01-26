@@ -4,11 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createTodo } from "../../store/todo";
 import "./NewTodo.css";
 
-const NewTodo = () => {
-  let { listId } = useParams();
-  // projectId = Number(projectId);
-  listId = Number(listId);
-
+const NewTodo = ({ listId, addTodo, setAddTodo }) => {
   const dispatch = useDispatch();
 
   const creatorId = useSelector((state) => state.session.user.id);
@@ -37,9 +33,9 @@ const NewTodo = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="edit_list_form">
       {errors.length > 0 && (
-        <ul>
+        <ul className="errors">
           {errors.map((error) => {
             return <li key={error}>{error}</li>;
           })}
@@ -62,9 +58,15 @@ const NewTodo = () => {
         onChange={(e) => setDue(e.target.value)}
       ></input>
 
-      <button type="submit" disabled={errors.length > 0}>
-        Add
-      </button>
+      <div>
+        <button type="submit" disabled={errors.length > 0}>
+          <i className="fas fa-plus"></i>
+        </button>
+
+        <button onClick={() => setAddTodo(!addTodo)}>
+          <i className="fas fa-times"></i>
+        </button>
+      </div>
     </form>
   );
 };

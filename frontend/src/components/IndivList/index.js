@@ -6,6 +6,7 @@ import { getTodos } from "../../store/todo";
 import { getAllProjects } from "../../store/project";
 import IndivTodo from "./IndivTodo";
 import EditList from "../EditList";
+import NewTodo from "../NewTodo";
 import "./IndivList.css";
 
 const IndivList = () => {
@@ -13,6 +14,7 @@ const IndivList = () => {
   projectId = Number(projectId);
   listId = Number(listId);
   const [editList, setEditList] = useState(false);
+  const [addTodo, setAddTodo] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -76,6 +78,21 @@ const IndivList = () => {
       )}
 
       {todosArr.length ? <div>{mappingTodos}</div> : addTaskPrompt}
+      <section
+        className="todo_section"
+        id="new_todo"
+      >
+        {addTodo ? (
+          <NewTodo listId={listId} setAddTodo={setAddTodo} addTodo={addTodo}/>
+        ) : (
+          <div className="new_todo_div" onClick={() => {
+            setAddTodo(!addTodo);
+          }}>
+            <i className="fas fa-plus" id="gray_plus"></i>
+            <p>Add a new todo...</p>
+          </div>
+        )}
+      </section>
     </main>
   );
 };

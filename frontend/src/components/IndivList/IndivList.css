@@ -14,3 +14,20 @@
 .list_title_edit button#ellipsis_btn {
   background-color: rgba(16, 16, 16, 0);
 }
+
+#new_todo {
+  margin: 0;
+  border-radius: 15px;
+  margin-left: 1%;
+}
+
+#new_todo #gray_plus {
+  color: #616161;
+  margin: 10px 3% 10px 0;
+}
+
+.new_todo_div {
+  display: flex;
+  align-items: center;
+  width: 40vw;
+}
