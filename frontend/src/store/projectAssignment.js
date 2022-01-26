@@ -40,6 +40,31 @@ export const createProjAssignment =
     }
   };
 
+// ~~~~~~~~~~~ Delete an assignment ~~~~~~~~~~~
+const DELETE_PROJ_ASSIGNMENT = "projAssignments/DELETE_PROJ_ASSIGNMENT";
+
+const loadDeletedAssignment = (assignmentId) => ({
+  type: DELETE_PROJ_ASSIGNMENT,
+  assignmentId,
+});
+
+export const deleteAssignment =
+  ({ assignmentId: id }) =>
+  async (dispatch) => {
+    console.log(id, "id in thunk");
+    const res = await fetch(`/api/projAssignments/`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify( id ),
+    });
+
+    if (res.ok) {
+      const assignmentId = await res.json();
+      dispatch(loadDeletedAssignment(assignmentId));
+      return assignmentId;
+    }
+  };
+
 // ~~~~~~~~~~~ Reducer ~~~~~~~~~~~
 const initialState = {};
 const projectAssignmentReducer = (state = initialState, action) => {
@@ -52,10 +77,10 @@ const projectAssignmentReducer = (state = initialState, action) => {
       return { ...newState };
     case ADD_PROJ_ASSIGNMENT:
       return { ...state, [action.projAssignment.id]: action.projAssignment };
-    // case DELETE_LIST:
-    //   newState = { ...state };
-    //   delete newState[action.projAssignmentId];
-    //   return { ...newState };
+    case DELETE_PROJ_ASSIGNMENT:
+      newState = { ...state };
+      delete newState[action.assignmentId];
+      return { ...newState };
     default:
       return state;
   }

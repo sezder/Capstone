@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllUsers } from "../../store/user";
 import "./Search.css";
 import { formatInitials, formatName, filterUsers } from "../../helperFuncs";
+import { getProjAssignments, createProjAssignment } from "../../store/projectAssignment";
 
 const Search = ({ projectId }) => {
   const dispatch = useDispatch();
@@ -24,8 +25,8 @@ const Search = ({ projectId }) => {
   const handleAddUser = (e, userId) => {
     e.preventDefault();
     const projAssignment = { userId, projectId };
-    // dispatch(createProjAssignment(projAssignment));
-    // dispatch(getProjectAssignments(projectId));
+    dispatch(createProjAssignment(projAssignment));
+    dispatch(getProjAssignments(projectId));
   };
 
   return (

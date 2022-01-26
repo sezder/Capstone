@@ -9,8 +9,10 @@ proj_assignment_routes = Blueprint('projAssignments', __name__)
 @login_required
 def assignments_for_project(project_id):
   assignments = User_Project.query.filter_by(project_id=project_id)
-  return jsonify([assignment.to_dict() for assignment in assignments])'
+  return jsonify([assignment.to_dict() for assignment in assignments])
 
+
+# ~~~~~~~~~~~ Create a project assignment ~~~~~~~~~~~ 
 @proj_assignment_routes.route('/', methods=['POST'])
 @login_required
 def create_proj_assignment():
@@ -21,3 +23,15 @@ def create_proj_assignment():
   db.session.add(new_proj_assignment)
   db.session.commit()
   return new_proj_assignment.to_dict()
+
+
+# ~~~~~~~~~~~ Delete a project assignment ~~~~~~~~~~~ 
+@proj_assignment_routes.route('/', methods=['DELETE'])
+@login_required
+def delete_proj_assignment():
+    id = request.json
+    print(id, 'id DOGG')
+    assignment = User_Project.query.filter_by(id=id).one()
+    db.session.delete(assignment)
+    db.session.commit()
+    return jsonify(id)
