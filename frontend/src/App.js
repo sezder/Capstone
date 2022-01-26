@@ -24,7 +24,6 @@ import NewMessage from "./components/NewMessage";
 // Read
 import ShowProjects from "./components/ShowProjects";
 import ShowLists from "./components/ShowLists";
-import ShowTodos from "./components/ShowTodos";
 import ShowMessages from "./components/ShowMessages";
 import IndivProject from "./components/IndivProject";
 import IndivMessage from "./components/IndivMessage";
@@ -33,7 +32,7 @@ import IndivMessage from "./components/IndivMessage";
 import EditTodo from "./components/EditTodo";
 import EditList from "./components/EditList";
 import IndivList from "./components/IndivList";
-
+import Search from "./components/Search";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -54,6 +53,10 @@ function App() {
       <NavBar />
 
       <Switch>
+        {/* Search Testing */}
+        <ProtectedRoute path="/test">
+          <Search />
+        </ProtectedRoute>
         {/* Auth routes */}
         <Route path="/login" exact={true}>
           <LoginForm />
@@ -69,10 +72,6 @@ function App() {
 
         <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/:todoId">
           <EditTodo />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos">
-          <ShowTodos />
         </ProtectedRoute>
 
         {/* Lists */}
