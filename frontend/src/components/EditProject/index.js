@@ -46,55 +46,63 @@ const EditProject = ({ setEditProject, projectId, currProject }) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="msg_comment_form"
-      id="edit_proj_form"
-    >
-      <div>
-        {errors.length > 0 && (
-          <ul>
-            {errors.map((error) => {
-              return <li key={error}>{error}</li>;
-            })}
-          </ul>
-        )}
-      </div>
+    <>
+      <button onClick={() => setEditProject(false)}>
+        <i className="fas fa-times"></i>
+      </button>
+      <form
+        onSubmit={handleSubmit}
+        className="msg_comment_form"
+        id="edit_proj_form"
+      >
+        <div>
+          {errors.length > 0 && (
+            <ul>
+              {errors.map((error) => {
+                return <li key={error}>{error}</li>;
+              })}
+            </ul>
+          )}
+        </div>
 
-      <input
-        placeholder="Name"
-        type="text"
-        name="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required={true}
-        spellCheck={true}
-      ></input>
+        <label htmlFor="new_proj_name" className="hidden">
+          Project Name
+        </label>
+        <input
+          id="new_proj_name"
+          placeholder="Name"
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          spellCheck={true}
+        ></input>
 
-      <textarea
-        placeholder="Description (optional)"
-        type="text"
-        name="description"
-        value={description}
-        spellCheck={true}
-        onChange={(e) => setDescription(e.target.value)}
-        rows="4"
-      ></textarea>
+        <label htmlFor="new_proj_descrip" className="hidden">
+          Description (optional)
+        </label>
+        <textarea
+          id="new_proj_descrip"
+          placeholder="Description (optional)"
+          type="text"
+          name="description"
+          value={description}
+          spellCheck={true}
+          onChange={(e) => setDescription(e.target.value)}
+          rows="4"
+        ></textarea>
 
-      <div className="button_div">
-        <button type="submit" disabled={errors.length > 0}>
-          <i className="fas fa-check"></i>
-        </button>
+        <div className="button_div">
+          <button type="submit" disabled={errors.length > 0}>
+            <i className="fas fa-check"></i>
+          </button>
 
-        <button onClick={handleDelete}>
-          <i className="far fa-trash-alt"></i>
-        </button>
-
-        {/* <button onClick={() => setEditProject(false)}>
-          <i className="fas fa-times"></i>
-        </button> */}
-      </div>
-    </form>
+          <button onClick={handleDelete}>
+            <i className="far fa-trash-alt"></i>
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 

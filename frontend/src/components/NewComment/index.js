@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { createComment } from "../../store/comment";
 
 const NewComment = ({ messageId, creatorId }) => {
@@ -36,12 +36,15 @@ const NewComment = ({ messageId, creatorId }) => {
         </ul>
       )}
 
+      <label htmlFor="new_comment_content" className="hidden">
+        Share your comment
+      </label>
       <textarea
+        id="new_comment_content"
         placeholder="Share away..."
         type="text"
         name="content"
         value={content}
-        required={true}
         spellCheck={true}
         onChange={(e) => setContent(e.target.value)}
       ></textarea>

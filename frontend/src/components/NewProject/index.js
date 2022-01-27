@@ -30,53 +30,63 @@ const NewProject = ({ hidden, setHidden }) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={hidden ? "hidden" : "new_project_form"}
-    >
-      <div className="card" id="new_project_card">
-        <h2 className="light_large">New Project</h2>
+    <>
+      <button
+        onClick={() => setHidden(!hidden)}
+        className={hidden ? "hidden" : "circular_button"}
+      >
+        <i className="fas fa-times"></i>
+      </button>
+      <form
+        onSubmit={handleSubmit}
+        className={hidden ? "hidden" : "new_project_form"}
+      >
+        <div className="card" id="new_project_card">
+          <h2 className="light_large">New Project</h2>
 
-        {errors.length > 0 && (
-          <ul className="errors">
-            {errors.map((error) => {
-              return <li key={error}>{error}</li>;
-            })}
-          </ul>
-        )}
+          {errors.length > 0 && (
+            <ul className="errors">
+              {errors.map((error) => {
+                return <li key={error}>{error}</li>;
+              })}
+            </ul>
+          )}
 
-        <input
-          placeholder="Name"
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required={true}
-          spellCheck={true}
-        ></input>
+          <label htmlFor="project_name" className="hidden">
+            Project Name
+          </label>
+          <input
+            id="project_name"
+            placeholder="Name"
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            // required={true}
+            spellCheck={true}
+          ></input>
 
-        <textarea
-          placeholder="Description (optional)"
-          type="text"
-          name="description"
-          value={description}
-          spellCheck={true}
-          onChange={(e) => setDescription(e.target.value)}
-          rows="5"
-        ></textarea>
+          <label htmlFor="project_description" className="hidden">
+            Project Description(optional)
+          </label>
+          <textarea
+            placeholder="Description (optional)"
+            type="text"
+            name="description"
+            value={description}
+            spellCheck={true}
+            onChange={(e) => setDescription(e.target.value)}
+            rows="5"
+          ></textarea>
 
-        {/* Submit button and close pannel button */}
-        <div>
+          {/* Submit button and close pannel button */}
+
           <button type="submit" disabled={errors.length > 0}>
             <i className="fas fa-plus"></i>
           </button>
-
-          <button onClick={() => setHidden(!hidden)}>
-            <i className="fas fa-times"></i>
-          </button>
         </div>
-      </div>
-    </form>
+      </form>
+    </>
   );
 };
 
