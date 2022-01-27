@@ -48,7 +48,7 @@ const NewTodo = ({ listId, addTodo, setAddTodo }) => {
         name="task"
         value={task}
         onChange={(e) => setTask(e.target.value)}
-        required={true}
+        // required={true}
         spellCheck={true}
       ></input>
 

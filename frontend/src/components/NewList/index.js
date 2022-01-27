@@ -52,13 +52,17 @@ const NewList = ({ hidden, setHidden }) => {
           </ul>
         )}
 
+        <label htmlFor="new_list_title" className="hidden">
+          List Title
+        </label>
         <input
+          id="new_list_title"
           placeholder="List Title"
           type="text"
           name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          required={true}
+          // required={true}
           spellCheck={true}
         ></input>
 

@@ -67,7 +67,7 @@ const EditProject = ({ setEditProject, projectId, currProject }) => {
         name="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        required={true}
+        // required={true}
         spellCheck={true}
       ></input>
 

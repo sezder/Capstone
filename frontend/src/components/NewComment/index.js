@@ -41,7 +41,7 @@ const NewComment = ({ messageId, creatorId }) => {
         type="text"
         name="content"
         value={content}
-        required={true}
+        // required={true}
         spellCheck={true}
         onChange={(e) => setContent(e.target.value)}
       ></textarea>

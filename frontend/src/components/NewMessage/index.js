@@ -76,7 +76,7 @@ const NewMessage = () => {
           name="subjectLine"
           value={subjectLine}
           onChange={(e) => setSubjectLine(e.target.value)}
-          required={true}
+          // required={true}
           spellCheck={true}
         ></input>
         <textarea
@@ -85,7 +85,7 @@ const NewMessage = () => {
           type="text"
           name="content"
           value={content}
-          required={true}
+          // required={true}
           spellCheck={true}
           onChange={(e) => setContent(e.target.value)}
         ></textarea>

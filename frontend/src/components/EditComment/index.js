@@ -34,40 +34,43 @@ const EditComment = ({ setEditComment, currComment, creatorId, messageId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="msg_comment_form">
-      {/* Errors  */}
-      {errors.length > 0 && (
-        <ul>
-          {errors.map((error) => {
-            return <li key={error}>{error}</li>;
-          })}
-        </ul>
-      )}
+    <>
+      <button onClick={() => setEditComment(null)}>
+        <i className="fas fa-times"></i>
+      </button>
+      <form onSubmit={handleSubmit} className="msg_comment_form">
+        {/* Errors  */}
+        {errors.length > 0 && (
+          <ul>
+            {errors.map((error) => {
+              return <li key={error}>{error}</li>;
+            })}
+          </ul>
+        )}
 
-      <textarea
-        placeholder="Share away..."
-        type="text"
-        name="content"
-        value={content}
-        required={true}
-        spellCheck={true}
-        onChange={(e) => setContent(e.target.value)}
-      ></textarea>
+        <label htmlFor="edit_comment_content" className="hidden"></label>
+        <textarea
+          id="edit_comment_content"
+          placeholder="Share away..."
+          type="text"
+          name="content"
+          value={content}
+          required={true}
+          spellCheck={true}
+          onChange={(e) => setContent(e.target.value)}
+        ></textarea>
 
-      <div className="button_div">
-        <button type="submit" disabled={errors.length > 0}>
-          <i className="fas fa-check"></i>
-        </button>
+        <div className="button_div">
+          <button type="submit" disabled={errors.length > 0}>
+            <i className="fas fa-check"></i>
+          </button>
 
-        <button onClick={handleDelete}>
-          <i className="far fa-trash-alt"></i>
-        </button>
-
-        {/* <button onClick={() => setEditComment(null)}>
-          <i className="fas fa-times"></i>
-        </button> */}
-      </div>
-    </form>
+          <button onClick={handleDelete}>
+            <i className="far fa-trash-alt"></i>
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 

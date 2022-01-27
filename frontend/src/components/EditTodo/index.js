@@ -55,7 +55,7 @@ const EditTodo = ({ todo, editTodo, setEditTodo, projectId, listId }) => {
         name="task"
         value={task}
         onChange={(e) => setTask(e.target.value)}
-        required={true}
+        // required={true}
         spellCheck={true}
       ></input>
 
