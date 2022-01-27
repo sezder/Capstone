@@ -33,41 +33,49 @@ const NewTodo = ({ listId, addTodo, setAddTodo }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="edit_list_form">
-      {errors.length > 0 && (
-        <ul className="errors">
-          {errors.map((error) => {
-            return <li key={error}>{error}</li>;
-          })}
-        </ul>
-      )}
+    <>
+      <button onClick={() => setAddTodo(!addTodo)}>
+        <i className="fas fa-times"></i>
+      </button>
+      <form onSubmit={handleSubmit} className="edit_list_form">
+        {errors.length > 0 && (
+          <ul className="errors">
+            {errors.map((error) => {
+              return <li key={error}>{error}</li>;
+            })}
+          </ul>
+        )}
 
-      <input
-        placeholder="Task"
-        type="text"
-        name="task"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        // required={true}
-        spellCheck={true}
-      ></input>
+        <label htmlFor="new_task" className="hidden">
+          Task
+        </label>
+        <input
+          id="new_task"
+          placeholder="Task"
+          type="text"
+          name="task"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+          spellCheck={true}
+        ></input>
 
-      <input
-        type="date"
-        value={due}
-        onChange={(e) => setDue(e.target.value)}
-      ></input>
+        <label htmlFor="new_due_date" className="hidden">
+          Due Date
+        </label>
+        <input
+          id="new_due_date"
+          type="date"
+          value={due}
+          onChange={(e) => setDue(e.target.value)}
+        ></input>
 
-      <div>
-        <button type="submit" disabled={errors.length > 0}>
-          <i className="fas fa-plus"></i>
-        </button>
-
-        <button onClick={() => setAddTodo(!addTodo)}>
-          <i className="fas fa-times"></i>
-        </button>
-      </div>
-    </form>
+        <div>
+          <button type="submit" disabled={errors.length > 0}>
+            <i className="fas fa-plus"></i>
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 

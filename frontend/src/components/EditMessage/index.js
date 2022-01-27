@@ -60,50 +60,57 @@ const EditMessage = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="msg_comment_form">
-      {/* Errors  */}
-      {errors.length > 0 && (
-        <ul>
-          {errors.map((error) => {
-            return <li key={error}>{error}</li>;
-          })}
-        </ul>
-      )}
+    <>
+      <button onClick={() => setEditMessage(false)}>
+        <i className="fas fa-times"></i>
+      </button>
+      <form onSubmit={handleSubmit} className="msg_comment_form">
+        {/* Errors  */}
+        {errors.length > 0 && (
+          <ul>
+            {errors.map((error) => {
+              return <li key={error}>{error}</li>;
+            })}
+          </ul>
+        )}
 
-      <input
-        placeholder="Type a title"
-        type="text"
-        name="subjectLine"
-        value={subjectLine}
-        onChange={(e) => setSubjectLine(e.target.value)}
-        // required={true}
-        spellCheck={true}
-      ></input>
+        <label htmlFor="edit_msg_title" className="hidden">
+          Type a title
+        </label>
+        <input
+          id="edit_msg_title"
+          placeholder="Type a title"
+          type="text"
+          name="subjectLine"
+          value={subjectLine}
+          onChange={(e) => setSubjectLine(e.target.value)}
+          spellCheck={true}
+        ></input>
 
-      <textarea
-        placeholder="Share away..."
-        type="text"
-        name="content"
-        value={content}
-        // required={true}
-        spellCheck={true}
-        onChange={(e) => setContent(e.target.value)}
-      ></textarea>
+        <label htmlFor="edit_msg_content" className="hidden">
+          Share away...
+        </label>
+        <textarea
+          id="edit_msg_content"
+          placeholder="Share away..."
+          type="text"
+          name="content"
+          value={content}
+          spellCheck={true}
+          onChange={(e) => setContent(e.target.value)}
+        ></textarea>
 
-      <div className="button_div">
-        <button type="submit" disabled={errors.length > 0}>
-          <i className="fas fa-check"></i>
-        </button>
+        <div className="button_div">
+          <button type="submit" disabled={errors.length > 0}>
+            <i className="fas fa-check"></i>
+          </button>
 
-        <button onClick={handleDelete}>
-          <i className="far fa-trash-alt"></i>
-        </button>
-
-        {/* <button onClick={() => setEditMessage(false)}>
-          <i className="fas fa-times"></i>
-        </button> */}
-      </div>
-    </form>
+          <button onClick={handleDelete}>
+            <i className="far fa-trash-alt"></i>
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 

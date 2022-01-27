@@ -38,54 +38,59 @@ const NewList = ({ hidden, setHidden }) => {
     setDescription("");
   };
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={hidden ? "hidden" : "new_project_form"}
-    >
-      <div className="card" id="new_project_card">
-        <h2 className="light_large">New List</h2>
-        {errors.length > 0 && (
-          <ul className="errors">
-            {errors.map((error) => {
-              return <li key={error}>{error}</li>;
-            })}
-          </ul>
-        )}
+    <>
+      <button onClick={() => setHidden(!hidden)}>
+        <i className="fas fa-times"></i>
+      </button>
+      <form
+        onSubmit={handleSubmit}
+        className={hidden ? "hidden" : "new_project_form"}
+      >
+        <div className="card" id="new_project_card">
+          <h2 className="light_large">New List</h2>
+          {errors.length > 0 && (
+            <ul className="errors">
+              {errors.map((error) => {
+                return <li key={error}>{error}</li>;
+              })}
+            </ul>
+          )}
 
-        <label htmlFor="new_list_title" className="hidden">
-          List Title
-        </label>
-        <input
-          id="new_list_title"
-          placeholder="List Title"
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          // required={true}
-          spellCheck={true}
-        ></input>
+          <label htmlFor="new_list_title" className="hidden">
+            List Title
+          </label>
+          <input
+            id="new_list_title"
+            placeholder="List Title"
+            type="text"
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            spellCheck={true}
+          ></input>
 
-        <textarea
-          placeholder="Description (optional)"
-          type="text"
-          name="description"
-          value={description}
-          spellCheck={true}
-          onChange={(e) => setDescription(e.target.value)}
-          rows="5"
-        ></textarea>
+          <label htmlFor="new_list_descrip" className="hidden">
+            List description (optional)
+          </label>
+          <textarea
+            id="new_list_descrip"
+            placeholder="Description (optional)"
+            type="text"
+            name="description"
+            value={description}
+            spellCheck={true}
+            onChange={(e) => setDescription(e.target.value)}
+            rows="5"
+          ></textarea>
 
-        <div>
-          <button type="submit" disabled={errors.length > 0}>
-            <i className="fas fa-plus"></i>
-          </button>
-          <button onClick={() => setHidden(!hidden)}>
-            <i className="fas fa-times"></i>
-          </button>
+          <div>
+            <button type="submit" disabled={errors.length > 0}>
+              <i className="fas fa-plus"></i>
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </>
   );
 };
 

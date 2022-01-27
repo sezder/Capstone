@@ -70,25 +70,34 @@ const NewMessage = () => {
             })}
           </ul>
         )}
+
+        <label htmlFor="new_msg_title" className="hidden">
+          Message Title
+        </label>
         <input
-          placeholder="Type a title"
+          id="new_msg_title"
+          placeholder="Message title"
           type="text"
           name="subjectLine"
           value={subjectLine}
           onChange={(e) => setSubjectLine(e.target.value)}
-          // required={true}
           spellCheck={true}
         ></input>
+
+        <label htmlFor="new_msg_content" className="hidden">
+          Share away...
+        </label>
         <textarea
+          id="new_msg_content"
           rows="18"
           placeholder="Share away..."
           type="text"
           name="content"
           value={content}
-          // required={true}
           spellCheck={true}
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
+
         <button type="submit" disabled={errors.length > 0}>
           <i className="fas fa-plus"></i>
         </button>

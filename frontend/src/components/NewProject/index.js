@@ -31,6 +31,12 @@ const NewProject = ({ hidden, setHidden }) => {
 
   return (
     <>
+      <button
+        onClick={() => setHidden(!hidden)}
+        className={hidden ? "hidden" : "circular_button"}
+      >
+        <i className="fas fa-times"></i>
+      </button>
       <form
         onSubmit={handleSubmit}
         className={hidden ? "hidden" : "new_project_form"}
@@ -80,12 +86,6 @@ const NewProject = ({ hidden, setHidden }) => {
           </button>
         </div>
       </form>
-      <button
-        onClick={() => setHidden(!hidden)}
-        className={hidden ? "hidden" : "circular_button"}
-      >
-        <i className="fas fa-times"></i>
-      </button>
     </>
   );
 };

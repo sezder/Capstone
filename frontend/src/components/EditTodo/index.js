@@ -40,44 +40,53 @@ const EditTodo = ({ todo, editTodo, setEditTodo, projectId, listId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="edit_todo_form">
-      {errors.length > 0 && (
-        <ul>
-          {errors.map((error) => {
-            return <li key={error}>{error}</li>;
-          })}
-        </ul>
-      )}
+    <>
+      <button onClick={() => setEditTodo(false)}>
+        <i className="fas fa-times"></i>
+      </button>
+      <form onSubmit={handleSubmit} className="edit_todo_form">
+        {errors.length > 0 && (
+          <ul>
+            {errors.map((error) => {
+              return <li key={error}>{error}</li>;
+            })}
+          </ul>
+        )}
 
-      <input
-        placeholder="Task"
-        type="text"
-        name="task"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        // required={true}
-        spellCheck={true}
-      ></input>
+        <label htmlFor="task" className="hidden">
+          Task
+        </label>
+        <input
+          id="task"
+          placeholder="Task"
+          type="text"
+          name="task"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+          spellCheck={true}
+        ></input>
 
-      <input
-        type="date"
-        value={due}
-        onChange={(e) => setDue(e.target.value)}
-      ></input>
-      <div className="button_div">
-        <button type="submit" disabled={errors.length > 0}>
-          <i className="fas fa-check"></i>
-        </button>
+        <label htmlFor="date" className="hidden">
+          Due date
+        </label>
+        <input
+          id="date"
+          type="date"
+          value={due}
+          onChange={(e) => setDue(e.target.value)}
+        ></input>
 
-        <button onClick={handleDelete}>
-          <i className="far fa-trash-alt"></i>
-        </button>
+        <div className="button_div">
+          <button type="submit" disabled={errors.length > 0}>
+            <i className="fas fa-check"></i>
+          </button>
 
-        {/* <button onClick={() => setEditTodo(false)}>
-          <i className="fas fa-times"></i>
-        </button> */}
-      </div>
-    </form>
+          <button onClick={handleDelete}>
+            <i className="far fa-trash-alt"></i>
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 
