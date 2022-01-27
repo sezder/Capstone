@@ -11,8 +11,8 @@ seeded_users_projects = [
   User_Project(user_id=6, project_id=2),
   User_Project(user_id=8, project_id=2),
 
-  User_Project(user_id=8, project_id=2),
-  User_Project(user_id=7, project_id=2),
+  User_Project(user_id=8, project_id=3),
+  User_Project(user_id=7, project_id=3),
 # User_Project(user_id=, project_id=),
 ]
 
