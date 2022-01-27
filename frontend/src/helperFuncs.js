@@ -32,7 +32,6 @@ export const filterAssignments = (projectId, assignmentsObj) => {
   const userIdsArr = [];
   for (let key in assignmentsObj) {
     let value = assignmentsObj[key];
-    console.log(value.project_id, "value");
     if (value.project_id === projectId) {
       userIdsArr.push(value.user_id);
     }

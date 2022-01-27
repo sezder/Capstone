@@ -24,7 +24,7 @@ const ShowLists = () => {
     dispatch(getAllTodos());
     dispatch(getAllProjects());
     if (!listsArr.length) {
-      setHidden(!hidden);
+      setHidden(false);
     }
   }, [dispatch, listsArr.length]);
 
@@ -73,7 +73,11 @@ const ShowLists = () => {
         ) : (
           <>
             <h2 className="light_medium">Add the first list...</h2>
-            <img src={completed_tasks} id="completed_tasks" alt="Graphic of two individuals completing tasks."></img>
+            <img
+              src={completed_tasks}
+              id="completed_tasks"
+              alt="Graphic of two individuals completing tasks."
+            ></img>
           </>
         )}
       </main>
