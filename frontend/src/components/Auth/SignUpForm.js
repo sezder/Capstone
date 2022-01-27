@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
+import DemoButton from "../DemoButton";
 import { signUp } from "../../store/session";
+import "./Auth.css";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -66,72 +68,81 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
+    <main className="auth_main">
+      <form onSubmit={onSignUp} className="auth_form">
+        <h1 className="light_large">Sign Up</h1>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
 
-      <input
-        placeholder="First Name"
-        type="text"
-        name="first_name"
-        onChange={updateFirstName}
-        value={first_name}
-      ></input>
+        <input
+          placeholder="First Name"
+          type="text"
+          name="first_name"
+          onChange={updateFirstName}
+          value={first_name}
+        ></input>
 
-      <input
-        placeholder="Last Name"
-        type="text"
-        name="last_name"
-        onChange={updateLastName}
-        value={last_name}
-      ></input>
+        <input
+          placeholder="Last Name"
+          type="text"
+          name="last_name"
+          onChange={updateLastName}
+          value={last_name}
+        ></input>
 
-      <input
-        placeholder="Email"
-        type="text"
-        name="email"
-        onChange={updateEmail}
-        value={email}
-      ></input>
+        <input
+          placeholder="Email"
+          type="text"
+          name="email"
+          onChange={updateEmail}
+          value={email}
+        ></input>
 
-      <input
-        placeholder="Job Title"
-        type="text"
-        name="job_title"
-        onChange={updateJobTitle}
-        value={job_title}
-      ></input>
+        <input
+          placeholder="Job Title"
+          type="text"
+          name="job_title"
+          onChange={updateJobTitle}
+          value={job_title}
+        ></input>
 
-      <input
-        placeholder="Profile Photo URL (optional)"
-        type="text"
-        name="icon_url"
-        onChange={updateIconUrl}
-        value={icon_url}
-      ></input>
+        <input
+          placeholder="Profile Photo URL (optional)"
+          type="text"
+          name="icon_url"
+          onChange={updateIconUrl}
+          value={icon_url}
+        ></input>
 
-      <input
-        placeholder="Password"
-        type="password"
-        name="password"
-        onChange={updatePassword}
-        value={password}
-      ></input>
+        <input
+          placeholder="Password"
+          type="password"
+          name="password"
+          onChange={updatePassword}
+          value={password}
+        ></input>
 
-      <input
-        placeholder="Confirm Password"
-        type="password"
-        name="repeat_password"
-        onChange={updateRepeatPassword}
-        value={repeatPassword}
-        required={true}
-      ></input>
+        <input
+          placeholder="Confirm Password"
+          type="password"
+          name="repeat_password"
+          onChange={updateRepeatPassword}
+          value={repeatPassword}
+          required={true}
+        ></input>
 
-      <button type="submit">Sign Up</button>
-    </form>
+        <div>
+          <button type="submit">Sign Up</button>
+          <DemoButton />
+        </div>
+        <NavLink to="/login" className="dynamic_underline light_small">
+          Already have an account?
+        </NavLink>
+      </form>
+    </main>
   );
 };
 

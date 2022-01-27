@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
+import DemoButton from "../DemoButton";
+import "./Auth.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -31,30 +33,39 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
+    <main className="auth_main">
+      <form onSubmit={onLogin} className="auth_form">
+        <h1 className="light_large">Log In</h1>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
 
-      <input
-        placeholder="Email"
-        name="email"
-        type="text"
-        value={email}
-        onChange={updateEmail}
-      />
+        <input
+          placeholder="Email"
+          name="email"
+          type="text"
+          value={email}
+          onChange={updateEmail}
+        />
 
-      <input
-        placeholder="Password"
-        name="password"
-        type="password"
-        value={password}
-        onChange={updatePassword}
-      />
-      <button type="submit">Login</button>
-    </form>
+        <input
+          placeholder="Password"
+          name="password"
+          type="password"
+          value={password}
+          onChange={updatePassword}
+        />
+        <div>
+          <button type="submit">Login</button>
+          <DemoButton />
+        </div>
+        <NavLink to="/sign-up" className="dynamic_underline light_small">
+          Need an account?
+        </NavLink>
+      </form>
+    </main>
   );
 };
 
