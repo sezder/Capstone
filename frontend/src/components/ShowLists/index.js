@@ -26,7 +26,7 @@ const ShowLists = () => {
     if (!listsArr.length) {
       setHidden(!hidden);
     }
-  }, [dispatch, hidden, listsArr.length]);
+  }, [dispatch, listsArr.length]);
 
   useEffect(() => {
     dispatch(getLists(projectId));

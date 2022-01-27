@@ -5,6 +5,13 @@ from app.models import User_Project, db
 proj_assignment_routes = Blueprint('projAssignments', __name__)
 
 # ~~~~~~~~~~~ Get all project assignments by project id ~~~~~~~~~~~ 
+@proj_assignment_routes.route('/')
+@login_required
+def all_assignments_for_project():
+  assignments = User_Project.query.all()
+  return jsonify([assignment.to_dict() for assignment in assignments])
+
+# ~~~~~~~~~~~ Get all project assignments by project id ~~~~~~~~~~~ 
 @proj_assignment_routes.route('/<project_id>')
 @login_required
 def assignments_for_project(project_id):
