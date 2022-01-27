@@ -39,8 +39,12 @@ const ShowMessages = () => {
           ))
         ) : (
           <>
-          <h2>Be the first to send a message...</h2>
-          <img src={new_message} id="new_message"></img>
+            <h2>Be the first to send a message...</h2>
+            <img
+              src={new_message}
+              id="new_message"
+              alt="Graphic of a woman standing by two large mail envelopes."
+            ></img>
           </>
         )}
       </section>
