@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getMessages, updateMessage, deleteMessage } from "../../store/message";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateMessage, deleteMessage } from "../../store/message";
 import "./EditMessage.css";
 
 const EditMessage = ({
@@ -60,50 +60,50 @@ const EditMessage = ({
   };
 
   return (
-      <form onSubmit={handleSubmit} className="msg_comment_form">
-        {/* Errors  */}
-        {errors.length > 0 && (
-          <ul>
-            {errors.map((error) => {
-              return <li key={error}>{error}</li>;
-            })}
-          </ul>
-        )}
+    <form onSubmit={handleSubmit} className="msg_comment_form">
+      {/* Errors  */}
+      {errors.length > 0 && (
+        <ul>
+          {errors.map((error) => {
+            return <li key={error}>{error}</li>;
+          })}
+        </ul>
+      )}
 
-        <input
-          placeholder="Type a title"
-          type="text"
-          name="subjectLine"
-          value={subjectLine}
-          onChange={(e) => setSubjectLine(e.target.value)}
-          required={true}
-          spellCheck={true}
-        ></input>
+      <input
+        placeholder="Type a title"
+        type="text"
+        name="subjectLine"
+        value={subjectLine}
+        onChange={(e) => setSubjectLine(e.target.value)}
+        required={true}
+        spellCheck={true}
+      ></input>
 
-        <textarea
-          placeholder="Share away..."
-          type="text"
-          name="content"
-          value={content}
-          required={true}
-          spellCheck={true}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
+      <textarea
+        placeholder="Share away..."
+        type="text"
+        name="content"
+        value={content}
+        required={true}
+        spellCheck={true}
+        onChange={(e) => setContent(e.target.value)}
+      ></textarea>
 
-        <div className="button_div">
-          <button type="submit" disabled={errors.length > 0}>
-            <i class="fas fa-check"></i>
-          </button>
+      <div className="button_div">
+        <button type="submit" disabled={errors.length > 0}>
+          <i className="fas fa-check"></i>
+        </button>
 
-          <button onClick={handleDelete}>
-            <i className="far fa-trash-alt"></i>
-          </button>
+        <button onClick={handleDelete}>
+          <i className="far fa-trash-alt"></i>
+        </button>
 
-          <button onClick={() => setEditMessage(false)}>
-            <i className="fas fa-times"></i>
-          </button>
-        </div>
-      </form>
+        {/* <button onClick={() => setEditMessage(false)}>
+          <i className="fas fa-times"></i>
+        </button> */}
+      </div>
+    </form>
   );
 };
 

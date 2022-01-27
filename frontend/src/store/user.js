@@ -10,7 +10,6 @@ export const getAllUsers = () => async (dispatch) => {
   const res = await fetch(`/api/users/`);
   if (res.ok) {
     const users = await res.json();
-    console.log(users, 'users in thunk')
     dispatch(loadAllUsers(users));
     return users;
   }

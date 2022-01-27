@@ -76,7 +76,7 @@ export const updateList =
     }
   };
 
-// ~~~~~~~~~~~ Delete a project ~~~~~~~~~~~
+// ~~~~~~~~~~~ Delete a list ~~~~~~~~~~~
 const DELETE_LIST = "lists/DELETE_LIST";
 
 const loadDeletedList = (listId) => ({

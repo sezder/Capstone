@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateComment, deleteComment } from "../../store/comment";
 
-const EditComment = ({
-  setEditComment,
-  currComment,
-  creatorId,
-  messageId,
-}) => {
+const EditComment = ({ setEditComment, currComment, creatorId, messageId }) => {
   const dispatch = useDispatch();
 
   const [content, setContent] = useState("" || currComment?.content);
@@ -34,13 +29,12 @@ const EditComment = ({
   const handleDelete = (e) => {
     e.preventDefault();
     const deletePayload = { creatorId, commentId: currComment?.id };
-    const res = dispatch(deleteComment(deletePayload));
+    dispatch(deleteComment(deletePayload));
     setEditComment(null);
   };
 
   return (
     <form onSubmit={handleSubmit} className="msg_comment_form">
-
       {/* Errors  */}
       {errors.length > 0 && (
         <ul>
@@ -62,16 +56,16 @@ const EditComment = ({
 
       <div className="button_div">
         <button type="submit" disabled={errors.length > 0}>
-          <i class="fas fa-check"></i>
+          <i className="fas fa-check"></i>
         </button>
 
         <button onClick={handleDelete}>
           <i className="far fa-trash-alt"></i>
         </button>
 
-        <button onClick={() => setEditComment(null)}>
+        {/* <button onClick={() => setEditComment(null)}>
           <i className="fas fa-times"></i>
-        </button>
+        </button> */}
       </div>
     </form>
   );

@@ -25,6 +25,8 @@ const NewProject = ({ hidden, setHidden }) => {
     };
     dispatch(createProject(project));
     setHidden(!hidden);
+    setName("");
+    setDescription("");
   };
 
   return (
