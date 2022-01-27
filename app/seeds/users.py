@@ -1,7 +1,8 @@
 from app.models import db, User
 
 seeded_users = [
-    User(first_name='Demo', last_name='User', email='demo@co.com', job_title='Graphic Designer', hashed_password='password'),
+        # User(first_name='Demo', last_name='User', email='demo@co.com', job_title='Graphic Designer', hashed_password='pbkdf2:sha256:260000$BFOvJReiEBrOeLFH$bc99e9be5ad69365ced3908117b858e139bec042f7dda4c259b3411f2b07fac0'),
+    User(first_name='Demo', last_name='User', email='demo@co.com', job_title='Graphic Designer', hashed_password='pbkdf2:sha256:260000$BFOvJReiEBrOeLFH$bc99e9be5ad69365ced3908117b858e139bec042f7dda4c259b3411f2b07fac0'),
     User(first_name='Fariha', last_name='Newman', email='fnewman@co.com', job_title='Vice President for Communications', hashed_password='password', icon_url='https://source.unsplash.com/SJvDxw0azqw '),
     User(first_name='Donell', last_name='Mccormack', email='dmccormack@co.com', job_title='Content & Social Media Manager', hashed_password='password', icon_url='https://source.unsplash.com/XdYSoOHalUY'),
     User(first_name='Amelia-Mae', last_name='Burke', email='aburke@co.com', job_title='Graphic Designer', hashed_password='password', icon_url='https://source.unsplash.com/A73ah5JKtVA'),

@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllUsers } from "../../store/user";
 import "./Search.css";
 import { formatInitials, formatName, filterUsers } from "../../helperFuncs";
-import { getProjAssignments, createProjAssignment } from "../../store/projectAssignment";
+import {
+  getProjAssignments,
+  createProjAssignment,
+} from "../../store/projectAssignment";
 
 const Search = ({ projectId }) => {
   const dispatch = useDispatch();
@@ -30,50 +33,55 @@ const Search = ({ projectId }) => {
   };
 
   return (
-    <>
+    <section className="display_users">
+      <h2 className="light_large">Search for people to add</h2>
       {/* Search input box */}
       <form action="/" method="get" autoComplete="on">
         <label htmlFor="search">
-          <span className="hidden">Search users to add them to a project.</span>
+          <span className="hidden">Search for users to add to a project.</span>
         </label>
+
+        <i className="fas fa-search-plus"></i>
         <input
           value={searchQuery}
           onInput={(e) => setSearchQuery(e.target.value)}
           type="text"
           id="search"
           name="s"
-          placeholder="Search for users"
+          placeholder="Search by name, email, or job title"
         />
       </form>
       <div>
         {/* Search results */}
         {/* If there's a query,  */}
-        {searchQuery &&
+        {
           filteredUsers.map((user) => (
             <div key={user.id} className="user_card_div">
-              {user?.icon_url ? (
-                <img
-                  className="user_circle"
-                  src={user?.icon_url}
-                  alt="User profile icon"
-                />
-              ) : (
-                <div className="user_circle initials_circle">
-                  {formatInitials(user.first_name, user.last_name)}
-                </div>
-              )}
+              <span>
+                {user?.icon_url ? (
+                  <img
+                    className="user_circle"
+                    src={user?.icon_url}
+                    alt="User profile icon"
+                  />
+                ) : (
+                  <div className="user_circle initials_circle">
+                    {formatInitials(user.first_name, user.last_name)}
+                  </div>
+                )}
 
-              <div>
-                <p>{formatName(user.first_name, user.last_name)}</p>
-                <p>{user.job_title}</p>
-              </div>
+                <div>
+                  <p>{formatName(user.first_name, user.last_name)}</p>
+                  <p>{user.job_title}</p>
+                </div>
+              </span>
               <button onClick={(e) => handleAddUser(e, user?.id)}>
                 <i className="fas fa-plus"></i>
               </button>
             </div>
           ))}
       </div>
-    </>
+    </section>
   );
 };
 
