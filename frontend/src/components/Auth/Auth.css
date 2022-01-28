@@ -3,6 +3,10 @@
   justify-content: center;
   align-items: center;
 }
+#login_img {
+  width: 60vw;
+  padding: 30px;
+}
 
 .auth_form {
   background-color: #1f1f1f;
@@ -12,9 +16,26 @@
   align-items: center;
   padding: 30px;
   width: 40vw;
-  border-radius: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 4px #000000, -1px -1px 3px rgb(225 225 225 / 20%);
 }
 
 .auth_form input {
   width: 30vw;
+}
+
+.auth_form a {
+  margin-top: 10px;
+}
+
+@media only screen and (min-width: 1300px) {
+  #login_img {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  #login_img {
+    width: 45vw;
+  }
 }
