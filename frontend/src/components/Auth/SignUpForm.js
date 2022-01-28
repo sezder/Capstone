@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import DemoButton from "../DemoButton";
@@ -34,6 +34,18 @@ const SignUpForm = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const errors = [];
+    if (!first_name.length) errors.push("Provide a first name.");
+    if (!last_name.length) errors.push("Provide a last name.");
+    if (!email.length) errors.push("Provide a valid email address.");
+    if (!job_title.length) errors.push("Provide a job title.");
+    if (!password.length) errors.push("Provide a password.");
+    if (!repeatPassword.length) errors.push("Confirm password.");
+    if (repeatPassword !== password) errors.push("Passwords must match.");
+    setErrors(errors);
+  }, [first_name, last_name, email, job_title, password]);
 
   const updateFirstName = (e) => {
     setFirstName(e.target.value);
