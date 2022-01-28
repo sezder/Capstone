@@ -40,6 +40,13 @@ const ShowMessages = () => {
       </li>
       <i className="fas fa-angle-right"></i>
       <li className="curr_on light_large">Messages</li>
+      <li>
+        <NavLink to={`/projects/${projectId}/messages/new`}>
+          <button className="circular_button">
+            <i className="fas fa-plus"></i>
+          </button>
+        </NavLink>
+      </li>
     </ul>
   );
 
@@ -48,10 +55,6 @@ const ShowMessages = () => {
       <NavBar navLinks={navLinks} />
       <main id="msgs_main">
         <section id="msgs_section">
-          <NavLink to={`/projects/${projectId}/messages/new`}>
-            <button>New Message</button>
-          </NavLink>
-
           {/* Display all of the messages */}
           {messagesArr.length > 0 ? (
             messagesArr.map((message, idx) => (

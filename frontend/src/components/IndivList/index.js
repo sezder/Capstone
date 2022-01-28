@@ -71,6 +71,24 @@ const IndivList = () => {
           ? `${currList?.title.slice(0, 15)}...`
           : currList?.title}
       </li>
+      <li>
+        {editList ? (
+          <button
+            onClick={() => setEditList(false)}
+            className="circular_button"
+          >
+            <i className="fas fa-times"></i>
+          </button>
+        ) : (
+          <button
+            title="Toggle edit message form"
+            onClick={() => setEditList(!editList)}
+            className={editList ? "hidden" : "circular_button"}
+          >
+            <i className="fas fa-ellipsis-h fa-lg"></i>
+          </button>
+        )}
+      </li>
     </ul>
   );
 
@@ -78,19 +96,7 @@ const IndivList = () => {
     <>
       <NavBar navLinks={navLinks} />
       <main>
-        <div className="proj_nav">
-          <NavLink to={`/projects/${projectId}`}>
-            <h2 className="light_large dynamic_underline">
-              {currProject?.name}
-            </h2>
-          </NavLink>
-
-          <i className="fas fa-caret-right fa-2x"></i>
-          <NavLink to={`/projects/${projectId}/lists`}>
-            <h2 className="light_large dynamic_underline">To-do Lists</h2>
-          </NavLink>
-        </div>
-
+       
         {editList ? (
           <EditList
             currList={currList}
@@ -103,13 +109,6 @@ const IndivList = () => {
           <>
             <div className="list_title_edit">
               <h1 className="light_large">{currList?.title}</h1>
-              <button
-                id=".only_icon_btn_btn"
-                onClick={() => setEditList(!editList)}
-                className={editList ? "hidden" : null}
-              >
-                <i className="fas fa-ellipsis-h fa-lg"></i>
-              </button>
             </div>
             <p>{currList?.description}</p>
           </>

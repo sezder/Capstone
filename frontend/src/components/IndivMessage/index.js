@@ -64,24 +64,22 @@ const IndivMessage = () => {
           : currMessage?.subject_line}
       </li>
       <li>
-        <li>
-          {currUserId === currMessage?.creator_id && editMessage ? (
-            <button
-              onClick={() => setEditMessage(false)}
-              className="circular_button"
-            >
-              <i className="fas fa-times"></i>
-            </button>
-          ) : (
-            <button
-              title="Toggle edit message form"
-              onClick={() => setEditMessage(!editMessage)}
-              className={editMessage ? "hidden" : "circular_button"}
-            >
-              <i className="fas fa-ellipsis-h fa-lg"></i>
-            </button>
-          )}
-        </li>
+        {currUserId === currMessage?.creator_id && editMessage ? (
+          <button
+            onClick={() => setEditMessage(false)}
+            className="circular_button"
+          >
+            <i className="fas fa-times"></i>
+          </button>
+        ) : (
+          <button
+            title="Toggle edit message form"
+            onClick={() => setEditMessage(!editMessage)}
+            className={editMessage ? "hidden" : "circular_button"}
+          >
+            <i className="fas fa-ellipsis-h fa-lg"></i>
+          </button>
+        )}
       </li>
     </ul>
   );
