@@ -14,10 +14,6 @@
   padding: 0 2%;
 }
 
-#ellipsis_btn.edit_project_btn {
-  background-color: rgba(16, 16, 16, 0);
-}
-
 .users_projects_div {
   display: flex;
   align-items: center;

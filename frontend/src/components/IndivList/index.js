@@ -104,7 +104,7 @@ const IndivList = () => {
             <div className="list_title_edit">
               <h1 className="light_large">{currList?.title}</h1>
               <button
-                id="ellipsis_btn"
+                id=".only_icon_btn_btn"
                 onClick={() => setEditList(!editList)}
                 className={editList ? "hidden" : null}
               >

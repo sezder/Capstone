@@ -63,6 +63,26 @@ const IndivMessage = () => {
           ? `${currMessage?.subject_line.slice(0, 15)}...`
           : currMessage?.subject_line}
       </li>
+      <li>
+        <li>
+          {currUserId === currMessage?.creator_id && editMessage ? (
+            <button
+              onClick={() => setEditMessage(false)}
+              className="circular_button"
+            >
+              <i className="fas fa-times"></i>
+            </button>
+          ) : (
+            <button
+              title="Toggle edit message form"
+              onClick={() => setEditMessage(!editMessage)}
+              className={editMessage ? "hidden" : "circular_button"}
+            >
+              <i className="fas fa-ellipsis-h fa-lg"></i>
+            </button>
+          )}
+        </li>
+      </li>
     </ul>
   );
 
@@ -82,17 +102,6 @@ const IndivMessage = () => {
           ) : (
             <div>
               <h1 className="dark_large">{currMessage?.subject_line}</h1>
-              {currUserId === currMessage?.creator_id && (
-                <button
-                  id="ellipsis_btn"
-                  onClick={() => setEditMessage(!editMessage)}
-                  className={editMessage ? "hidden" : null}
-                >
-                  <i className="fas fa-ellipsis-h fa-lg"></i>
-                </button>
-              )}
-
-              {/* Position absolutely to be in top corner of box */}
               <div className="msg_author_info">
                 <div className="user_circle"></div>
                 <h2>name</h2>
@@ -121,7 +130,7 @@ const IndivMessage = () => {
 
                 {currUserId === comment?.creator_id ? (
                   <button
-                    id="ellipsis_btn"
+                    id="#only_icon_btn"
                     onClick={() => setEditComment(comment?.id)}
                     className={editComment === comment?.id ? "hidden" : null}
                   >

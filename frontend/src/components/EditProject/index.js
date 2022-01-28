@@ -49,9 +49,7 @@ const EditProject = ({ setEditProject, projectId, currProject }) => {
 
   return (
     <>
-      <button onClick={() => setEditProject(false)}>
-        <i className="fas fa-times"></i>
-      </button>
+
       <form
         onSubmit={handleSubmit}
         className="msg_comment_form"

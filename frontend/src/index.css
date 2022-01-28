@@ -39,6 +39,18 @@ button:hover {
   /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); */
 }
 
+.only_icon_btn {
+  background-color: rgba(31, 31, 31, 0);
+  padding: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.circular_button {
+  padding: 5px 8px;
+  border-radius: 50px;
+}
+
 a,
 p,
 h1,
@@ -153,11 +165,6 @@ li {
 .light_medium.dynamic_underline:after,
 .light_large.dynamic_underline:after {
   background: #ffffff;
-}
-
-.circular_button {
-  padding: 5px 8px;
-  border-radius: 50px;
 }
 
 .hidden {

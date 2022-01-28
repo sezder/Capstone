@@ -59,6 +59,24 @@ const IndivProject = () => {
       </li>
       <i className="fas fa-angle-right"></i>
       <li className="light_large curr_on">{currProject?.name}</li>
+      <li>
+        {editProject ? (
+          <button
+            onClick={() => setEditProject(false)}
+            className="circular_button"
+          >
+            <i className="fas fa-times"></i>
+          </button>
+        ) : (
+          <button
+            title="Toggle new project form"
+            onClick={() => setEditProject(!editProject)}
+            className={editProject ? "hidden" : "circular_button"}
+          >
+            <i className="fas fa-ellipsis-h fa-lg"></i>
+          </button>
+        )}
+      </li>
     </ul>
   );
 
@@ -75,17 +93,6 @@ const IndivProject = () => {
           />
         ) : (
           <>
-            <div className="edit_ellipsis_div">
-              <h1 className="light_large">{currProject?.name}</h1>
-              <button
-                title="Toggle new project form"
-                id="ellipsis_btn"
-                onClick={() => setEditProject(!editProject)}
-                className={editProject ? "hidden" : "edit_project_btn"}
-              >
-                <i className="fas fa-ellipsis-h fa-lg"></i>
-              </button>
-            </div>
             <p>{currProject?.description}</p>
           </>
         )}

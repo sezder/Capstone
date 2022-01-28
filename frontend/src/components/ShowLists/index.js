@@ -51,6 +51,25 @@ const ShowLists = () => {
       </li>
       <i className="fas fa-angle-right"></i>
       <li className="curr_on light_large">To-do Lists</li>
+      <li>
+        {hidden ? (
+          <button
+            onClick={() => setHidden(!hidden)}
+            className={
+              !hidden ? "hidden" : "circular_button toggle_project_sidebar"
+            }
+          >
+            <i className="fas fa-plus"></i>
+          </button>
+        ) : (
+          <button
+            onClick={() => setHidden(!hidden)}
+            className={hidden ? "hidden" : "circular_button"}
+          >
+            <i className="fas fa-times"></i>
+          </button>
+        )}
+      </li>
     </ul>
   );
 
@@ -63,21 +82,6 @@ const ShowLists = () => {
         </div>
 
         <main>
-          <button
-            onClick={() => setHidden(!hidden)}
-            className={
-              !hidden ? "hidden" : "circular_button toggle_project_sidebar"
-            }
-          >
-            <i className="fas fa-plus"></i>
-          </button>
-
-          <NavLink to={`/projects/${projectId}`}>
-            <h1 className="light_large dynamic_underline">
-              {currProject?.name}
-            </h1>
-          </NavLink>
-
           {listsArr.length > 0 ? (
             <section className="cards">
               {listsArr.map((list, idx) => {
