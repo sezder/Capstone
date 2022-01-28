@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { getAllProjects } from "../../store/project";
-import NewProject from "../NewProject";
-import { getAllProjAssignments } from "../../store/projectAssignment";
+
 import { filterAssignments } from "../../helperFuncs";
-import "./ShowProjects.css";
+import { getAllProjAssignments } from "../../store/projectAssignment";
+import { getAllProjects } from "../../store/project";
 import { getAllUsers } from "../../store/user";
+
+import NewProject from "../NewProject";
 import NavBar from "../NavBar";
+import "./ShowProjects.css";
 
 const ShowProjects = () => {
   const dispatch = useDispatch();
-
   const projects = useSelector((state) => state.projects);
   const assignments = useSelector((state) => state.projectAssignments);
   const users = useSelector((state) => state.users);
@@ -23,6 +24,7 @@ const ShowProjects = () => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
+  // Nested navigation: projects
   const navLinks = (
     <ul className="nav">
       <li className="light_large curr_on">Projects</li>
@@ -30,9 +32,7 @@ const ShowProjects = () => {
         {hidden ? (
           <button
             onClick={() => setHidden(!hidden)}
-            className={
-              !hidden ? "hidden" : "circular_button toggle_project_sidebar"
-            }
+            className={!hidden ? "hidden" : "circular_button"}
           >
             <i className="fas fa-plus"></i>
           </button>
@@ -57,8 +57,6 @@ const ShowProjects = () => {
         </div>
 
         <main className="show_projects_main">
-          {/* Toggle the add project sidebar */}
-
           {/* Grid with responsive cards */}
           <section className="cards">
             {/* Map through all of the projects */}
@@ -70,6 +68,7 @@ const ShowProjects = () => {
               );
 
               return (
+                // Display information about the project on a clickable card
                 <NavLink
                   to={`/projects/${project?.id}`}
                   key={idx}

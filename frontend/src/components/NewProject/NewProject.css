@@ -23,22 +23,15 @@
 
 #new_project_card input,
 #new_project_card textarea {
-  width: 70%;
+  width: 80%;
 }
 
 #new_project_card textarea {
   margin-bottom: 10px;
 }
 
-#new_project_card button {
-  padding: 15px 20px;
-  border-radius: 50px;
-}
-
-
 @media only screen and (max-width: 1300px) {
   .new_project_form {
-    /* background-color: chartreuse; */
     min-width: 100vw;
     display: flex;
     justify-content: center;
@@ -57,27 +50,11 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  /* .new_project_form {
-    background-color: hotpink;
-  } */
-
   #new_project_card {
-    min-width: 75vw;
+    width: 90vw;
   }
 
   #new_project_card input,  #new_project_card textarea {
-    min-width: 65vw;
+    width: 80vw;
   }
 }
-
-/* @media only screen and (max-width: 700px) {
-  .new_project_form {
-    background-color: yellow;
-  }
-} */
-
-/* @media only screen and (max-width: 500px) {
-  .new_project_form {
-    background-color: blue;
-  }
-} */
