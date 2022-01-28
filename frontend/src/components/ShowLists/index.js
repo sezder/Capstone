@@ -8,6 +8,7 @@ import NewList from "../NewList";
 import PreviewTodos from "./PreviewTodos";
 import { getAllProjects } from "../../store/project";
 import completed_tasks from "../images/completed_tasks.svg";
+import NavBar from "../NavBar";
 import "./ShowLists.css";
 
 const ShowLists = () => {
@@ -31,57 +32,88 @@ const ShowLists = () => {
   useEffect(() => {
     dispatch(getLists(projectId));
   }, [dispatch, projectId]);
-  return (
-    <div className="projects_page_div">
-      <div>
-        <NewList hidden={hidden} setHidden={setHidden} />
-      </div>
 
-      <main>
-        <button
-          onClick={() => setHidden(!hidden)}
-          className={
-            !hidden ? "hidden" : "circular_button toggle_project_sidebar"
-          }
-        >
-          <i className="fas fa-plus"></i>
-        </button>
-
-        <NavLink to={`/projects/${projectId}`}>
-          <h1 className="light_large dynamic_underline">{currProject?.name}</h1>
+  const navLinks = (
+    <ul className="nav">
+      <li>
+        <NavLink to="/projects">
+          <i className="fas fa-home fa-lg"></i>
         </NavLink>
-
-        {listsArr.length > 0 ? (
-          <section className="cards">
-            {listsArr.map((list, idx) => {
-              return (
-                <NavLink
-                  to={`/projects/${projectId}/lists/${list?.id}`}
-                  key={idx}
-                  className="card"
-                >
-                  <div>
-                    <h1>{list?.title}</h1>
-                    <p>{list?.description}</p>
-
-                    <PreviewTodos list={list} />
-                  </div>
-                </NavLink>
-              );
-            })}
-          </section>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li>
+        <NavLink
+          to={`/projects/${currProject?.id}`}
+          className="light_large dynamic_underline"
+        >
+          {currProject?.name}
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li className="curr_on light_large">To-do Lists</li>
+      <li>
+        {hidden ? (
+          <button
+            onClick={() => setHidden(!hidden)}
+            className={
+              !hidden ? "hidden" : "circular_button toggle_project_sidebar"
+            }
+          >
+            <i className="fas fa-plus"></i>
+          </button>
         ) : (
-          <>
-            <h2 className="light_medium">Add the first list...</h2>
-            <img
-              src={completed_tasks}
-              id="completed_tasks"
-              alt="Graphic of two individuals completing tasks."
-            ></img>
-          </>
+          <button
+            onClick={() => setHidden(!hidden)}
+            className={hidden ? "hidden" : "circular_button"}
+          >
+            <i className="fas fa-times"></i>
+          </button>
         )}
-      </main>
-    </div>
+      </li>
+    </ul>
+  );
+
+  return (
+    <>
+      <NavBar navLinks={navLinks} />
+      <div className="projects_page_div">
+        <div>
+          <NewList hidden={hidden} setHidden={setHidden} />
+        </div>
+
+        <main>
+          {listsArr.length > 0 ? (
+            <section className="cards">
+              {listsArr.map((list, idx) => {
+                return (
+                  <NavLink
+                    to={`/projects/${projectId}/lists/${list?.id}`}
+                    key={idx}
+                    className="card"
+                  >
+                    <div>
+                      <h1>{list?.title}</h1>
+                      <p>{list?.description}</p>
+
+                      <PreviewTodos list={list} />
+                    </div>
+                  </NavLink>
+                );
+              })}
+            </section>
+          ) : (
+            <>
+              <h2 className="light_medium">Add the first list...</h2>
+              <img
+                src={completed_tasks}
+                id="completed_tasks"
+                alt="Graphic of two individuals completing tasks."
+              ></img>
+            </>
+          )}
+        </main>
+      </div>
+    </>
   );
 };
 

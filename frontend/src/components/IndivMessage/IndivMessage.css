@@ -58,13 +58,4 @@
   justify-content: space-between;
 }
 
-#ellipsis_btn {
-  background-color: #1f1f1f;
-  padding: 0;
-  box-shadow: none;
-  border: none;
-}
 
-/* #ellipsis_btn i {
-  box-shadow: 1px 1px 3px #000000, -1px -1px 3px #e1e1e1;
-} */

@@ -27,7 +27,7 @@ const Splash = () => {
             place, you're on top of things, progress is clear, and a sense of
             calm sets in.
           </p>
-          <NavLink to="/sign-up">
+          <NavLink to="/projects">
             <button>Give HQ a Try</button>
           </NavLink>
         </div>

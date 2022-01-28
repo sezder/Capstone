@@ -6,7 +6,7 @@ import DemoButton from "../DemoButton";
 import { formatName, formatInitials } from "../../helperFuncs";
 import "./NavBar.css";
 
-const NavBar = () => {
+const NavBar = ({ navLinks }) => {
   const user = useSelector((state) => state.session.user);
 
   let sessionLinks;
@@ -75,15 +75,11 @@ const NavBar = () => {
         </div>
       </NavLink>
 
-      {/* Navigation Links */}
-
-      <NavLink to={`/projects`} exact={true}>
-        Projects
-      </NavLink>
+      {navLinks}
 
       <div className="auth_links">
         <a href="https://github.com/sezder/The-Hub">
-          <i className="fab fa-github fa-2x"></i>
+          <i className="fab fa-github fa-lg"></i>
         </a>
         {/* Authentication */}
         {sessionLinks}

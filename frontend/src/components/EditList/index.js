@@ -48,56 +48,51 @@ const EditList = ({ currList, editList, setEditList, listId, projectId }) => {
   };
 
   return (
-    <>
-      <button onClick={() => setEditList(!editList)}>
-        <i className="fas fa-times"></i>
-      </button>
-      <form onSubmit={handleSubmit} className="edit_list_form">
-        {errors.length > 0 && (
-          <ul>
-            {errors.map((error) => {
-              return <li key={error}>{error}</li>;
-            })}
-          </ul>
-        )}
+    <form onSubmit={handleSubmit} className="edit_list_form">
+      {errors.length > 0 && (
+        <ul>
+          {errors.map((error) => {
+            return <li key={error}>{error}</li>;
+          })}
+        </ul>
+      )}
 
-        <label htmlFor="edit_list_title" className="hidden">
-          List Title
-        </label>
-        <input
-          id="edit_list_title"
-          placeholder="List Title"
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          spellCheck={true}
-        ></input>
+      <label htmlFor="edit_list_title" className="hidden">
+        List Title
+      </label>
+      <input
+        id="edit_list_title"
+        placeholder="List Title"
+        type="text"
+        name="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        spellCheck={true}
+      ></input>
 
-        <label htmlFor="edit_list_descrip" className="hidden">
-          List Description (optional)
-        </label>
-        <textarea
-          id="edit_list_descrip"
-          placeholder="Description (optional)"
-          type="text"
-          name="description"
-          value={description}
-          spellCheck={true}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
+      <label htmlFor="edit_list_descrip" className="hidden">
+        List Description (optional)
+      </label>
+      <textarea
+        id="edit_list_descrip"
+        placeholder="Description (optional)"
+        type="text"
+        name="description"
+        value={description}
+        spellCheck={true}
+        onChange={(e) => setDescription(e.target.value)}
+      ></textarea>
 
-        <div className="button_div">
-          <button type="submit" disabled={errors.length > 0}>
-            <i className="fas fa-check"></i>
-          </button>
+      <div className="button_div">
+        <button type="submit" disabled={errors.length > 0}>
+          <i className="fas fa-check"></i>
+        </button>
 
-          <button onClick={handleDelete}>
-            <i className="far fa-trash-alt"></i>
-          </button>
-        </div>
-      </form>
-    </>
+        <button onClick={handleDelete}>
+          <i className="far fa-trash-alt"></i>
+        </button>
+      </div>
+    </form>
   );
 };
 

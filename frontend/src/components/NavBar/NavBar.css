@@ -12,6 +12,7 @@ nav {
 
 .logo_container {
   position: relative;
+  /* background-color: lavender; */
 }
 
 .border {
@@ -36,6 +37,7 @@ nav {
 }
 
 .auth_links {
+  /* background-color: indianred; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,4 +67,30 @@ nav {
   margin: 0 10px 0 0;
   height: 32px;
   width: 32px;
+}
+
+/* Dynamically changing navlinks to reflect nesting nature of website */
+ul.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* background-color: hotpink; */
+  min-width: fit-content;
+}
+
+ul.nav li {
+  list-style: none;
+  margin: 0 10px;
+}
+
+.curr_on {
+  text-decoration: 2px underline solid #ffffff;
+  text-underline-position: under;
+}
+/* Signup and Login page with only home button */
+#only_home_a {
+  position: absolute;
+  right: 36vw;
+  top: 25px;
 }
