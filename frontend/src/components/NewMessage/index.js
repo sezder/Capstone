@@ -46,9 +46,39 @@ const NewMessage = () => {
     }
   };
 
+  const navLinks = (
+    <ul className="nav">
+      <li>
+        <NavLink to="/projects">
+          <i className="fas fa-home fa-lg"></i>
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li>
+        <NavLink
+          to={`/projects/${currProject?.id}`}
+          className="light_large dynamic_underline"
+        >
+          {currProject?.name}
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li>
+        <NavLink
+          to={`/projects/${currProject?.id}/messages`}
+          className="dynamic_underline light_large"
+        >
+          Messages
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li className="curr_on light_large">New</li>
+    </ul>
+  );
+
   return (
     <>
-      <NavBar />
+      <NavBar navLinks={navLinks} />
       <main id="new_msg_main">
         <div className="proj_nav" id="proj_nav_new_msg">
           <NavLink to={`/projects/${projectId}`}>
