@@ -161,6 +161,7 @@ textarea {
   display: none;
 }
 
+/* Profile photo circle */
 .user_circle {
   background-color: #57cc99;
   height: 40px;
@@ -170,6 +171,14 @@ textarea {
   box-shadow: 3px 3px 4px #000000, -1px -1px 3px rgb(225 225 225 / 20%);
 }
 
+.user_circle img {
+  background-repeat: no-repeat;
+  object-position: center;
+  object-fit: scale-down;
+  width: 100%;
+  height: 40px;
+}
+
 .initials_circle {
   display: flex;
   justify-content: center;
@@ -177,7 +186,6 @@ textarea {
 }
 
 /* Checkbox styling */
-
 .checkbox {
   position: relative;
   appearance: none;
