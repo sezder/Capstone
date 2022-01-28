@@ -39,3 +39,19 @@
     width: 45vw;
   }
 }
+
+@media only screen and (max-width: 550px) {
+  section.splash_img_sec,
+  #login_img,
+  #signup_img {
+    display: none;
+  }
+
+  .auth_form {
+    width: 90vw;
+  }
+
+  .auth_form input {
+    width: 60vw;
+  }
+}
