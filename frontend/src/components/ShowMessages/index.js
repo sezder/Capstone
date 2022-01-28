@@ -22,9 +22,30 @@ const ShowMessages = () => {
     dispatch(getAllProjects());
   }, [dispatch, projectId]);
 
+  const navLinks = (
+    <ul className="nav">
+      <li>
+        <NavLink to="/projects">
+          <i className="fas fa-home fa-lg"></i>
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li>
+        <NavLink
+          to={`/projects/${currProject?.id}`}
+          className="light_large dynamic_underline"
+        >
+          {currProject?.name}
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li className="curr_on light_large">Messages</li>
+    </ul>
+  );
+
   return (
     <>
-      <NavBar />
+      <NavBar navLinks={navLinks} />
       <main id="msgs_main">
         <section id="msgs_section">
           {/* Header with project tile and button for new message */}
