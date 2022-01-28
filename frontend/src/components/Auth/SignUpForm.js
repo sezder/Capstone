@@ -45,7 +45,7 @@ const SignUpForm = () => {
     if (!repeatPassword.length) errors.push("Confirm password.");
     if (repeatPassword !== password) errors.push("Passwords must match.");
     setErrors(errors);
-  }, [first_name, last_name, email, job_title, password]);
+  }, [first_name, last_name, email, job_title, password, repeatPassword]);
 
   const updateFirstName = (e) => {
     setFirstName(e.target.value);
