@@ -14,14 +14,21 @@ const NavBar = () => {
     sessionLinks = (
       <>
         <div className="user_info_container">
-          <div className="auth_user_icon">
+          <div className={user?.icon_url ? null : "auth_user_icon"}>
             {/* If they don't have an icon, display their first and last initials */}
             {user?.icon_url
               ? null
               : formatInitials(user?.first_name, user?.last_name)}
 
             {/* Otherwise display the icon */}
-            {user?.icon_url && <img src={user?.icon_url} alt="user icon"></img>}
+            {user?.icon_url && (
+              <img
+                src={user?.icon_url}
+                className="user_circle"
+                id="nav_user_icon"
+                alt={`profile photo for ${user?.first_name} ${user.last_name}`}
+              ></img>
+            )}
           </div>
           <h2>{formatName(user?.first_name, user?.last_name)}</h2>
         </div>

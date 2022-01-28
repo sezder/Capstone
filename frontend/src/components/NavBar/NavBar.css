@@ -60,3 +60,9 @@ nav {
   padding: 6px;
   margin-right: 1vw;
 }
+
+#nav_user_icon {
+  margin: 0 10px 0 0;
+  height: 32px;
+  width: 32px;
+}

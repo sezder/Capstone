@@ -13,6 +13,7 @@ const NewProject = ({ hidden, setHidden }) => {
   useEffect(() => {
     const errors = [];
     if (!name?.length) errors.push("Provide a project name.");
+    if (name.length > 50) errors.push("Project name must not be longer than 50 characters.")
     setErrors(errors);
   }, [name]);
 
