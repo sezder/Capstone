@@ -80,22 +80,6 @@ const NewMessage = () => {
     <>
       <NavBar navLinks={navLinks} />
       <main id="new_msg_main">
-        <div className="proj_nav" id="proj_nav_new_msg">
-          <NavLink to={`/projects/${projectId}`}>
-            <h2 className="light_large dynamic_underline">
-              {currProject?.name}
-            </h2>
-          </NavLink>
-
-          <i className="fas fa-caret-right fa-2x"></i>
-          <NavLink to={`/projects/${projectId}/messages`}>
-            <h2 className="light_large dynamic_underline">Message Board</h2>
-          </NavLink>
-
-          <i className="fas fa-caret-right fa-2x"></i>
-          <h2 className="light_large">Share your thoughts</h2>
-        </div>
-
         <form onSubmit={handleSubmit}>
           {/* Errors  */}
           {errors.length > 0 && (

@@ -23,16 +23,11 @@ const ShowProjects = () => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  return (
-    <>
-      <NavBar />
-      <div className="projects_page_div">
-        <div>
-          <NewProject hidden={hidden} setHidden={setHidden} />
-        </div>
-
-        <main className="show_projects_main">
-          {/* Toggle the add project sidebar */}
+  const navLinks = (
+    <ul className="nav">
+      <li className="light_large curr_on">Projects</li>
+      <li>
+        {hidden ? (
           <button
             onClick={() => setHidden(!hidden)}
             className={
@@ -41,6 +36,28 @@ const ShowProjects = () => {
           >
             <i className="fas fa-plus"></i>
           </button>
+        ) : (
+          <button
+            onClick={() => setHidden(!hidden)}
+            className={hidden ? "hidden" : "circular_button"}
+          >
+            <i className="fas fa-times"></i>
+          </button>
+        )}
+      </li>
+    </ul>
+  );
+
+  return (
+    <>
+      <NavBar navLinks={navLinks} />
+      <div className="projects_page_div">
+        <div>
+          <NewProject hidden={hidden} setHidden={setHidden} />
+        </div>
+
+        <main className="show_projects_main">
+          {/* Toggle the add project sidebar */}
 
           {/* Grid with responsive cards */}
           <section className="cards">

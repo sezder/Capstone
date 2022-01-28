@@ -48,12 +48,6 @@ const ShowMessages = () => {
       <NavBar navLinks={navLinks} />
       <main id="msgs_main">
         <section id="msgs_section">
-          {/* Header with project tile and button for new message */}
-          <NavLink to={`/projects/${projectId}`}>
-            <h1 className="light_large dynamic_underline">
-              {currProject?.name}
-            </h1>
-          </NavLink>
           <NavLink to={`/projects/${projectId}/messages/new`}>
             <button>New Message</button>
           </NavLink>

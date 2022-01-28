@@ -70,19 +70,6 @@ const IndivMessage = () => {
     <>
       <NavBar navLinks={navLinks} />
       <main id="indiv_msg_main">
-        <div className="proj_nav">
-          <NavLink to={`/projects/${projectId}`}>
-            <h2 className="light_large dynamic_underline">
-              {currProject?.name}
-            </h2>
-          </NavLink>
-
-          <i className="fas fa-caret-right fa-2x"></i>
-          <NavLink to={`/projects/${projectId}/messages`}>
-            <h2 className="light_large dynamic_underline">Message Board</h2>
-          </NavLink>
-        </div>
-
         {/* Message content or form to edit message */}
         <section>
           {editMessage ? (
