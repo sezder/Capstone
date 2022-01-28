@@ -8,6 +8,7 @@ import {
   deleteAssignment,
 } from "../../store/projectAssignment";
 import { getAllUsers } from "../../store/user";
+import NavBar from "../NavBar";
 
 const ProjectAssignments = () => {
   const dispatch = useDispatch();
@@ -64,17 +65,20 @@ const ProjectAssignments = () => {
   };
 
   return (
-    <main id="proj_assignment_main">
-      <Search projectId={projectId} />
-      {assignedUsersArr.length > 0 ? (
-        <ul className="display_users">
-          <h2 className="light_large">Currently Assigned</h2>
-          {mappedAssignments}
-        </ul>
-      ) : (
-        <p>Add the first user to this project...</p>
-      )}
-    </main>
+    <>
+      <NavBar />
+      <main id="proj_assignment_main">
+        <Search projectId={projectId} />
+        {assignedUsersArr.length > 0 ? (
+          <ul className="display_users">
+            <h2 className="light_large">Currently Assigned</h2>
+            {mappedAssignments}
+          </ul>
+        ) : (
+          <p>Add the first user to this project...</p>
+        )}
+      </main>
+    </>
   );
 };
 

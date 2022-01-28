@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 // Auth
@@ -9,8 +9,8 @@ import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import { authenticate } from "./store/session";
 
 // Users
-import UsersList from "./components/UsersList";
-import User from "./components/User";
+// import UsersList from "./components/UsersList";
+// import User from "./components/User";
 
 // Misc
 import NavBar from "./components/NavBar";
@@ -18,7 +18,6 @@ import Footer from "./components/Footer";
 import Splash from "./components/Splash";
 
 // Create
-import NewTodo from "./components/NewTodo";
 import NewMessage from "./components/NewMessage";
 
 // Read
@@ -29,11 +28,9 @@ import IndivProject from "./components/IndivProject";
 import IndivMessage from "./components/IndivMessage";
 
 //Update
-import EditTodo from "./components/EditTodo";
-import EditList from "./components/EditList";
 import IndivList from "./components/IndivList";
-import Search from "./components/Search";
 import ProjectAssignments from "./components/ProjectAssignments";
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -49,40 +46,28 @@ function App() {
     return null;
   }
 
+  const navLinks = (
+    <ul className="nav">
+      <li>
+        <NavLink to="/projects" id="only_home_a">
+          <i className="fas fa-home fa-lg"></i>
+        </NavLink>
+      </li>
+    </ul>
+  );
+
   return (
     <BrowserRouter>
-      <NavBar />
-
       <Switch>
-        {/* Search Testing */}
-        <ProtectedRoute path="/test">
-          <Search />
-        </ProtectedRoute>
         {/* Auth routes */}
         <Route path="/login" exact={true}>
+          <NavBar navLinks={navLinks} />
           <LoginForm />
         </Route>
         <Route path="/sign-up" exact={true}>
+          <NavBar navLinks={navLinks} />
           <SignUpForm />
         </Route>
-
-        {/* Todos */}
-        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/new">
-          <NewTodo />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/projects/:projectId/lists/:listId/todos/:todoId">
-          <EditTodo />
-        </ProtectedRoute>
-
-        {/* Lists */}
-
-        <ProtectedRoute
-          path="/projects/:projectId/lists/:listId/edit"
-          exact={true}
-        >
-          <EditList />
-        </ProtectedRoute>
 
         <ProtectedRoute path="/projects/:projectId/lists" exact={true}>
           <ShowLists />
@@ -120,14 +105,19 @@ function App() {
         </ProtectedRoute>
 
         {/* Users */}
-        <ProtectedRoute path="/users" exact={true}>
+        {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
+        </ProtectedRoute> */}
+        {/* <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <Route path="/" exact={true}>
+          <NavBar navLinks={navLinks} />
           <Splash />
+        </Route>
+
+        <Route path="/">
+          <></>
         </Route>
       </Switch>
 

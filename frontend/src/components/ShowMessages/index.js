@@ -6,6 +6,7 @@ import { getAllProjects } from "../../store/project";
 import "./ShowMessages.css";
 import new_message from "../images/new_message.svg";
 import OneMessage from "./OneMessage";
+import NavBar from "../NavBar";
 
 const ShowMessages = () => {
   let { projectId } = useParams();
@@ -22,33 +23,38 @@ const ShowMessages = () => {
   }, [dispatch, projectId]);
 
   return (
-    <main id="msgs_main">
-      <section id="msgs_section">
-        {/* Header with project tile and button for new message */}
-        <NavLink to={`/projects/${projectId}`}>
-          <h1 className="light_large dynamic_underline">{currProject?.name}</h1>
-        </NavLink>
-        <NavLink to={`/projects/${projectId}/messages/new`}>
-          <button>New Message</button>
-        </NavLink>
+    <>
+      <NavBar />
+      <main id="msgs_main">
+        <section id="msgs_section">
+          {/* Header with project tile and button for new message */}
+          <NavLink to={`/projects/${projectId}`}>
+            <h1 className="light_large dynamic_underline">
+              {currProject?.name}
+            </h1>
+          </NavLink>
+          <NavLink to={`/projects/${projectId}/messages/new`}>
+            <button>New Message</button>
+          </NavLink>
 
-        {/* Display all of the messages */}
-        {messagesArr.length > 0 ? (
-          messagesArr.map((message, idx) => (
-            <OneMessage message={message} key={idx} projectId={projectId} />
-          ))
-        ) : (
-          <>
-            <h2>Be the first to send a message...</h2>
-            <img
-              src={new_message}
-              id="new_message"
-              alt="Graphic of a woman standing by two large mail envelopes."
-            ></img>
-          </>
-        )}
-      </section>
-    </main>
+          {/* Display all of the messages */}
+          {messagesArr.length > 0 ? (
+            messagesArr.map((message, idx) => (
+              <OneMessage message={message} key={idx} projectId={projectId} />
+            ))
+          ) : (
+            <>
+              <h2>Be the first to send a message...</h2>
+              <img
+                src={new_message}
+                id="new_message"
+                alt="Graphic of a woman standing by two large mail envelopes."
+              ></img>
+            </>
+          )}
+        </section>
+      </main>
+    </>
   );
 };
 
