@@ -3,8 +3,8 @@ import { useParams, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createMessage } from "../../store/message";
 import { getAllProjects } from "../../store/project";
-import "./NewMessage.css";
 import NavBar from "../NavBar";
+import "./NewMessage.css";
 
 const NewMessage = () => {
   let { projectId } = useParams();
@@ -46,6 +46,7 @@ const NewMessage = () => {
     }
   };
 
+  // Nested navlinks: Home > Proj Name > Messages > New
   const navLinks = (
     <ul className="nav">
       <li>
@@ -117,7 +118,11 @@ const NewMessage = () => {
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
 
-          <button type="submit" disabled={errors.length > 0}>
+          <button
+            type="submit"
+            disabled={errors.length > 0}
+            className="circular_button"
+          >
             <i className="fas fa-plus"></i>
           </button>
         </form>
