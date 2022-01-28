@@ -32,9 +32,31 @@ const ShowLists = () => {
   useEffect(() => {
     dispatch(getLists(projectId));
   }, [dispatch, projectId]);
+
+  const navLinks = (
+    <ul className="nav">
+      <li>
+        <NavLink to="/projects">
+          <i className="fas fa-home fa-lg"></i>
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li>
+        <NavLink
+          to={`/projects/${currProject?.id}`}
+          className="light_large dynamic_underline"
+        >
+          {currProject?.name}
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li className="curr_on light_large">To-do Lists</li>
+    </ul>
+  );
+
   return (
     <>
-      <NavBar />
+      <NavBar navLinks={navLinks} />
       <div className="projects_page_div">
         <div>
           <NewList hidden={hidden} setHidden={setHidden} />
