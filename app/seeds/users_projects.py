@@ -13,6 +13,17 @@ seeded_users_projects = [
 
   User_Project(user_id=8, project_id=3),
   User_Project(user_id=7, project_id=3),
+
+  User_Project(user_id=3, project_id=4),
+  User_Project(user_id=7, project_id=4),
+  User_Project(user_id=8, project_id=4),
+
+  User_Project(user_id=10, project_id=5),
+  User_Project(user_id=11, project_id=5),
+
+  User_Project(user_id=1, project_id=6),
+  User_Project(user_id=4, project_id=6),
+  
 # User_Project(user_id=, project_id=),
 ]
 
