@@ -40,9 +40,43 @@ const IndivList = () => {
     />
   ));
 
+  const navLinks = (
+    <ul className="nav">
+      <li>
+        <NavLink to="/projects">
+          <i className="fas fa-home fa-lg"></i>
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li>
+        <NavLink
+          to={`/projects/${currProject?.id}`}
+          className="light_large dynamic_underline"
+        >
+          {currProject?.name}
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li>
+        <NavLink
+          to={`/projects/${currProject?.id}/lists`}
+          className="dynamic_underline light_large"
+        >
+          To-do Lists
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li className="curr_on light_large">
+        {currList?.title.length > 15
+          ? `${currList?.title.slice(0, 15)}...`
+          : currList?.title}
+      </li>
+    </ul>
+  );
+
   return (
     <>
-      <NavBar />
+      <NavBar navLinks={navLinks} />
       <main>
         <div className="proj_nav">
           <NavLink to={`/projects/${projectId}`}>
