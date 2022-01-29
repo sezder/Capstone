@@ -1,11 +1,23 @@
+#edit_proj_form {
+  flex-direction: row;
+  justify-content: center;
+  width: 50vw;
+}
+
+#edit_proj_form .input_div input, #edit_proj_form .input_div textarea {
+  width: 45vw;
+}
+
 @media only screen and (min-width: 1001px) {
-  #edit_proj_form input, #edit_proj_form textarea {
+  #edit_proj_form input,
+  #edit_proj_form textarea {
     width: 60vw;
   }
 }
 
 @media only screen and (max-width: 1000px) {
-  #edit_proj_form input, #edit_proj_form textarea {
+  #edit_proj_form input,
+  #edit_proj_form textarea {
     width: 80vw;
   }
 }

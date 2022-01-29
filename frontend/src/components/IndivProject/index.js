@@ -50,6 +50,7 @@ const IndivProject = () => {
     <PreviewLists key={list?.id} list={list} />
   ));
 
+  // Nested navigation: home > project name
   const navLinks = (
     <ul className="nav">
       <li>
@@ -84,50 +85,52 @@ const IndivProject = () => {
     <>
       <NavBar navLinks={navLinks} />
       <main className="indiv_project_page">
-        {editProject ? (
-          <EditProject
-            editProject={editProject}
-            setEditProject={setEditProject}
-            projectId={projectId}
-            currProject={currProject}
-          />
-        ) : (
-          <>
-            <p>{currProject?.description}</p>
-          </>
-        )}
+        <div className="banner_div">
+          {editProject ? (
+            <EditProject
+              editProject={editProject}
+              setEditProject={setEditProject}
+              projectId={projectId}
+              currProject={currProject}
+            />
+          ) : (
+            <>
+              <p>{currProject?.description}</p>
+            </>
+          )}
 
-        {/* Membership */}
-        <div className="users_projects_div">
-          <div className="users_projects">
-            {assignmentsArr.length > 0 ? (
-              assignmentsArr.map(({ user_id: userId }, idx) => {
-                const assignedUser = users[userId];
-                return (
-                  <span key={idx}>
-                    {assignedUser?.icon_url ? (
-                      <img
-                        className="user_circle"
-                        src={assignedUser?.icon_url}
-                        alt="User profile icon"
-                      />
-                    ) : (
-                      <div className="user_circle initials_circle">
-                        {`${assignedUser?.first_name[0]} 
+          {/* Membership */}
+          <div className="users_projects_div">
+            <div className="users_projects">
+              {assignmentsArr.length > 0 ? (
+                assignmentsArr.map(({ user_id: userId }, idx) => {
+                  const assignedUser = users[userId];
+                  return (
+                    <span key={idx}>
+                      {assignedUser?.icon_url ? (
+                        <img
+                          className="user_circle"
+                          src={assignedUser?.icon_url}
+                          alt="User profile icon"
+                        />
+                      ) : (
+                        <div className="user_circle initials_circle">
+                          {`${assignedUser?.first_name[0]} 
                               ${assignedUser?.last_name[0]}`}
-                      </div>
-                    )}
-                  </span>
-                );
-              })
-            ) : (
-              <></>
-            )}
-          </div>
+                        </div>
+                      )}
+                    </span>
+                  );
+                })
+              ) : (
+                <></>
+              )}
+            </div>
 
-          <NavLink to={`/projects/${projectId}/people`}>
-            <button>Add People</button>
-          </NavLink>
+            <NavLink to={`/projects/${projectId}/people`}>
+              <button>Add People</button>
+            </NavLink>
+          </div>
         </div>
 
         {/* Preview recent messages */}

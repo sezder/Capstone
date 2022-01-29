@@ -48,23 +48,22 @@ const EditProject = ({ setEditProject, projectId, currProject }) => {
   };
 
   return (
-    <>
+    <form
+      onSubmit={handleSubmit}
+      className="msg_comment_form"
+      id="edit_proj_form"
+    >
+      <div>
+        {errors.length > 0 && (
+          <ul>
+            {errors.map((error) => {
+              return <li key={error}>{error}</li>;
+            })}
+          </ul>
+        )}
+      </div>
 
-      <form
-        onSubmit={handleSubmit}
-        className="msg_comment_form"
-        id="edit_proj_form"
-      >
-        <div>
-          {errors.length > 0 && (
-            <ul>
-              {errors.map((error) => {
-                return <li key={error}>{error}</li>;
-              })}
-            </ul>
-          )}
-        </div>
-
+      <div className="input_div">
         <label htmlFor="new_proj_name" className="hidden">
           Project Name
         </label>
@@ -89,20 +88,20 @@ const EditProject = ({ setEditProject, projectId, currProject }) => {
           value={description}
           spellCheck={true}
           onChange={(e) => setDescription(e.target.value)}
-          rows="4"
+          rows="3"
         ></textarea>
+      </div>
 
-        <div className="button_div">
-          <button type="submit" disabled={errors.length > 0}>
-            <i className="fas fa-check"></i>
-          </button>
+      <div className="button_div">
+        <button type="submit" disabled={errors.length > 0} className="circular_button">
+          <i className="fas fa-check"></i>
+        </button>
 
-          <button onClick={handleDelete}>
-            <i className="far fa-trash-alt"></i>
-          </button>
-        </div>
-      </form>
-    </>
+        <button onClick={handleDelete} className="circular_button">
+          <i className="far fa-trash-alt"></i>
+        </button>
+      </div>
+    </form>
   );
 };
 
