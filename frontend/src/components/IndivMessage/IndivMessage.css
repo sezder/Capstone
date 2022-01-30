@@ -21,20 +21,11 @@
   margin-bottom: 1vh;
 }
 
-.msg_user_header {
-  display: flex;
-  justify-content: space-between;
-}
 
-.msg_author_info {
+.mgs_user_info {
   display: flex;
   align-items: center;
   align-self: center;
-}
-
-.msg_author_info .user_circle {
-  width: 30px;
-  height: 30px;
 }
 
 #indiv_msg_main section p,
@@ -57,5 +48,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-

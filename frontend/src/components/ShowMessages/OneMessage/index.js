@@ -41,7 +41,6 @@ const OneMessage = ({ message, projectId, msgUser }) => {
       <div className="msg_content_preview">
         <h2>{message?.subject_line}</h2>
 
-        {/* INSERT USER INFO */}
         <p id="msg_preview_name">{`${msgUser?.first_name} ${msgUser?.last_name}`}</p>
 
         {/* If the message is lengthy, truncate it */}

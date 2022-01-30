@@ -4,6 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { getComments } from "../../store/comment";
 import { getMessages } from "../../store/message";
 import { getAllProjects } from "../../store/project";
+import { getAllUsers } from "../../store/user";
 import EditMessage from "../EditMessage";
 import EditComment from "../EditComment";
 import NewComment from "../NewComment";
@@ -19,6 +20,8 @@ const IndivMessage = () => {
 
   const currMessage = useSelector((state) => state.messages?.[messageId]);
   const creatorId = currMessage?.creator_id;
+  const users = useSelector((state) => state.users);
+  const msgUser = useSelector((state) => state.users[creatorId]);
   const comments = useSelector((state) => state.comments);
   const currProject = useSelector((state) => state.projects[projectId]);
   const currUserId = useSelector((state) => state.session.user.id);
@@ -30,6 +33,7 @@ const IndivMessage = () => {
     dispatch(getMessages(projectId));
     dispatch(getComments(messageId));
     dispatch(getAllProjects());
+    dispatch(getAllUsers());
   }, [dispatch, messageId, projectId]);
 
   const navLinks = (
@@ -100,37 +104,55 @@ const IndivMessage = () => {
           ) : (
             <div>
               <h1 className="dark_large">{currMessage?.subject_line}</h1>
-              <div className="msg_author_info">
-                <div className="user_circle"></div>
-                <h2>name</h2>
+              <div className="mgs_user_info">
+                {msgUser?.icon_url ? (
+                  <img
+                    className="user_circle"
+                    src={msgUser?.icon_url}
+                    alt="User profile icon"
+                  />
+                ) : (
+                  <div className="user_circle initials_circle">
+                    {`${msgUser?.first_name[0]} 
+                        ${msgUser?.last_name[0]}`}
+                  </div>
+                )}
+                <p id="msg_preview_name">{`${msgUser?.first_name} ${msgUser?.last_name}`}</p>
               </div>
               <p>{currMessage?.content}</p>
             </div>
           )}
         </section>
 
-        <section className="comment_section">
-          <NewComment messageId={messageId} creatorId={creatorId} />
-        </section>
-
-        {/* Conditionally render add button */}
-
         {/* Comments */}
         {Object.values(comments).map((comment, idx) => {
+          const commUser = users[comment?.creator_id];
+          console.log(commUser);
           return (
             <section className="comment_section" key={idx}>
               <div className="comment_user_header">
                 {/* Name and icon  */}
                 <div>
-                  <div className="user_circle"></div>
-                  <p>name</p>
+                  {commUser?.icon_url ? (
+                    <img
+                      className="user_circle"
+                      src={commUser?.icon_url}
+                      alt="User profile icon"
+                    />
+                  ) : (
+                    <div className="user_circle initials_circle">
+                      {`${commUser?.first_name[0]} 
+                        ${commUser?.last_name[0]}`}
+                    </div>
+                  )}
+
+                  <p id="msg_preview_name">{`${commUser?.first_name} ${commUser?.last_name}`}</p>
                 </div>
 
                 {currUserId === comment?.creator_id ? (
                   <button
-                    id="#only_icon_btn"
                     onClick={() => setEditComment(comment?.id)}
-                    className={editComment === comment?.id ? "hidden" : null}
+                    className={editComment === comment?.id ? "hidden" : "only_icon_btn"}
                   >
                     <i className="fas fa-ellipsis-h fa-lg"></i>
                   </button>
@@ -155,6 +177,10 @@ const IndivMessage = () => {
             </section>
           );
         })}
+
+        <section className="comment_section">
+          <NewComment messageId={messageId} creatorId={creatorId} />
+        </section>
       </main>
     </>
   );
