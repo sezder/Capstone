@@ -127,7 +127,6 @@ const IndivMessage = () => {
         {/* Comments */}
         {Object.values(comments).map((comment, idx) => {
           const commUser = users[comment?.creator_id];
-          console.log(commUser);
           return (
             <section className="comment_section" key={idx}>
               <div className="comment_user_header">
