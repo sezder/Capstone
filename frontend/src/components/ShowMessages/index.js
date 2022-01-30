@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getMessages } from "../../store/message";
 import { getAllProjects } from "../../store/project";
+import { getAllUsers } from "../../store/user";
 import "./ShowMessages.css";
 import new_message from "../images/new_message.svg";
 import OneMessage from "./OneMessage";
@@ -16,10 +17,12 @@ const ShowMessages = () => {
   const messages = useSelector((state) => state.messages);
   const currProject = useSelector((state) => state.projects[projectId]);
   const messagesArr = Object.values(messages);
+  const users = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(getMessages(projectId));
     dispatch(getAllProjects());
+    dispatch(getAllUsers());
   }, [dispatch, projectId]);
 
   const navLinks = (
@@ -57,9 +60,18 @@ const ShowMessages = () => {
         <section id="msgs_section">
           {/* Display all of the messages */}
           {messagesArr.length > 0 ? (
-            messagesArr.map((message, idx) => (
-              <OneMessage message={message} key={idx} projectId={projectId} />
-            ))
+            messagesArr.map((message, idx) => {
+              const userId = message?.creator_id;
+              const msgUser = users[userId];
+              return (
+                <OneMessage
+                  message={message}
+                  key={idx}
+                  projectId={projectId}
+                  msgUser={msgUser}
+                />
+              );
+            })
           ) : (
             <>
               <h2>Be the first to send a message...</h2>

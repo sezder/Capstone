@@ -5,7 +5,7 @@ import { getAllComments } from "../../../store/comment";
 
 import "./OneMessage.css";
 
-const OneMessage = ({ message, projectId }) => {
+const OneMessage = ({ message, projectId, msgUser }) => {
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comments);
   const commentNum = Object.values(comments).filter(
@@ -23,7 +23,18 @@ const OneMessage = ({ message, projectId }) => {
     >
       {/* User icon showing author */}
       <div id="msg_author_div">
-        <div className="user_circle"></div>
+        {msgUser?.icon_url ? (
+          <img
+            className="user_circle"
+            src={msgUser?.icon_url}
+            alt="User profile icon"
+          />
+        ) : (
+          <div className="user_circle initials_circle">
+            {`${msgUser?.first_name[0]} 
+                              ${msgUser?.last_name[0]}`}
+          </div>
+        )}
       </div>
 
       {/* Main content of message */}
@@ -31,7 +42,7 @@ const OneMessage = ({ message, projectId }) => {
         <h2>{message?.subject_line}</h2>
 
         {/* INSERT USER INFO */}
-        <p id="msg_preview_name">name</p>
+        <p id="msg_preview_name">{`${msgUser?.first_name} ${msgUser?.last_name}`}</p>
 
         {/* If the message is lengthy, truncate it */}
         {message?.content.length > 180 ? (
