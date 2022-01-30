@@ -2,7 +2,8 @@
   background-color: #1f1f1f;
   margin: 3px;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 4px #000000, -1px -1px 3px rgb(225 225 225 / 20%);
 }
 
 .list_title_edit {
@@ -13,7 +14,7 @@
 
 #new_todo {
   margin-top: 3px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 #new_todo #gray_plus {

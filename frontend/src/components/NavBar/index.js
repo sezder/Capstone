@@ -26,7 +26,7 @@ const NavBar = ({ navLinks }) => {
                 src={user?.icon_url}
                 className="user_circle"
                 id="nav_user_icon"
-                alt={`profile photo for ${user?.first_name} ${user.last_name}`}
+                alt={`Profile icon for ${user?.first_name} ${user.last_name}`}
               ></img>
             )}
           </div>
