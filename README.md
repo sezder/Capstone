@@ -7,12 +7,6 @@ Because the project is highly team-oriented and geared toward collaboraion, team
 
 This project has been a testament to the fact that I am a quick and accurate developer. Only two full-CRUD features were required to pass given a two-week sprint, and I was able to complete that within a few days. In about half of the time allotted, I was able to achieve not only my minimally viable product, but most of my stretch goals as well. I was able to knock out so many features that the rubric didn't accomodate grading all of it.
 
-TODO: Challenges I faced: 
-- accessibility concerns 
-- conditionally rendering forms in palce of content
-- nesting doll navigation
-- information-heavy-based design: prev. relied on photos to liven it up, looked very empty for brand new project
-
 
 ## Features
 - Create an account, sign in, or log in as a demo user
