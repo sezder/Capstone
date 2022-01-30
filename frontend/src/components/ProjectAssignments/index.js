@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import "./ProjectAssignments.css";
 import Search from "../Search";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProjAssignments,
   deleteAssignment,
 } from "../../store/projectAssignment";
+import { getAllProjects } from "../../store/project";
 import { getAllUsers } from "../../store/user";
 import NavBar from "../NavBar";
 
@@ -17,12 +18,14 @@ const ProjectAssignments = () => {
 
   useEffect(() => {
     dispatch(getProjAssignments(projectId));
+    dispatch(getAllProjects());
     dispatch(getAllUsers());
   }, [dispatch, projectId]);
 
   const allUsers = useSelector((state) => state.users);
   const assignedUsers = useSelector((state) => state.projectAssignments);
   const assignedUsersArr = Object.values(assignedUsers);
+  const currProject = useSelector((state) => state.projects[projectId]);
 
   const mappedAssignments =
     assignedUsersArr.length &&
@@ -64,9 +67,30 @@ const ProjectAssignments = () => {
     dispatch(deleteAssignment({ assignmentId }));
   };
 
+  const navLinks = (
+    <ul className="nav">
+      <li>
+        <NavLink to="/projects">
+          <i className="fas fa-home fa-lg"></i>
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li>
+        <NavLink
+          to={`/projects/${currProject?.id}`}
+          className="light_large dynamic_underline"
+        >
+          {currProject?.name}
+        </NavLink>
+      </li>
+      <i className="fas fa-angle-right"></i>
+      <li className="curr_on light_large">Add People</li>
+    </ul>
+  );
+
   return (
     <>
-      <NavBar />
+      <NavBar navLinks={navLinks} />
       <main id="proj_assignment_main">
         <Search projectId={projectId} />
         {assignedUsersArr.length > 0 ? (
