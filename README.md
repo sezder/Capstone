@@ -38,19 +38,21 @@ Upcoming features:
 
 # Splash page
 From the splash page, one of the only pages accessible without authentication, allows users to choose to create an account, log into an existing account, or log in as a demo user. It features previews of the site to entice users to sign up. 
-TODO: INSERT PHOTO
+![Imgur](https://i.imgur.com/pIqd8vg.png)
+![Imgur](https://i.imgur.com/fxxmYkq.png)
 
 # Projects
 Users can organize their teams into projects, assigning only the individuals who are stakeholders in the project.
-TODO: INSERT PHOTO
+![Imgur](https://i.imgur.com/f6Omlxl.png)
+![Imgur](https://i.imgur.com/QdWZltn.png)
+![Imgur](https://i.imgur.com/WE9DmvB.png)
 
 # Message Board
 The message board is comprised of messages on which people can leave comments. It's intended to help solve the issue of emails on various subjects all coming to the same place. 
-TODO: PHOTO OF /messages
-TODO: PHOTO OF /messages/:id
-TODO: PHOTO OF /messages/new
+![Imgur](https://i.imgur.com/qKUqXf0.png)
+![Imgur](https://i.imgur.com/VmnPmDH.png)
 
 # Todo Lists
 Todos for a project can be categorized into lists and assigned to particular individuals so that nothing falls through the cracks. 
-TODO: PHOTO OF /lists
-TODO: PHOTO OF /lists/:id
+![Imgur](https://i.imgur.com/Ur98kbJ.png)
+![Imgur](https://i.imgur.com/Ol0j23h.png)
