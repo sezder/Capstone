@@ -24,7 +24,7 @@
 .splash_text_sec div {
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 50px;
   margin: 10%;
