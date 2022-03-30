@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import LogoutButton from "../Auth/LogoutButton";
-import DemoButton from "../DemoButton";
-import { formatName, formatInitials } from "../../helperFuncs";
+import LogoutButton from "../../Auth/LogoutButton";
+import DemoButton from "../../Auth/DemoButton";
+import { formatName, formatInitials } from "../../../helperFuncs";
 import "./NavBar.css";
 
 const NavBar = ({ navLinks }) => {
