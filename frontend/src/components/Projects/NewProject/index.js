@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createProject } from "../../store/project";
+import { createProject } from "../../../store/project";
 import "./NewProject.css";
 
 const NewProject = ({ hidden, setHidden }) => {

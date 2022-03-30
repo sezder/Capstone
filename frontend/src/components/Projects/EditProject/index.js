@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { updateProject, deleteProject } from "../../store/project";
+import { updateProject, deleteProject } from "../../../store/project";
 import "./EditProject.css";
 
 const EditProject = ({ setEditProject, projectId, currProject }) => {

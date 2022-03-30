@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { updateMessage, deleteMessage } from "../../store/message";
+import { updateMessage, deleteMessage } from "../../../store/message";
 import "./EditMessage.css";
 
 const EditMessage = ({
-  // editMessage,
   setEditMessage,
   currMessage,
-  // creatorId,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+
 import { getComments } from "../../../store/comment";
 import { getMessages } from "../../../store/message";
 import { getAllProjects } from "../../../store/project";
 import { getAllUsers } from "../../../store/user";
-import EditMessage from "../../EditMessage";
-import EditComment from "../EditComment";
-import NewComment from "../NewComment";
+import EditMessage from "../EditMessage";
+import EditComment from "../../Comments/EditComment";
+import NewComment from "../Comments/NewComment";
+import NavBar from "../../Layout/NavBar";
 import "./IndivMessage.css";
-import NavBar from "../NavBar";
 
 const IndivMessage = () => {
   let { projectId, messageId } = useParams();
@@ -151,7 +152,9 @@ const IndivMessage = () => {
                 {currUserId === comment?.creator_id ? (
                   <button
                     onClick={() => setEditComment(comment?.id)}
-                    className={editComment === comment?.id ? "hidden" : "only_icon_btn"}
+                    className={
+                      editComment === comment?.id ? "hidden" : "only_icon_btn"
+                    }
                   >
                     <i className="fas fa-ellipsis-h fa-lg"></i>
                   </button>

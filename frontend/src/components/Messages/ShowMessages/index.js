@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+
 import { getMessages } from "../../../store/message";
 import { getAllProjects } from "../../../store/project";
 import { getAllUsers } from "../../../store/user";
-import "./ShowMessages.css";
-import new_message from "../images/new_message.svg";
+
 import OneMessage from "./OneMessage";
-import NavBar from "../NavBar";
+import NavBar from "../Layout/NavBar";
+import new_message from "../images/new_message.svg";
+import "./ShowMessages.css";
 
 const ShowMessages = () => {
   let { projectId } = useParams();

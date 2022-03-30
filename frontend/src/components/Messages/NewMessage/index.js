@@ -3,7 +3,7 @@ import { useParams, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createMessage } from "../../../store/message";
 import { getAllProjects } from "../../../store/project";
-import NavBar from "../NavBar";
+import NavBar from "../../Layout/NavBar";
 import "./NewMessage.css";
 
 const NewMessage = () => {

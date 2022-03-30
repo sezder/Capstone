@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import { filterAssignments } from "../../helperFuncs";
-import { getAllProjAssignments } from "../../store/projectAssignment";
-import { getAllProjects } from "../../store/project";
-import { getAllUsers } from "../../store/user";
+import { filterAssignments } from "../../../helperFuncs";
+import { getAllProjAssignments } from "../../../store/projectAssignment";
+import { getAllProjects } from "../../../store/project";
+import { getAllUsers } from "../../../store/user";
 
 import NewProject from "../NewProject";
-import NavBar from "../NavBar";
+import NavBar from "../../Layout/NavBar";
 import "./ShowProjects.css";
 
 const ShowProjects = () => {

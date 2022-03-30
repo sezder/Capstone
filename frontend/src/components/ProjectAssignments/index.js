@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
-import "./ProjectAssignments.css";
-import Search from "../Search";
 import { useParams, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getProjAssignments,
-  deleteAssignment,
-} from "../../store/projectAssignment";
+import { getProjAssignments, deleteAssignment } from "../../store/projectAssignment";
 import { getAllProjects } from "../../store/project";
 import { getAllUsers } from "../../store/user";
 import NavBar from "../NavBar";
+import Search from "../Search";
+import "./ProjectAssignments.css";
 
 const ProjectAssignments = () => {
   const dispatch = useDispatch();
