@@ -42,7 +42,6 @@
 
 @media only screen and (min-width: 1030px) {
   .msg_preview {
-    /* background-color: chartreuse; */
     width: 65vw;
   }
 
@@ -56,15 +55,8 @@
   }
 }
 
-/* @media only screen and (max-width: 1029px) {
-  .msg_preview {
-    background-color: hotpink;
-  }
-} */
-
 @media only screen and (max-width: 900px) {
   .msg_preview {
-    /* background-color: chartreuse; */
     width: 80vw;
   }
   
@@ -75,13 +67,6 @@
 
 @media only screen and (max-width: 650px) {
   .msg_preview {
-    /* background-color: blue; */
     width: 90vw;
   }
 } 
-
-/* @media only screen and (max-width: 500px) {
-  .msg_preview {
-    background-color: lightblue;
-  }
-} */
