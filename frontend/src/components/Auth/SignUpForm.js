@@ -81,8 +81,8 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className="splash_main">
-      <section className="splash_img_sec">
+    <div className="auth_main">
+      <section className="auth_img_sec">
         <img
           src={researching}
           alt="Woman hanging up a paper on a wall."

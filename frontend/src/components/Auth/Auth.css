@@ -3,6 +3,16 @@
   justify-content: center;
   align-items: center;
 }
+
+.auth_img_sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px - 7vh);
+  width: 50vw;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 #login_img {
   width: 60vw;
   padding: 30px;
@@ -41,7 +51,7 @@
 }
 
 @media only screen and (max-width: 550px) {
-  section.splash_img_sec,
+  section.auth_img_sec,
   #login_img,
   #signup_img {
     display: none;
