@@ -15,7 +15,7 @@ const Splash = () => {
         </div>
         <div className="splash_text_sec" id="intro_text">
           <h1 className="light_large">
-            The All-In-One Toolkit<br></br> for Working Remotely.
+            The All-In-One Toolkit for Working Remotely.
           </h1>
           <p>
             <strong>Before Headquarters:</strong> Projects feel scattered,

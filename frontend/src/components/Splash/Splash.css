@@ -46,8 +46,7 @@
 }
 
 .splash_img img {
-  height: 58vh;
-  margin-bottom: 10vh;
+  height: 30vw;
 }
 
 .splash_text_sec#intro_text {
@@ -127,4 +126,67 @@
 
 #msgs_prev .splash_text_sec {
   margin-top: 15px;
+}
+
+@media only screen and (min-width: 1101px) {
+  .splash_text_sec  {
+    background-color: gray
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .splash_text_sec  {
+    background-color: chartreuse;
+  }
+
+  .splash_text_sec#intro_text {
+    width: 60vw;
+    margin: 3%;
+  }
+  
+}
+
+@media only screen and (max-width: 1000px) {
+  .splash_text_sec  {
+    background-color: hotpink;
+  }
+
+  .splash_intro {
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+  }
+
+  .splash_text_sec#intro_text {
+    width: 80vw;
+    padding: 20px;
+    margin: 3%;
+  }
+
+  .splash_img img {
+    height: 34vw;
+  }
+
+  .splash_text_sec h1 {
+    margin-bottom: 0;
+  }
+
+  .splash_text_sec a {
+    margin-top: 5px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .splash_text_sec  {
+    background-color: yellow;
+  }
+  .splash_img img {
+    height: 40vw;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+  .splash_text_sec  {
+    background-color: blue;
+  }
 }
