@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { getComments } from "../../store/comment";
-import { getMessages } from "../../store/message";
-import { getAllProjects } from "../../store/project";
-import { getAllUsers } from "../../store/user";
-import EditMessage from "../EditMessage";
+import { getComments } from "../../../store/comment";
+import { getMessages } from "../../../store/message";
+import { getAllProjects } from "../../../store/project";
+import { getAllUsers } from "../../../store/user";
+import EditMessage from "../../EditMessage";
 import EditComment from "../EditComment";
 import NewComment from "../NewComment";
 import "./IndivMessage.css";

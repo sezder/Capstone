@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createMessage } from "../../store/message";
-import { getAllProjects } from "../../store/project";
+import { createMessage } from "../../../store/message";
+import { getAllProjects } from "../../../store/project";
 import NavBar from "../NavBar";
 import "./NewMessage.css";
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { NavLink, useParams } from "react-router-dom";
-import { getAllTodos } from "../../../store/todo";
+import { getAllTodos } from "../../../../store/todo";
 import "./PreviewLists.css";
 
 const PreviewLists = ({ list }) => {

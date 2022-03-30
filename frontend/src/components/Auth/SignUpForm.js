@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import DemoButton from "../DemoButton";
-import { signUp } from "../../store/session";
+import { signUp } from "../../../store/session";
+import researching from "../images/researching";
 import "./Auth.css";
-import researching from "../images/researching.svg";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);

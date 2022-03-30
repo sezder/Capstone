@@ -1,6 +1,5 @@
-import React from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../../store/session";
+import { login } from "../../../store/session";
 
 const DemoButton = () => {
   const dispatch = useDispatch();

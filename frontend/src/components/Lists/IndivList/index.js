@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
-import { getLists } from "../../store/list";
-import { getTodos } from "../../store/todo";
-import { getAllProjects } from "../../store/project";
+import { getLists } from "../../../store/list";
+import { getTodos } from "../../../store/todo";
+import { getAllProjects } from "../../../store/project";
 import IndivTodo from "./IndivTodo";
 import EditList from "../EditList";
 import NewTodo from "../NewTodo";
