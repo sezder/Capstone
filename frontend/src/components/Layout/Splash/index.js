@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import work_together from "../images/work_together.svg";
+import work_together from "../../images/work_together.svg";
 import "./Splash.css";
 
 const Splash = () => {

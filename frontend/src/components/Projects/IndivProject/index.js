@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+
+
 import { getAllProjects } from "../../../store/project";
 import { getLists } from "../../../store/list";
 import { getMessages } from "../../../store/message";
-import PreviewLists from "./PreviewLists";
-import PreviewMessages from "./PreviewMessages";
-import EditProject from "../../EditProject";
-import message_sent from "../images/message_sent.svg";
-import checking_boxes from "../images/checking_boxes.svg";
-import "./IndivProject.css";
 import { getProjAssignments } from "../../../store/projectAssignment";
 import { getAllUsers } from "../../../store/user";
-import NavBar from "../NavBar";
+
+import PreviewLists from "./PreviewLists";
+import PreviewMessages from "./PreviewMessages";
+import EditProject from "../EditProject";
+import NavBar from "../../Layout/NavBar";
+import message_sent from "../../images/message_sent.svg";
+import checking_boxes from "../../images/checking_boxes.svg";
+import "./IndivProject.css";
 
 const IndivProject = () => {
   let { projectId } = useParams();

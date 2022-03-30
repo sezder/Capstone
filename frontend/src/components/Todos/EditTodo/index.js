@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTodo, deleteTodo } from "../../store/todo";
+import { updateTodo, deleteTodo } from "../../../store/todo";
 import "./EditTodo.css";
 
 const EditTodo = ({ todo, editTodo, setEditTodo, projectId, listId }) => {

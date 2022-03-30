@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {updateTodo} from '../../../store/todos';
-import EditTodo from "../../Todos/EditTodo";
+import { updateTodo } from "../../../../store/todo";
+import EditTodo from "../../../Todos/EditTodo";
 import "./IndivTodo.css";
 
 const IndivTodo = ({ todo, projectId, listId }) => {

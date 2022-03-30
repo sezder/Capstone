@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
-import DemoButton from "../DemoButton";
-import { signUp } from "../../../store/session";
-import researching from "../images/researching";
+import DemoButton from "./DemoButton";
+import { signUp } from "../../store/session";
+import researching from "../images/researching.svg";
 import "./Auth.css";
 
 const SignUpForm = () => {

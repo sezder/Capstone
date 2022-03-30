@@ -7,8 +7,8 @@ import { getAllProjects } from "../../../store/project";
 import { getAllUsers } from "../../../store/user";
 
 import OneMessage from "./OneMessage";
-import NavBar from "../Layout/NavBar";
-import new_message from "../images/new_message.svg";
+import NavBar from "../../Layout/NavBar";
+import new_message from "../../images/new_message.svg";
 import "./ShowMessages.css";
 
 const ShowMessages = () => {

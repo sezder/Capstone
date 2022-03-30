@@ -8,7 +8,7 @@ import { getLists } from "../../../store/list";
 import { getAllProjects } from "../../../store/project";
 
 import NewList from "../NewList";
-import PreviewTodos from "../PreviewTodos";
+import PreviewTodos from "./PreviewTodos";
 import NavBar from "../../Layout/NavBar";
 import completed_tasks from "../../images/completed_tasks.svg";
 import "./ShowLists.css";

@@ -8,7 +8,7 @@ import { getAllProjects } from "../../../store/project";
 import { getAllUsers } from "../../../store/user";
 import EditMessage from "../EditMessage";
 import EditComment from "../../Comments/EditComment";
-import NewComment from "../Comments/NewComment";
+import NewComment from "../../Comments/NewComment";
 import NavBar from "../../Layout/NavBar";
 import "./IndivMessage.css";
 

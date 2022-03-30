@@ -2,33 +2,31 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
+import NavBar from "./components/Layout/NavBar";
+import Footer from "./components/Layout/Footer";
+import Splash from "./components/Layout/Splash";
+
 // Auth
 import LoginForm from "./components/Auth/LoginForm";
 import SignUpForm from "./components/Auth/SignUpForm";
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import { authenticate } from "./store/session";
 
-// Users
-// import UsersList from "./components/UsersList";
-// import User from "./components/User";
+// Projects
+import ShowProjects from "./components/Projects/ShowProjects";
+import IndivProject from "./components/Projects/IndivProject";
 
-// Misc
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
-import Splash from "./components/Splash";
+// Messages
+import ShowMessages from "./components/Messages/ShowMessages";
+import IndivMessage from "./components/Messages/IndivMessage";
+import NewMessage from "./components/Messages/NewMessage";
 
-// Create
-import NewMessage from "./components/NewMessage";
+// Lists
+import ShowLists from "./components/Lists/ShowLists";
+import IndivList from "./components/Lists/IndivList";
 
-// Read
-import ShowProjects from "./components/ShowProjects";
-import ShowLists from "./components/ShowLists";
-import ShowMessages from "./components/ShowMessages";
-import IndivProject from "./components/IndivProject";
-import IndivMessage from "./components/IndivMessage";
 
-//Update
-import IndivList from "./components/IndivList";
+// Project Assignments
 import ProjectAssignments from "./components/ProjectAssignments";
 
 function App() {

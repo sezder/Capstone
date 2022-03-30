@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProjAssignments, deleteAssignment } from "../../store/projectAssignment";
 import { getAllProjects } from "../../store/project";
 import { getAllUsers } from "../../store/user";
-import NavBar from "../NavBar";
+import NavBar from "../Layout/NavBar";
 import Search from "../Search";
 import "./ProjectAssignments.css";
 
