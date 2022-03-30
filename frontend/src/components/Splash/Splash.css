@@ -1,51 +1,130 @@
 .splash_main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  background-color: rgba(48, 156, 109, 0.5);
 }
 
-.splash_img_sec {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.splash_main img {
+  border-radius: 10px;
+}
+
+.splash_main section {
   height: calc(100vh - 60px - 7vh);
-  width: 50vw;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.splash_img_sec img {
-  height: 58vh;
-  margin-bottom: 10vh;
+  width: 100vw;
+  width: 100%;
+  padding: 0 5vw;
 }
 
 .splash_text_sec {
-  width: 50vw;
-}
-
-.splash_text_sec div {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.6);
-  padding: 50px;
-  margin: 10%;
   box-shadow: 3px 3px 4px #000000, -1px -1px 3px rgb(225 225 225 / 20%);
 }
 
-.splash_text_sec div h1 {
+/* Intro */
+.splash_intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: rgb(63, 62, 63);
+  background: linear-gradient(
+    0deg,
+    rgba(63, 62, 63, 1) 0%,
+    rgba(39, 37, 38, 1) 100%
+  );
+}
+
+.splash_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+}
+
+.splash_img img {
+  height: 58vh;
+  margin-bottom: 10vh;
+}
+
+.splash_text_sec#intro_text {
+  width: 50vw;
+  padding: 50px;
+  margin: 10%;
+}
+
+.splash_text_sec h1,
+.splash_text_sec h2 {
   text-align: center;
   margin-bottom: 2%;
 }
 
-.splash_text_sec div p {
+.splash_text_sec h1 {
+  align-self: center;
+}
+
+.splash_text_sec p {
   margin-top: 10px;
 }
 
-.splash_text_sec div p strong {
+.splash_text_sec p strong {
   font-size: larger;
   color: rgba(208, 208, 208, 0.7);
 }
 
-.splash_text_sec div a {
+.splash_text_sec a {
   align-self: center;
   margin-top: 20px;
+}
+
+/* Feature Previews */
+#proj_prev,
+#msgs_prev {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#proj_prev {
+  border-top: 1px solid #57cc99e6;
+}
+
+#proj_prev .splash_text_sec,
+#msgs_prev .splash_text_sec {
+  width: fit-content;
+  padding: 15px;
+}
+
+#proj_prev .splash_text_sec {
+  margin-bottom: 15px;
+}
+
+.half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  height: calc(100vh - 60px - 7vh);
+}
+
+#proj_prev_img,
+#assign_prev_img {
+  height: 65vh;
+}
+
+#msg_board_img {
+  height: 60vh;
+}
+
+#mini_msg_board_img {
+  height: 45vh;
+}
+
+#msgs_prev .splash_text_sec {
+  margin-top: 15px;
 }
