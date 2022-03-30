@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateComment, deleteComment } from "../../store/comment";
+import { updateComment, deleteComment } from "../../../store/comment";
 
 const EditComment = ({ setEditComment, currComment, creatorId, messageId }) => {
   const dispatch = useDispatch();

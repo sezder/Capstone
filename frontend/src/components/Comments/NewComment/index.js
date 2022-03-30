@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { createComment } from "../../store/comment";
+import { createComment } from "../../../store/comment";
 
 const NewComment = ({ messageId, creatorId }) => {
   const dispatch = useDispatch();
