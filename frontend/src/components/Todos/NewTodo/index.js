@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createTodo } from "../../../store/todo";
-import "./NewTodo.css";
 
 const NewTodo = ({ listId, addTodo, setAddTodo }) => {
   const dispatch = useDispatch();
