@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { getAllTodos } from "../../store/todo";
-import { getLists } from "../../store/list";
-import "./ShowLists.css";
+
+
+import { getAllTodos } from "../../../store/todo";
+import { getLists } from "../../../store/list";
+import { getAllProjects } from "../../../store/project";
+
 import NewList from "../NewList";
-import PreviewTodos from "./PreviewTodos";
-import { getAllProjects } from "../../store/project";
-import completed_tasks from "../images/completed_tasks.svg";
-import NavBar from "../NavBar";
+import PreviewTodos from "../PreviewTodos";
+import NavBar from "../../Layout/NavBar";
+import completed_tasks from "../../images/completed_tasks.svg";
 import "./ShowLists.css";
 
 const ShowLists = () => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createList } from "../../store/list";
+import { createList } from "../../../store/list";
 import "./NewList.css";
 
 const NewList = ({ hidden, setHidden }) => {

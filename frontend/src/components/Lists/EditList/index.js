@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateList, getLists, deleteList } from "../../store/list";
+import { updateList, getLists, deleteList } from "../../../store/list";
 import "./EditList.css";
 
 const EditList = ({ currList, editList, setEditList, listId, projectId }) => {
