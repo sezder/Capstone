@@ -66,7 +66,7 @@ const Splash = () => {
           ></img>
         </div>
 
-        <div className="half">
+        <div className="half" id="msg_text_half">
           <img
             alt="Message board mini preview."
             src="https://i.imgur.com/C7WdWc6.png"
