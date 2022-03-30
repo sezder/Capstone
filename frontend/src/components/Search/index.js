@@ -10,16 +10,10 @@ import {
 
 const Search = ({ projectId }) => {
   const dispatch = useDispatch();
-
-  // Grab all users from state and make into an array
   const users = useSelector((state) => state.users);
   const usersArr = Object.values(users);
-
-  // Search dynamically based on searchQuery state, filtering users based on query
   const [searchQuery, setSearchQuery] = useState("");
   const filteredUsers = filterUsers(usersArr, searchQuery);
-
-  // const [userToAdd, setUserToAdd] = useState(null);
 
   useEffect(() => {
     dispatch(getAllUsers());

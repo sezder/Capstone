@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
-import DemoButton from "../DemoButton";
+import DemoButton from "./DemoButton";
 import researching from "../images/researching.svg";
 import "./Auth.css";
 
